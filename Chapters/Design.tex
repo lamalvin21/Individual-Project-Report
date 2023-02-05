@@ -1,0 +1,67 @@
+\chapter{Design}
+This design chapter provides a high-level overview of what my software will do. With the use of visual tools such as diagrams, I will create a plan for implementation. 
+
+\section{Query Flow Diagram}
+\hspace{0.5cm} A flow diagram is a graphical representation of the sequence of steps or actions that need to be taken to complete a process. 
+\\ (https://asq.org/quality-resources/flowchart)
+
+In this section, I will illustrate the logic required to build the SPARQL Anything Query in the form of a flow diagram. This will help provide me the framework in order to build the query and produce a knowledge graph.
+
+\bigskip
+\begin{center}
+    \begin{tikzpicture} [
+        circle/.style={draw=green, ellipse, ultra thick, fill=green!30},
+        align=center,
+        node distance=2.5cm ]
+    \node[circle] (q0) {Add ontology};
+    \node[circle, below of=q0] (q1)  {Query dataset};
+    \node[circle, below of=q1] (q2)  {Clean \& Refine data};
+    \node[circle, below of=q2] (q3)  {Data out};
+    \node[circle, below of=q3] (q4)  {Query external links};
+    \node[circle, below of=q4] (q5)  {Clean \& Refine external data};
+    \node[circle, below of=q5] (q6)  {External data out};
+    \node[circle, below of=q6] (q7)  {Output graph};
+
+    \draw[->] (q0.south) -- (q1.north);
+    \draw[->] (q1.south) -- (q2.north);
+    \draw[->] (q2.south) -- (q3.north) node [midway, fill=white] {Using cleaned data};
+    \draw[->] (q3.south) -- (q4.north);
+    \draw[->] (q4.south) -- (q5.north);
+    \draw[->] (q5.south) -- (q6.north);
+    \draw[->] (q6.south) -- (q7.north) node [midway, fill=white] {Using all data};
+    % \draw[->] (q2.east) -- (q7.east);
+
+    \end{tikzpicture}
+\end{center}
+
+This diagram illustrates the logic required for the SPARQL Anything query and lays the foundation for the query to be built. The nodes in the diagram represent actions that need to be done and the edges are sometimes explicitly stated transitions so that the process is more clear when I start the implementation phase.
+
+\section{Query Skeleton Structure}
+\hspace{0.5cm} In this section, I will use the flow diagram illustrated in the previous section to write the skeleton of the query I am going to create.
+
+\lstset
+{
+    breaklines=true,
+    breakatwhitespace=true,
+    basicstyle=\ttfamily,
+}
+\begin{lstlisting}
+PREFIX ... # Add relevant links
+
+CONSTRUCT {
+    ... # Add organ ontology
+} 
+WHERE 
+    { 
+        SERVICE <file:///...>  # Query dataset
+            { ... # Clean and refine data AND # Data out
+                WHERE SERVICE <https://query.wikidata.org/...> ... # Query external links
+                ... # Clean and Refine external data AND         # External data out
+            }
+            ... # Merge dataset data with external data
+            # Output graph
+    }
+
+\end{lstlisting}
+
+This basic query skeleton satisfies all the nodes in the flow graph above and can be used in the creation of the query that generates the knowledge graph. I commented on the lines of the skeleton query where the nodes were relevant by adding a comment starting with a '\#'. 

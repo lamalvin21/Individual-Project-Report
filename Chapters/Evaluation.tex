@@ -1,0 +1,209 @@
+\chapter{Evaluation}
+This chapter details how the knowledge graph is evaluated upon completion. I used the (https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/) book to help guide my quality assessment. The sections and subsections added in this chapter use the same structure as described in that book chapter. 
+
+\section{Knowledge Graph Evaluation}
+\hspace{0.5cm} The knowledge graph presented must follow each of the sections detailed below to ensure correctness and it's validity. 
+
+The main four sections I will use to assess the quality of the knowledge graph are:
+
+\begin{itemize}
+\item Accuracy
+\item Coverage
+\item Coherency
+\item Succinctness
+\end{itemize}
+
+For each subsection, I have provided fictional examples for each of the sections and subsections in the context of the organ dataset. This is to give context to each section and try to find any potential violations. 
+% After each section and subsection,  I also compared the knowledge graph I created and measured whether it breaks any of the quality assessments.
+
+\subsection{Accuracy}
+\hspace{0.5cm} "Accuracy refers to the extent to which entities and relations- encoded by nodes and edges in the graph- correctly represent real-life phenomena". \\ (https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/). 
+
+In this context, accuracy means that the knowledge graph generated (both subjects and relationships) needs to correctly reflect the relationships between the organ topic. 
+
+There are three types of accuracy: 
+\begin{itemize}
+\item Syntactic Accuracy.
+\item Semantic Accuracy.
+\item Timeliness.
+\end{itemize}
+
+\subsubsection{Syntactic Accuracy}
+\hspace{0.5cm} Syntactic accuracy refers to whether the data presented is valid for it's given type. \\
+(https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/) 
+
+An example of a violation: 
+\begin{lstlisting}
+    "This is an organ" would be incompatible with xsd:integer.
+\end{lstlisting}
+
+\subsubsection{Semantic Accuracy}
+\hspace{0.5cm} Semantic accuracy refers to whether data values are being correctly represented in the context of the real world.  \\ (https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/) 
+
+An example of a violation: 
+\begin{lstlisting}
+    Date of build (for an organ) coming after today's date. 
+\end{lstlisting}
+
+\subsubsection{Timeliness}
+\hspace{0.5cm} Timeliness refers to how up-to-date or relevant the knowledge graph is with the real current state of the modern world. \\ (https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/) 
+
+An example of a violation: 
+\begin{lstlisting}
+    Organ's location stated as "Netherlands", but has been moved recently to Portugal and the knowledge graph has not been updated.
+\end{lstlisting}
+
+\subsection{Coverage}
+\hspace{0.5cm} "Coverage refers to avoiding the omission of domain-relevant elements, which may yield incomplete results". \\ (https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/). 
+
+In this context, the knowledge graph result must have completely fill the ontology framework required in all of it's nodes and edges. This is to accurately represent the entire dataset given. 
+
+There are two types of coverage: 
+\begin{itemize}
+\item Completeness.
+\item Representativeness.
+\end{itemize}
+
+\subsubsection{Completeness}
+\hspace{0.5cm} Completeness ensures the knowledge graph is correctly filled with all the relevant information present in a particular dataset. \\(https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/)
+
+Some examples of violations: 
+\begin{lstlisting}
+    - A organ classes lacking information
+
+    - Important values being missing for a specific organ property. 
+\end{lstlisting}
+
+\subsubsection{Representativeness}
+\hspace{0.5cm} Representativeness ensures the knowledge graph does not involve any bias and it does not exclude anything relevant. \\
+(https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/) 
+
+Some examples of violations: 
+\begin{lstlisting}
+    - Under-represent organs from other parts of the world.
+    
+    - Under-represent organ data from other languages.
+
+    - Under-represent people (organist, owner etc.) from a particular gender or race etc.
+\end{lstlisting}
+
+\subsection{Coherency}
+\hspace{0.5cm} "Coherency refers to how well the knowledge graph conforms to the formal semantics and constraints defined at schema level". \\  (https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/). 
+
+In this context, the knowledge graph result must follow the dataset and accurately display the data appropriately. 
+
+There are two types of coherency:
+\begin{itemize}
+\item Consistency
+\item Validity
+\end{itemize}
+
+\subsubsection{Consistency}
+\hspace{0.5cm} Consistency ensures the knowledge graph does not involve any contradictions with regard to logic.  \\
+(https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/) 
+
+An example of a violation: 
+\begin{center}
+    \begin{tikzpicture} [
+        square/.style={draw=yellow, rectangle, ultra thick, fill=yellow!30},
+        align=center,
+        node distance=5cm ]
+    \node[square] (q1)  {Organist};
+    \node[square, right of=q1] (q2)  {Owner};
+    \draw (q1) edge[->,above] node {sameAs} (q2);
+    \end{tikzpicture}
+\end{center}
+
+\begin{center}
+    \begin{tikzpicture} [
+        square/.style={draw=yellow, rectangle, ultra thick, fill=yellow!30},
+        align=center,
+        node distance=5cm ]
+    \node[square] (q1)  {Organist};
+    \node[square, right of=q1] (q2)  {Owner};
+    \draw (q1) edge[->,above] node {differentTo} (q2);
+    \end{tikzpicture}
+\end{center}
+
+This is an example of a contradiction because, logically, an organist can not be both: the same as and different to the owner. Note that data is not input into the classes for explanation purposes.
+
+\subsubsection{Validity}
+\hspace{0.5cm} Validity means that the resulting knowledge graph does not include any constraint violations, with respect to the shapes involved. \\
+(https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/) 
+
+An example of a violation:
+\begin{center}
+    \begin{tikzpicture} [
+        square/.style={draw=yellow, rectangle, ultra thick, fill=yellow!30},
+        align=center,
+        node distance=5cm ]
+    \node[square] (q1)  {Organ Location};
+    \node[square, below right of=q1] (q2)  {Amsterdam};
+    \node[square, below left of=q1] (q3)  {Paris};
+
+    \draw (q1) edge[->,right] node {locatedIn} (q2);
+    \draw (q1) edge[->,left] node {locatedIn} (q3);
+    \end{tikzpicture}
+\end{center}
+
+This example is a violation because "Organ Location"'s constraints have only one node as an Organ can only be in one location at once. Therefore, there can only be one city branching out of the node 'Organ Location'.
+
+\subsection{Succinctness}
+\hspace{0.5cm} "Succinctness refers to the inclusion of relevant content that is represented in a concise and intelligible manner."\\ (https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/). 
+
+In this context, it means the knowledge graph created should be easily understandable and to the point. 
+
+There are three types of succinctness: 
+\begin{itemize}
+\item Conciseness.
+\item Representational Conciseness.
+\item Understandability.
+\end{itemize}
+
+\subsubsection{Conciseness}
+\hspace{0.5cm} Conciseness refers to the need of avoiding the input and addition of irrelevant data into the dataset, and subsequently, into the knowledge graph. \\
+(https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/)
+
+An example of a violation: 
+\begin{lstlisting}
+    Adding information about musicians that is not relevant to organs.
+\end{lstlisting}
+
+\subsubsection{Representational Conciseness}
+\hspace{0.5cm} Representational conciseness refers to the extent to which the knowledge graph content is compactly represented.  \\
+(https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/)
+
+An example of a violation: 
+\begin{lstlisting}
+    Containing two properties that serve the same purpose i.e.:
+        - Organist
+        - Organ Player
+\end{lstlisting}
+\begin{center}
+    \begin{tikzpicture} [
+        square/.style={draw=yellow, rectangle, ultra thick, fill=yellow!30},
+        align=center,
+        node distance=5cm ]
+    \node[square] (q1)  {Organist};
+    \node[square, right of=q1] (q2)  {Organ Player};
+    \end{tikzpicture}
+\end{center}
+
+Note that the actual names of the organist and organ player are not in the example nodes of the knowledge graph for explanation purposes. 
+
+\subsubsection{Understandability}
+\hspace{0.5cm} Understandability refers to the need for readability and ease of understanding the knowledge graph generated.  
+\\(https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/)
+
+An example of a violation: 
+\begin{lstlisting}
+    Using property names such as Organist 1, when asked to state the name of an organist. (We should use their actual name instead)
+\end{lstlisting}
+\begin{center}
+    \begin{tikzpicture} [
+        square/.style={draw=yellow, rectangle, ultra thick, fill=yellow!30},
+        align=center,
+        node distance=5cm ]
+    \node[square] (q1)  {Organist1};
+    \end{tikzpicture}
+\end{center}

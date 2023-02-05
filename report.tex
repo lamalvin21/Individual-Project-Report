@@ -1,0 +1,45 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 6CCS3PRJ Final Year Individual Project Report
+% alvin.lam@kcl.ac.uk
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{informatics-report}
+\usepackage{color, tikz, listings, csquotes, multirow, quotchap}
+\usepackage[square,sort,comma,numbers]{natbib} %References
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Front Matter - project title, name, supervisor name and date
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{6CCS3PRJ Final Year\\\vspace{0.175cm}Background and Specification Progress Report}
+\author{Alvin Lam}
+\studentID{K20045786}
+\supervisor{Dr Albert Merono Penuela}
+
+\date{\today}
+
+\abstractFile{FrontMatter/abstract.tex}
+
+\begin{document}
+\createFrontMatter
+\onehalfspacing
+\tableofcontents
+\doublespacing
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Report Content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% You can write each chapter directly here or in a separate .tex file and use the include command.
+
+\include{Chapters/Background}
+\include{Chapters/Context}
+\include{Chapters/LiteratureReview}
+\include{Chapters/Requirements}
+\include{Chapters/Specification}
+\include{Chapters/Design}
+\include{Chapters/Evaluation}
+\include{Chapters/Conclusion}
+\addcontentsline{toc}{chapter}{References}
+
+\bibliographystyle{unsrt}
+\bibliography{References}
+
+\end{document}

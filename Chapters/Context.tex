@@ -1,0 +1,166 @@
+\chapter{Context}
+In this chapter, I will detail the context of my dataset and project. I have provided an explanation of all the relevant information included in my dataset or classes included in the organ dataset. I also gave a brief introduction to the tool I will be using to complete this project: SPARQL-Anything. 
+
+\section{Organs}
+\hspace{0.5cm} The dataset that has been provided revolves around the musical instrument: Organs. Mozart once described organs as:
+
+\begin{quote}
+    \textit{"The king of instruments."}
+\end{quote}
+
+An organ can be of various different sizes ranging from the size of a small upright piano to a large structure consisting of many sub-systems. In the following chapter, I will provide a description of this instrument.
+
+\subsection{A Brief History}
+\hspace{0.5cm} The organ is a musical instrument that has been around for many centuries. The earliest known organs date back to the 3rd century BC and have been an important part of Western musical culture ever since.
+
+The organ was originally developed by the ancient Greeks, who used water organs to accompany their plays and other forms of entertainment. These early organs used water to power the air supply which allowed the pipes to produce sound and were fairly complex.
+
+Over time, the organ evolved and became more refined. The introduction of the keyboard in the 14th century allowed for greater control. The development of bellows and other mechanical systems made it possible to produce a wider range of sounds.
+
+Today, the organ is still an important part of musical culture and is used in a variety of settings: from churches to concert halls. It remains a versatile and powerful instrument, capable of producing a wide range of sounds and expressions.
+\\
+(https://www.britannica.com/art/organ-musical-instrument) \\
+(https://organhistoricalsociety.org/OrganHistory/history/hist001.htm)
+
+\noindent \subsection{How Organs Work:}
+\hspace{0.5cm} The organ functions by generating and directing airflow to the pipes, which produce sound when they vibrate. The organist uses the keyboard and pedals to control the flow of air to the pipes and draws 'stops' to combine different sets of pipes. This can produce a variety of unique sounds.
+
+\noindent Generally, the organ system works as follows:
+\begin{enumerate}
+\item Note is played on keyboard.
+\item Pressurised air is passed through organ system.
+\item When a particular stop is pulled, an internal slider is moved allowing air to pass through pipes.
+\item Sound for that particular key and stop is produced.
+\end{enumerate}
+
+\noindent \textbf{Pipe Types:}
+\begin{itemize}
+\item \underline{Reed Pipes}: Passes air through a reed (similar to a clarinet).
+\item \underline{Flue Pipes}: Forces air through a pipe (similar to recorder).
+\end{itemize}
+
+\noindent \textbf{Stops:}
+\\ \hspace*{0.5cm}Drawing/selecting a stop gives the player access to that stop's set of pipes available (for a particular key on the keyboard). 
+\begin{itemize}
+\item Draw Stops
+\item Tabs
+\end{itemize}
+
+Multiple stops can be drawn at once in the same division and multiple pipes will be played (pressurised air will be passed through them) from the press of one key.  
+
+\medskip
+\noindent \textbf{Rank:}
+\\ \hspace*{0.5cm} A rank is a row of pipes (controlled by a single stop) that is part of the organ which makes the same musical sound but does so at different pitches. 
+
+For example, a rank of spire flue pipes all produce the same wind instrument sound, but each key pressed will produce a different flue pitch. 
+
+\medskip
+\noindent \textbf{Divisions:}
+\\ \hspace*{0.5cm} An organ division is a group of pipes in an organ that are controlled by a specific keyboard or set of pedals. Stops of an organ are arranged into divisions, which are usually given names. For example, some divisions include:
+\begin{itemize}
+\item Swell (smaller pipes).
+\item Great (larger pipes).
+\item Pedal.
+\item Choir.
+\item Positiv
+\end{itemize}
+
+All of these divisions usually accompany whatever is deemed appropriate at the time. For example, if you are accompanying a choir, using the choir division would be best so as to not drown out the voices of the choir. 
+
+\medskip
+\noindent \textbf{Coupler:}
+\\ \hspace*{0.5cm} A coupler allows the stops of one division to be played from the keyboard of another division- the combining of divisions. For example, the "Great" division is usually played on the manual (keyboard) of the organ, but pulling the "Great to Pedal" coupler can allow for this division to be played on the pedals.
+
+It is worth noting that couplers may look like stops and need to be pulled to be activated, but are not stops.
+
+\medskip
+\noindent \textbf{Wind System:}
+\\ \hspace*{0.5cm} Wind systems are responsible for:
+\begin{itemize}
+\item Producing
+\item Storing
+\item Delivering
+\end{itemize}
+air within the organ system.
+
+The organ wind system typically consists of a series of bellows that are filled with air, either by manual pumping or by an electric blower. The wind is then directed through a series of channels or wind lines to the pipes of the organ. Each pipe has its own wind supply, which is controlled by the organist using the keyboard and other controls.
+\\
+(https://organhistoricalsociety.org/OrganHistory/works/works06.htm)
+\\
+(https://youtu.be/kAlj3CE-7mM , Royal College of Organists, 22 May 2020)
+
+\medskip
+\noindent \textbf{Casing:}
+\\ \hspace*{0.5cm} 
+An organ casing is the external structure of an organ, which is a type of musical instrument that produces sound by blowing air through pipes. The organ casing typically encloses the pipes, keyboards, and other components of the organ.
+
+The organ casing serves several important functions. First and foremost, it protects the delicate and complex internal components of the organ from damage and contamination. The casing also helps to support the weight of the organ, which can be quite large and heavy. Additionally, the casing provides a resonating chamber and allows the blending of sound between different ranks of pipes.\\
+(https://organhistoricalsociety.org/OrganHistory/works/works09.htm)
+
+\subsection{Organ Ontology}
+\hspace{0.5cm} The organ ontology provided the framework of the knowledge graph I am going to create using the organ dataset. This outlines and covers the dataset so that all the data can be displayed in the form of a knowledge graph, in a structured manner. 
+
+The ontology includes classes for the organ system:
+\begin{itemize}
+\item Organ Console
+\item Organ Wind System
+\item Organ Case
+\item Organ Action
+\item Organ Division
+\end{itemize}
+
+But the ontology also includes classes about a particular organ's owner and offers background on a given organ. For example:
+\begin{itemize}
+\item Description
+\item Agent and the role of this agent (owner, organist, builder etc.)
+\end{itemize}
+
+\section{SPARQL Anything}
+\hspace{0.5cm} SPARQL Anything acts as an extension of SPARQL and allows knowledge graphs to be generated from that dataset. SPARQL Anything uses Facade-X, which is similar to the Facade design pattern. The facade design pattern is a useful way to improve the usability of a complex system by providing a simpler and more intuitive interface to it. In this case, SPARQL Anything masks the complex components by allowing the user to continue to use SPARQL syntax. Using SPARQL Anything, the SERVICE operator can  be overridden and can use SPARQL Anything within a query. 
+
+The CONSTRUCT operator allows knowledge graphs to be generated, through the framework of a given ontology.
+
+SPARQL Anything allows us to query a dataset to suit our needs and generate a knowledge graph using an ontology framework all in one tool. 
+(https://github.com/SPARQL-Anything/sparql.anything , README)
+
+\subsection{Other Tools}
+
+\hspace{0.5cm} In this section, I will detail another way of generating knowledge graphs in the context of organs, describing  the approach as well as the positives and negatives of that approach.
+
+\subsubsection{ChatGPT}
+\hspace{0.5cm} ChatGPT is a recently developed artificially intelligent chatbot that answers questions in a conversational way. The chatbot specialises in being casual, so it is able to answer appropriate follow-up questions and respond to questions in a way that is easy to understand. ChatGPT uses AI techniques such as reinforcement learning and supervised learning to respond correctly to questions. This chatbot was released in November 2022 and is still in it's prototype phase. Uses of ChatGPT include:
+\begin{itemize}
+\item Solving progamming questions.
+\item Fixing bugs in code.
+\end{itemize}
+
+When ChatGPT is asked to create a knowledge graph regarding organs, this is what it produces:
+
+\lstset
+{
+    breaklines=true,
+    breakatwhitespace=true,
+}
+\begin{lstlisting}
+    Nodes: Keyboard, Pedals, Pipes, Blower, Stops
+    Edges:
+        -  The keyboard is connected to the pipes, indicating that pressing keys on the keyboard causes the corresponding pipes to produce sound.
+        -  The pedals are connected to the pipes, indicating that pressing the pedals can also cause certain pipes to produce sound.
+        -  The blower is connected to the pipes, indicating that the blower supplies air to the pipes, allowing them to produce sound.
+        -  The stops are connected to the pipes, indicating that the stops control which pipes are active and can produce sound.
+\end{lstlisting}
+
+This response represents a small knowledge graph mainly comprised of organ parts and how it produces sound. The output of the knowledge graph is in plain text so has to be manually read and interpreted, so is not in machine-readable format. 
+
+This approach is a very easy technique for generating an organ-related knowledge graph and makes use of the strengths of ChatGPT. The knowledge graph, although in plaintext, is very useful and easy to understand due to ChatGPT's ability to communicate conversationally. 
+
+However, this approach generates a small knowledge graph and has to be read in plaintext. Although ChatGPT provides possible points of expansion for the knowledge graph, the knowledge graph produced is relatively small. The data is not being accessed through the web or through external resources and is trained based on input data provided to train the model. An arbitrary organ dataset on the web was not passed through and represented in the knowledge graph. The knowledge graph generated is based on the language model's general knowledge and understanding of the concept of an organ and how it works. Therefore, it is largely reliant on the input data and may involve bias. 
+
+In terms of the produced knowledge graph's validity, the knowledge graph does not include any real-world data, but more general topics regarding organs. So, the knowledge graph generated is a lot closer to an ontology than a real-world knowledge graph. The knowledge graph is also not a complete or definitive representation of all aspects of an organ and does not accurately reflect the details of every individual organ. As such, it is not possible to definitively validate the accuracy of the knowledge graph. 
+
+However, the information provided is based on the chatbot's general understanding of the organ and is consistent with common knowledge about the instrument. The nodes and edges in the graph represent concepts and relationships that are generally accepted as true and the connections between them reflect the basic functions and structure of the organ.
+
+While the knowledge graph generated may not be a perfect or comprehensive representation of the organ, it is a reasonable and valid representation of the basic concepts and relationships involved in the instrument.
+
+\noindent (https://en.wikipedia.org/wiki/ChatGPT)\\
+(https://openai.com/blog/chatgpt/)
