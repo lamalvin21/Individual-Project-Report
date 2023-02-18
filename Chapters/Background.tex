@@ -5,12 +5,12 @@
 \chapter{Background}
 
 \section{The Semantic Web}
-\hspace*{0.5cm} The Semantic Web is an extension of the World Wide Web (WWW) that allows information on it to be machine-readable. The concept of the Semantic Web was founded by  Tim Berners-Lee, founder of the WWW, with the idea that machines can easily interpret the information available on the WWW. Tim Berners-Lee initially thought of this idea in 1999 stating "I have a dream for the Web [in which computers] become capable of analyzing all the data on the Web – the content, links, and transactions between people and computers. A 'Semantic Web'" \cite{TBLBook}. At the time, the concept of the Semantic Web had not yet been explored, but has now made major developments. \cite{semanticweb}
+\hspace*{0.5cm} The Semantic Web is an extension of the World Wide Web (WWW) that allows information on it to be machine-readable. \cite{semanticweb} The concept of the Semantic Web was founded by Tim Berners-Lee, founder of the WWW, with the idea that machines can easily interpret the information available on the WWW. Tim Berners-Lee initially thought of this idea in 1999 stating "I have a dream for the Web [in which computers] become capable of analyzing all the data on the Web – the content, links, and transactions between people and computers. A 'Semantic Web'" \cite{TBLBook}. Ultimately, the semantic web aims to empower the knowledge embedded online so that they can be parsed by machines. \cite{semanticweb} 
 
-An example of these developments can be seen by a data storage project that can be interpreted by both humans and machine- WikiData. WikiData stores web data that is free to access and contains structured data. Specifically, WikiData stores data from websites such as Wikipedia and other related projects, so does not have access to data stored on the entire web. \cite{wikidata} Data is stored in WikiData using various web data storage methods such as JSON, XML and RDF (Resource Description Framework). The latter (RDF) is described in more detail in the next section.  
+An example of these developments can be seen by a data storage project that can be interpreted by both humans and machine- WikiData. Wikidata is a large open knowledge base that is part of the Wikimedia family (including Wikipedia) and is connected to other datasets as well. \cite{wikidata} Data is stored in WikiData using various web data storage methods such as JSON, XML and RDF (Resource Description Framework). The latter (RDF) is described in more detail in the next section.  
 
 \subsection{Resource Description Framework}
-\hspace*{0.5cm} Resource Description Framework (RDF) is a method in which data can be stored, similar to how data can be stored in JSON or XML formats. However, the structure of RDF is very different. The general idea of RDF revolves around the concept of linked and connected data so RDF stores data in triples with relationships between data. \cite{rdf} Each data store follows the structure of this sentence: 
+\hspace*{0.5cm} Resource Description Framework (RDF) is a method in which data can be stored, similar to how data can be stored in JSON or XML formats. However, the structure of RDF is very different. The general idea of RDF revolves around the concept of linked and connected data so RDF stores data in triples with relationships between data. This enables data stored in this format to be both machine and human readable, allowing for the reuse and extension of data semantics. \cite{rdf} Each data store follows the structure of this sentence: 
 
 \begin{center}
    \textit{subject predicate object}
@@ -28,7 +28,7 @@ The object is an entity that the statement describes with relation to the subjec
 RDF uses URIs to identify the entities and relationships in a dataset, hence they provide a variety of ways to represent the data, for example RDF graphs. RDF can be used to represent any kind of information can be integrated with other data representation formats such as Turtle (.TTL). In this project, we will look closer at the Turtle (.TTL) format for RDF. A .TTL file stores data in RDF format (triples) so with a subject, object and relationship. This format is specifically relevant when storing RDF graphs and allowing them to be readable in a human format as well as machine readable. \cite{TTL}
 
 \medskip
-\\ An example of an RDF statement (in Turtle- .TTL) can be seen below:
+An example of an RDF statement (in Turtle- .TTL) can be seen below:
 
 \lstset
 {
@@ -77,18 +77,18 @@ An English translation of the RDF statement is written below:
 As mentioned previously, RDFs can also be visualised in graph format with numerous (links) relationships between subjects and objects, specifying their relationships. RDFs can be used to describe ontologies, which are described in the next section.
 
 \section{Ontology}
-\hspace{0.5cm} An ontology conceptualises knowledge within a domain and denotes the relationships between them. \cite{ontology} Ontologies make use of RDF's triples by have two nodes (the subject and predicate) and an edge (the relationship). They act as models in which real data can be input, so these ontologies can be used again in different contexts and shared between users. These generalised models are ideal for Knowledge Graph generation because data from different contexts can be displayed in the same way using the same ontology. 
+\hspace{0.5cm} An ontology is a conceptual framework for modelling domain knowledge. \cite{ontology} Ontologies make use of RDF's triples by have two nodes (the subject and predicate) and an edge (the relationship). They act as models in which real data can be input, so these ontologies can be used again in different contexts and shared between users. These generalised models are ideal for Knowledge Graph generation because data from different contexts can be displayed in the same way using the same ontology. 
 
 The main components of an ontology are similar to the RDF triples we have seen but have different names. They involve:
 \begin{itemize}
 \item \textbf{Classes}: \\
-A collection of objects or things that are related to each other in some way. \cite{ontologymeaning}
+A collection of objects or things that are related to each other in some way.
 
 \item \textbf{Relationship}: \\
-A link between a class and attribute that describe how they are related to each other. \cite{ontologymeaning}
+A link between a class and attribute that describe how they are related to each other. 
 
 \item \textbf{Attributes}:\\ 
-A characteristic or property that a class may have, which is described by the relationship between them. \cite{ontologymeaning}
+A characteristic or property that a class may have, which is described by the relationship between them.
 
 \end{itemize}
 
@@ -111,14 +111,13 @@ In the context of RDF statements, a connection between two nodes will have the s
     \draw (q3) edge[->,right] node {\tt selectsCaptain} (q2);
     \end{tikzpicture}
 \end{center}
-(\textit{Example inspired by:} https://enterprise-knowledge.com/whats-the-difference-between-an-ontology-and-a-knowledge-graph/)
 
 This ontology graph depicts a Football Team with a Manager and a Captain. The Manager and Captain (of the football team) also have a relationship because the manager selects a specific captain for the football team. The attribute 'Year' only describes the class 'Football Team' so is denoted as such.
 
 Ontologies are the framework in which knowledge graphs can be constructed and guide the generation of knowledge graphs. 
 
 \subsection{Knowledge Graphs}
-\hspace{0.5cm} Knowledge graphs are a form of data visualisation,  which illustrate real-life data in the form of a graph-like structure. \cite{knowledgegraph} Similar to ontologies, knowledge graphs are often represented as a network of interconnected nodes and edges, but instead the nodes represent real-world entities (such as people or places) and the edges represent the real-world relationships between them (such as 'owns' or 'discovered'). 
+\hspace{0.5cm} A knowledge graph is a graph (i.e. data graph) that depicts real-world knowledge or data. \cite{knowledgegraph} Similar to ontologies, knowledge graphs are often represented as a network of interconnected nodes and edges, but instead the nodes represent real-world entities (such as people or places) and the edges represent the real-world relationships between them (such as 'owns' or 'discovered'). 
 
 As mentioned, knowledge graphs apply real data from an ontology graph framework. With a dataset and a relevant ontology, we can create specific instances of each ontological relationship. 
 
