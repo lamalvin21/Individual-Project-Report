@@ -1,41 +1,62 @@
 \chapter{Specification}
 In this chapter, I will go into more detail regarding each of the requirements specified in the previous chapter. More specifically, I will explain how I will go about achieving each requirement. 
 
-\begin{table}[h!]
-\section{Software Requirement Specification}
-
-\begin{center}
-\begin{tabular}{c|p{2in}p{2.55in}}
-Requirement \\ No.&Requirement&Specification\\\hline 
-1 & 
-The ontology must be correctly input into SPARQL-Anything CONSTRUCT operator. &
-Organ ontology will be converted and placed into the CONSTRUCT section of the query. Defining correct types and making sure all classes are correctly converted ensures correct knowledge graph is generated. Make sure all relationships are accounted for and that the ontology is concise with no redundant details. \\
+\begin{longtable}{|p{2.25cm}|p{5.5cm}|p{5.5cm}|}
+\hline
+\textbf{Requirement No.} & \textbf{Requirement} & \textbf{Specification}\\
+\hline
+1& 
+Ontology must be correctly configured and input into SPARQL-Anything CONSTRUCT &
+Organ ontology will be refined to match data from the dataset given and only relevant sections of the provided ontology will be included. Extracting the correct parts of the ontology ensures the defining of correct types and certifying all classes are correctly converted to guarantee that a correct knowledge graph is generated. Make sure all relationships are accounted for and that the ontology is concise with no redundant details. \\
+\hline
 2&
 The knowledge graph created must correctly reflect the organ dataset and follow ontology structure. &
-Make sure ontology's structure is correctly followed when looking at the knowledge graph result and that no data is missing from the knowledge graph. Ensure the knowledge graph correctly reflects the framework ontology. Override the SERVICE keyword in the query to use services of SPARQL-Anything .  \\
+Make sure data in the knowledge graph result is consistent with the relationships defined between them in the dataset and ensure there are no obvious errors. Check dataset and relationships between nodes in knowledge graph to make sure the the dataset is correctly represented and that no relevant data is missing from the knowledge graph. Ensure the knowledge graph correctly reflects the framework ontology by comparing ontology framework and the produced knowledge graph. Override the SERVICE keyword in the query to use services of SPARQL-Anything. \\
+\hline
 3&
 The dataset must be refined to ensure correct data is being input into the knowledge graph. &
-In the WHERE section of the query, sure data being input into the knowledge graph is understandable and concise. String manipulation and some other methods of querying may be required to ensure knowledge graph nodes/edges are readable. \\
+Relevant parts of dataset are extracted to match the provided ontology framework and the resulting knowledge graph must display this data. In the WHERE section of the query, ensure data being input into the knowledge graph is understandable and concise (if not already). String manipulation and some other methods of querying may be required to ensure knowledge graph nodes/edges are useful. \\
+\hline
 4&
 The knowledge graph must expand on the current dataset, using external links. &
-Find external links for points of expansion outside of the dataset in order to extend my knowledge graph. Use web resources such as WikiData to find RDF formats that suit and easily expand my current knowledge graph. Nest another SERVICE call (within the SERVICE call being used to query dataset) to get external data. \\
+Find external links for points of expansion outside of the dataset in order to extend my knowledge graph. Use web resources such as WikiData, MusicBrainz and Dbpedia to find potential expansion points of the resulting knowledge graph. Use multiple SERVICE calls (within the WHERE clause) to get external data and add it to current knowledge graph. String manipulation and string-to-link conversion (IRI) may be necessary to add the external links. \\
+\hline
 5&
 Knowledge graph must be evaluated to prove correctness and validity. &
-Validate the correctness of the knowledge graph produced. Look into the accuracy, coverage and coherency of the knowledge graph and analyse different aspects of those areas in more detail (more detail in evaluation section). 
-
-\end{tabular}
-\end{center}
-\end{table}
+Validate the correctness of the knowledge graph produced. Look into the accuracy, coverage and coherency of the knowledge graph and analyse different aspects of those areas in more detail (more detail in evaluation section). \cite{knowledgegraphevaulationbook} will be used to help. \\ 
+\hline
+6&
+Speed of knowledge graph generation must be assessed. &
+Assess speed of query when generating the knowledge graph to ensure expansion of knowledge graph in the future is possible without encountering severe time constraints. This will measure scalability based off many different factors. More details in evaluation section. 
+\hline
+\end{longtable}
 
 \begin{table}[h!]
 \section{User Requirement Specification}
 \begin{center}
 \begin{tabular}{c|p{2in}p{2.55in}}
 Requirement \\ No.&Requirement&Specification\\\hline 
-1&User must be able to execute query written.& Upon downloading the github repository, a user should be able to execute the query using SPARQL-Anything and have it produce a knowledge graph.\\
-2&User must be able to see the knowledge graph after the query is executed.&Upon executing the query, a knowledge graph should be visible in the form of a .TTL file and can be converted into a visual depiction of a knowledge graph.\\
-3&User must be able to see relevant data in the knowledge graph.& The knowledge graph must display the correct data and have the correct relationships between them. The user can see the ontology and the dataset and be able to match the data from the knowledge graph to the dataset.\\
-4&User must be able to see other relevant external data in the knowledge graph.& The user should be able to see other links in the knowledge graph to relevant data in the .TTL file and be able to see the relationship between the relevant data from the dataset and the external data.
+
+1&
+User must be able to execute query written. & 
+Upon downloading the github repository, a user should be able to execute the query using SPARQL-Anything and have it produce a knowledge graph. \\
+
+2& 
+User must be able to select an organ to view information on. &
+When writing the command on the command line to execute the query, the user can be able to select an organ that they want to view specific information on. \\
+
+3&
+User must be able to see the knowledge graph after the query is executed. &
+Upon executing the query, a knowledge graph should be visible in the form of a .TTL file and can be converted into a visual depiction of a knowledge graph. \\
+
+4&
+User must be able to see relevant data in the knowledge graph. & 
+The knowledge graph must display the correct data and have the correct relationships between them. The user can see the ontology and the dataset and be able to match the data from the knowledge graph to the dataset. \\
+
+5&
+User must be able to see other relevant external data in the knowledge graph. & 
+The user should be able to see other links in the knowledge graph to relevant data in the .TTL file and be able to see the relationship between the relevant data from the dataset and the external data.
+
 \end{tabular}
 \end{center}
 \end{table}

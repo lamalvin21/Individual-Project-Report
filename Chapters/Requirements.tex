@@ -1,20 +1,22 @@
 \chapter{Requirements}
-In this chapter, I will detail the requirements for this project. The project requires the installation of SPARQL-Anything, which is freely available to download online. The ability to run .jar files will also be necessary because the SPARQL-Anything download will be run as an executable. Therefore, java will need to be installed on the computer as well.
+In this chapter, I will detail the requirements for this project. The project requires the installation of SPARQL-Anything, which is freely available to download on it's github repository \cite{sparqlanythinggithub}. The ability to run .jar files will also be necessary because the SPARQL-Anything download will be run as an executable. Therefore, java will need to be installed on the computer as well. Once all the preliminary requirements have been downloaded, access to the command line will be necessary in order to execute the query. Both software requirements as well as user requirements will be addressed.
 
 \section{Software Requirements}
-\hspace{0.5cm} These requirements are centered towards what needs to be implemented and what needs to be produced after the implementation has occurred. 
+\hspace{0.5cm} These requirements are centered towards what needs to be implemented and what needs to be produced after the implementation has occurred. Assessing and validating the produced knowledge graph is also necessary to ensure correctness.
 \begin{enumerate}
-\item Ontology must be correctly input into SPARQL-Anything CONSTRUCT operator.
+\item Ontology must be correctly configured and input into SPARQL-Anything CONSTRUCT operator.
 \item Knowledge graph created must correctly reflect the organ dataset and follow ontology structure.
 \item Dataset must be refined to ensure correct data is being input into the knowledge graph.
 \item Knowledge graph must expand on the current dataset, using external links.
 \item Knowledge graph must be evaluated to prove correctness and validity.
+\item Speed of knowledge graph generation must be assessed.
 \end{enumerate}
 
 \section{User Requirements}
 \hspace{0.5cm} These requirements specify what an external user should be able to do when executing the query by themselves. 
 \begin{enumerate}
 \item User must be able to execute query written.
+\item User must be able to select an organ to view information on. 
 \item User must be able to see the knowledge graph after the query is executed.
 \item User must be able to see relevant data in the knowledge graph.
 \item User must be able to see other relevant external data in the knowledge graph.
