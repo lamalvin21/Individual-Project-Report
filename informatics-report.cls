@@ -53,7 +53,7 @@
 			\vspace*{2.2in}
 			{\huge \bf{\@title}}\\*
 			\vspace*{0.4in}
-			\Large{BSPR}\\*
+			\Large{Final Project Report}\\*
 			\vspace*{1.2in}
 			\large{Author: \@author\\*
 			           Supervisor: \@supervisor}\\*

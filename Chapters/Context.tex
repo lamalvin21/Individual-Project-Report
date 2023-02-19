@@ -78,7 +78,7 @@ It is worth noting that couplers may look like stops and need to be pulled to be
 \item Storing
 \item Delivering
 \end{itemize}
-air within the organ system.
+the air within the organ system.
 
 The organ wind system is a subsystem of the organ, which is responsible for delivering air to the organ's different pipes. Wind is generated within the system and then directed through a series of channels to the pipes of the organ. Upon delivery of air to each individual pipe, a sound is made based on the key or pedal pressed. \cite{organvideo}
 
@@ -161,16 +161,16 @@ SPARQL Anything allows us to query a dataset to suit our needs and generate a kn
 
 \section{Other Tools}
 
-\hspace{0.5cm} In this section, I will detail another way of generating knowledge graphs in the context of organs, describing  the approach as well as the positives and negatives of suggested approach.
+\hspace{0.5cm} In this section, I will detail another way of generating knowledge graphs, in the context of organs, describing the approach as well as the positives and negatives of the suggested approach.
 
 \subsubsection{ChatGPT}
-\hspace{0.5cm}  ChatGPT is a machine-learning based tool developed by OpenAI and is an interactive chatbot. Answers provided by the chatGPT are in a conversational manner so answers are easy to understand and is suggested to be the best chatbot to date. \cite{chatgpt} This chatbot released it's prototype on 30th November 2022 and is currently free to use. Uses of ChatGPT include:
+\hspace{0.5cm}  ChatGPT is a machine-learning-based tool developed by OpenAI and is an interactive chatbot. Answers provided by the chatGPT are in a conversational manner so answers are easy to understand and are suggested to be the best chatbot to date. \cite{chatgpt} This OpenAi released a prototype chatbot on 30th November 2022 and is currently free to use. Uses of ChatGPT include:
 \begin{itemize}
-\item Solving progamming questions.
+\item Solving programming questions.
 \item Fixing bugs in code.
 \end{itemize}
 
-When ChatGPT is asked to create a knowledge graph regarding organs, this is what it produces:
+When ChatGPT is asked to create a knowledge graph regarding organs, this is what it produced:
 
 \lstset
 {
@@ -186,10 +186,17 @@ When ChatGPT is asked to create a knowledge graph regarding organs, this is what
         -  The stops are connected to the pipes, indicating that the stops control which pipes are active and can produce sound.
 \end{lstlisting}
 
-This response represents a small knowledge graph mainly comprised of organ parts and how it produces sound. The output of the knowledge graph is in plain text so has to be manually read and interpreted, so is not in machine-readable format. 
+This response represents a small knowledge graph mainly comprised of organ parts and how it produces sound. The output of the knowledge graph is in plain text so has to be manually read and interpreted, so is not in a machine-readable format. 
 
 This approach is a very straightforward technique for generating an organ-related knowledge graph and makes use of the strengths of ChatGPT. The knowledge graph, although in prose, is very useful and easy to understand due to ChatGPT's ability to communicate conversationally. The information provided is based on the chatbot's general understanding of the organ and is consistent with the instrument's details. The nodes and edges in the graph that are stated in the knowledge graph are also consistent with the general information regarding an organ. 
 
 However, this approach generates a small knowledge graph and has to be interpreted correctly in prose. In terms of the produced knowledge graph's validity, the knowledge graph does not include any real-world data, but more general topics regarding organs so the generated knowledge graph is a lot closer to an ontology than a real-world knowledge graph. The limitations of ChatGPT include that it is restricted to it's input domain \cite{chatgptwebsite}, so real-world data can not be found and passed into this ontology to create a suitable knowledge graph. 
 
 In conclusion, the knowledge graph produced by ChatGPT is closer to an ontology about organs. The limitations surrounding ChatGPT do confine it to providing a generic solution, but if it can evolve to find a way to gather real-world data online using the Semantic Web, for instance, the knowledge graph created would be a viable solution (given the provided ontology).
+
+\subsubsection{SPARQL-Generate and RML}
+\hspace{0.5cm} Other solutions similar to SPARQL Anything's approach and implementation include: SPARQL-Generate and RML. But, the reasoning for selecting SPARQL-Anything will be detailed below.
+
+SPARQL-Generate and RML do not support Metadata or Embedded data formats. \cite{sparqlanything} SPARQL Anything allows more flexibility during implementation and has a broader scope. 
+
+SPARQL-Generate is an extension of SPARQL so requires the studying of the newly created extension. RML requires a mapping to RDF using a new R2RML vocabulary, so again requires studying a new language. SPARQL Anything, on the other hand, because it uses Facade-X, is reliant on SPARQL 1.1 knowledge. \cite{sparqlanything} This results in less time spent studying something completely new and easier learnability.
