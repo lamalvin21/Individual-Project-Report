@@ -15,11 +15,11 @@ In this section, I will illustrate the logic required to build the SPARQL Anythi
     \node[circle] (q0) {Add ontology};
     \node[circle, below of=q0] (q1)  {Query dataset};
     \node[circle, below of=q1] (q2)  {Clean \& Refine data};
-    \node[circle, below of=q2] (q3)  {Data out};
-    \node[circle, below of=q3] (q4)  {Query external links};
-    \node[circle, below of=q4] (q5)  {Clean \& Refine external data};
-    \node[circle, below of=q5] (q6)  {External data out};
-    \node[circle, below of=q6] (q7)  {Output graph};
+    \node[circle, below of=q2] (q3)  {Get external links};
+    \node[circle, below of=q3] (q4)  {String manipulation with external links};
+    \node[circle, below of=q4] (q5)  {Add to Knowledge graph};
+    \node[circle, below of=q5] (q6)  {Add any other external links};
+    \node[circle, below of=q6] (q7)  {Output Knowledge Graph};
 
     \draw[->] (q0.south) -- (q1.north);
     \draw[->] (q1.south) -- (q2.north);
@@ -27,13 +27,24 @@ In this section, I will illustrate the logic required to build the SPARQL Anythi
     \draw[->] (q3.south) -- (q4.north);
     \draw[->] (q4.south) -- (q5.north);
     \draw[->] (q5.south) -- (q6.north);
-    \draw[->] (q6.south) -- (q7.north) node [midway, fill=white] {Using all data};
-    % \draw[->] (q2.east) -- (q7.east);
+    \draw[->] (q6.south) -- (q7.north);
+    \draw[->] (q2.east) to [out=0,in=0] (q5.east);
 
     \end{tikzpicture}
 \end{center}
 
-This diagram illustrates the logic required for the SPARQL Anything query and lays the foundation for the query to be built. The nodes in the diagram represent actions that need to be done and the edges are sometimes explicitly stated transitions so that the process is more clear when I start the implementation phase.
+This diagram illustrates the logic required for the SPARQL Anything query and lays the foundation for the query to be built. The nodes in the diagram represent actions that need to be done and the edges are sometimes explicitly stated transitions so that the process is more clear when I start the implementation phase. Below, I will provide an explanation of each node: 
+
+\begin{enumerate}
+  \item 'Add ontology' node refers to the addition of the ontology to the query.
+  \item 'Query dataset' node uses SPARQL Anything to search for and find the relevant data within the dataset.
+  \item 'Clean \& Refine data' node involves two pathways to account for the data with no external links, which skips the steps involving them.
+  \item 'Get external links' node uses the clean and refined data above to find other links, but only if requested.
+  \item 'String manipulation with external links' node configures the links in a readable or useful format to be put into the knowledge graph.
+  \item 'Add to knowledge graph' node adds both the clean and refined data from the third node as well as the external links to the knowledge graph.
+  \item 'Add any other external links' node adds any other links that do not require data from the dataset.
+  \item 'Output knowledge graph' node produces the result.
+\end{enumerate}
 
 \section{Query Skeleton Structure}
 \hspace{0.5cm} In this section, I will use the flow diagram illustrated in the previous section to write the skeleton of the query I am going to create.
