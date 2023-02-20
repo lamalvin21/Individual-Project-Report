@@ -94,10 +94,10 @@ The nodes in the diagram represent necessary actions and one of the edges is exp
 \begin{enumerate}
   \item \textbf{'Add ontology' node} refers to the addition of the ontology to the query.
   \item \textbf{'Query dataset' node} uses SPARQL Anything to search for and find relevant data within the dataset.
-  \item \textbf{'Clean \& Refine data' node} involves two pathways to account for the data with no external links, which skips the steps involving them. % re-write
+  \item \textbf{'Clean \& Refine data' node} Refines data to be put into knowledge graph or to be used as external links. Involves two pathways to account for the data with no external links.
   \item \textbf{'Get external links' node} uses the clean and refined data above to find other links, but only if requested.
   \item \textbf{'String manipulation with external links' node} configures links in a readable or useful format (URI) to be put into the knowledge graph.
-  \item \textbf{'Add to knowledge graph' node} adds both clean and refined data from node 3 as well as external links to the knowledge graph.  % re-write
+  \item \textbf{'Add to knowledge graph' node} adds either clean and refined data from node 3 as well as external links to the knowledge graph. Once a specific file from the dataset has been queried, it loops again on a different file until all files have been queried.
   \item \textbf{'Add any other external links' node} adds any other links that do not require data from the dataset.
   \item \textbf{'Output knowledge graph' node} produces the result.
 \end{enumerate}
