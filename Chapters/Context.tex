@@ -1,5 +1,5 @@
 \chapter{Context}
-In this chapter, I will detail the context of my dataset and project. I have provided an explanation of all the relevant information included in my dataset or classes included in the organ dataset. I also gave a brief introduction to the tool I will be using to complete this project: SPARQL-Anything. 
+In this chapter, I will detail the context of my dataset and project. I have provided an explanation of all the relevant information included in the organ dataset. I also gave a brief introduction to the tool I will be using to complete this project: SPARQL-Anything as well as providing reasoning for using it over other tools. 
 
 \section{Organs}
 \hspace{0.5cm} The dataset that has been provided revolves around the musical instrument: Organs. Mozart once described organs as:
@@ -8,18 +8,18 @@ In this chapter, I will detail the context of my dataset and project. I have pro
     \textit{"The king of instruments."}
 \end{quote}
 
-An organ can come in various different sizes ranging from the size of a small upright piano to a large structure consisting of many sub-systems. In the following chapter, I will provide a description of this instrument.
+An organ can come in various different sizes ranging from a small upright piano to a large structure consisting of many sub-systems. In the following chapter, I will provide a description of the instrument's components.
 
 \subsection{A Brief History}
 \hspace{0.5cm} 
-The inventor of the organ is accredited by many sources to an engineer in Alexandria in the third century BC called Ctesibius. In the first century AD, organs used water and hydraulic engineering to generate sound. \cite{organhistory}
+The inventor of the organ is accredited by many sources to an engineer in Alexandria during the third century BC called Ctesibius. In the first century AD, organs used water and hydraulic engineering to generate sound. \cite{organhistory}
 
-During the 14th century, organs had evolved from just the use of pedals and saw the development of a keyboard so a larger range of sounds could be made. This was accommodated with the creation of new pipes so having access to play more of these unique sounds was beneficial. These organs laid the building blocks for the organs we recognise today. \cite{organmedivalhistory}
+During the 14th century, organs had evolved from the use of just pedals and saw the development of a keyboard so a larger range of sounds could be made. This was accommodated with the creation of new pipes so having access to more of these unique sounds was beneficial. These organs laid the building blocks for the organs we recognise today. \cite{organmedivalhistory}
 
-Due to the modernisation of the world, creation of organs has become a lot easier allowing them to become more complex. Recent organ builders have had access to a plethora of materials and tools required to create these large structures with complex systems. Being able to study and explore different types of organs with ease, also aided the development of such structures.  \cite{organhistory1}
+Due to the modernisation of the world, creation of organs became a lot easier allowing them to become more complex. Recent organ builders have had access to a plethora of materials and tools required to create these large structures with complex systems. Being able to study and explore different types of organs with ease, also aided the development of such structures.  \cite{organhistory1}
 
 \noindent \subsection{How Organs Work:}
-\hspace{0.5cm} Operation of the organ involves generating and directing airflow to the requested pipe this, in turn, sound is produced when these pipes vibrate. The organist uses the keyboard and pedals to control the flow of air to pipes and draws stops to combine different sets of pipes to produce unique, blended sounds.  \cite{organvideo}
+\hspace{0.5cm} Operation of the organ involves generating and directing airflow to the requested pipe causing them to vibrate and produce sound. The organist uses the keyboard and pedals to control the flow of air to pipes and draws stops to combine different sets of pipes to produce unique, blended sounds.  \cite{organvideo}
 
 \noindent Generally, the organ system works as follows:
 \begin{enumerate}
@@ -37,7 +37,7 @@ Due to the modernisation of the world, creation of organs has become a lot easie
 \cite{organvideo}
 
 \noindent \textbf{Stops:}
-\\ \hspace*{0.5cm}Drawing/selecting a stop gives the player access to that stop's set of pipes available (for a particular key on the keyboard). 
+\\ \hspace*{0.5cm}Drawing/selecting a stop gives the player access to that stop's set of pipes available (for a particular key on the keyboard). Types of stops include:
 \begin{itemize}
 \item Draw Stops
 \item Tabs
@@ -47,13 +47,13 @@ Multiple stops can be drawn at once in the same division and multiple pipes will
 
 \medskip
 \noindent \textbf{Rank:}
-\\ \hspace*{0.5cm} A rank is a row of pipes (controlled by a single stop) that is part of the organ which makes the same musical sound but does so at different pitches. 
+\\ \hspace*{0.5cm} A rank is a row of pipes (controlled by a single stop) that produces the same musical sound but does so at different pitches. 
 
 For example, a rank of spire flue pipes all produce the same wind instrument sound, but each key pressed will produce a different flue pitch.  \cite{organvideo}
 
 \medskip
 \noindent \textbf{Divisions:}
-\\ \hspace*{0.5cm} An organ division is a set of pipes found within an organ that are controlled by a keyboard or the pedals. Stops of an organ are arranged into divisions, which are usually given unique names. For example, some divisions include:
+\\ \hspace*{0.5cm} An organ division is a set of pipes found within an organ controlled by the keyboard or pedals. Stops of an organ are arranged into divisions, which are usually given unique names. For example, some divisions include:
 \begin{itemize}
 \item Swell (smaller pipes).
 \item Great (larger pipes).
@@ -62,13 +62,11 @@ For example, a rank of spire flue pipes all produce the same wind instrument sou
 \item Positiv
 \end{itemize}
 
-All of these divisions usually accompany whatever is deemed appropriate for the given context. For example, if you are accompanying a choir, using the choir division would be best so as to not drown out the voices of the choir.  \cite{organvideo}
+All of these divisions usually accompany whatever is deemed appropriate for the given context. For example, when accompanying a choir, using the choir division would be suitable so as to not drown out the voices of the choir. \cite{organvideo}
 
 \medskip
 \noindent \textbf{Coupler:}
-\\ \hspace*{0.5cm} A coupler allows the stops of one division to be played from the keyboard of another division- the combining of divisions. For example, the "Great" division is usually played on the manual (keyboard) of the organ, but pulling the "Great to Pedal" coupler can allow for this division to be played on the pedals.
-
-It is worth noting that couplers may look like stops and need to be pulled to be activated, but are not stops. \cite{organvideo}
+\\ \hspace*{0.5cm} A coupler allows the stops of one division to be played from the keyboard of another division (i.e. the combining of divisions). For example, the "Great" division is usually played on the manual (keyboard) of the organ, but pulling the "Great to Pedal" coupler can allow for this division to be played on the pedals. \cite{organvideo}
 
 \medskip
 \noindent \textbf{Wind System:}
@@ -78,27 +76,9 @@ It is worth noting that couplers may look like stops and need to be pulled to be
 \item Storing
 \item Delivering
 \end{itemize}
-the air within the organ system.
+air within the organ system.
 
-The organ wind system is a subsystem of the organ, which is responsible for delivering air to the organ's different pipes. Wind is generated within the system and then directed through a series of channels to the pipes of the organ. Upon delivery of air to each individual pipe, a sound is made based on the key or pedal pressed. \cite{organvideo}
-
-\subsection{Organ Ontology}
-\hspace{0.5cm} The organ ontology provided the framework of the knowledge graph I am going to create using the organ dataset. This covers the dataset as well as other details about an organ so that all the data can be displayed in the form of a knowledge graph, following the structure of the ontology. 
-
-The ontology includes classes for the organ system:
-\begin{itemize}
-\item Organ Console
-\item Organ Wind System
-\item Organ Case
-\item Organ Action
-\item Organ Division
-\end{itemize}
-
-But the ontology also includes classes about a particular organ's owner and offers background on a given organ. For example:
-\begin{itemize}
-\item Description
-\item Agent and the role of this agent (owner, organist, builder etc.)
-\end{itemize}
+The organ wind system is a subsystem of the organ, which is responsible for delivering air to the organ's different pipes. Wind is generated within the system and then directed through a series of channels to the organ's pipes. Upon delivery of air to each individual pipe, a sound is made based on the key or pedal pressed. \cite{organvideo}
 
 \section{Polifonia Project}
 \hspace{0.5cm} The Polifonia project is a European project funded by the EU Horizon 2020 Programme that will manifest the connections between musical heritage from the 16th century to the present day \cite{polifonia}. The project involves many different types of experts from musicologist to computer scientists to attempt to find links between different parts of musical cultural heritage. 
@@ -153,27 +133,44 @@ The section my project is involved in is the creation of a knowledge graph in th
 The data is split into multiple different files containing the unique organ name with it's relevant grouped data.  
 
 \subsection{Organ Ontology}
-The provided organ ontology contains all the relevant information relating to an organ, ranging from it's location to the parts within it. The ontology is extremely vast and may contain nodes or relationships that do not appear within the dataset. Therefore, refinement and adjustment of the ontology to fit the needs of the provided dataset are required. Carefully selecting parts of the ontology to act as the framework of the resulting knowledge graph is vital to ensure all relevant data in the dataset is represented. 
+\hspace{0.5cm} The provided organ ontology contains all the relevant information relating to an organ, ranging from it's location to the parts within it. 
+
+The ontology includes classes for the organ system:
+\begin{itemize}
+\item Organ Console
+\item Organ Wind System
+\item Organ Case
+\item Organ Action
+\item Organ Division
+\end{itemize}
+
+But the ontology also includes classes about a particular organ's owner and offers background on a given organ. For example:
+\begin{itemize}
+\item Description
+\item Agent and the role of this agent (owner, organist, builder etc.)
+\end{itemize}
+
+The ontology is extremely vast and may contain nodes or relationships that do not appear within the dataset. Therefore, refinement and adjustment of the ontology to fit the needs of the provided dataset is required. Carefully selecting parts of the ontology to act as the framework of the resulting knowledge graph is vital to ensure all relevant data in the dataset is accurately represented. 
 
 \section{SPARQL Anything}
-\hspace{0.5cm} SPARQL Anything acts as an extension of SPARQL and allows knowledge graphs to be generated from a dataset. SPARQL Anything uses Facade-X, which is similar to the Facade design pattern. The facade design pattern is a useful way to improve the usability of a complex system by providing a simpler and more intuitive interface to it. In this case, SPARQL Anything masks the complex components by allowing the user to continue to use SPARQL syntax, so familiar functions such as BIND() or CONCAT() can be used. Using SPARQL Anything, the SERVICE operator can be overridden and we can use SPARQL Anything within a query. \cite{sparqlanything}
+\hspace{0.5cm} The tool I will be using to generate the knowledge graph is SPARQL Anything. SPARQL Anything acts as an extension of SPARQL and allows the generation knowledge graphs from a dataset. SPARQL Anything uses Facade-X, which is similar to the Facade design pattern. The facade design pattern improves the usability of a complex system by providing a simpler and more intuitive interface to it. In this case, SPARQL Anything masks the complex components by allowing the user to continue to use SPARQL, so familiar functions such as BIND() or CONCAT() can be used allowing users to generate knowledge graphs easily. Therefore, the time required to learn how to use such a tool would be short as there is an abundance of resources available related to learning SPARQL, in contrast to other tools which may require learning a new language. 
 
-The CONSTRUCT operator allows knowledge graphs to be generated, through the framework of a given ontology. \cite{sparqlanythinggithub}
+Using SPARQL Anything, the SERVICE operator can be overridden and we can call SPARQL Anything within a query. \cite{sparqlanything}
 
-SPARQL Anything allows us to query a dataset to suit our needs and generate a knowledge graph using an ontology framework all in one tool. \cite{sparqlanythinggithub}
+The CONSTRUCT operator allows knowledge graphs to be generated, by using the framework of a given ontology. \cite{sparqlanythinggithub}
 
 \section{Other Tools}
 
-\hspace{0.5cm} In this section, I will detail other ways of generating knowledge graphs, in the context of organs, describing the approach as well as the positives and negatives of suggested approaches.
+\hspace{0.5cm} In this section, I will detail alternate methods of generating knowledge graphs describing the approach as well as the positives and negatives of suggested approaches.
 
 \subsubsection{ChatGPT}
-\hspace{0.5cm}  ChatGPT is a machine-learning-based tool developed by OpenAI and is an interactive chatbot. Answers provided by the chatGPT are in a conversational manner so answers are easy to understand and are suggested to be the best chatbot to date. \cite{chatgpt} This OpenAi released a prototype chatbot on 30th November 2022 and is currently free to use. Uses of ChatGPT include:
+\hspace{0.5cm}  ChatGPT is a machine-learning-based tool developed by OpenAI and is an interactive chatbot. Answers provided by the chatGPT are conversational so answers are easy to understand and is suggested to be the best chatbot to date. \cite{chatgpt} OpenAi released a prototype chatbot on 30th November 2022 and is currently free to use. Uses of ChatGPT include:
 \begin{itemize}
 \item Solving programming questions.
 \item Fixing bugs in code.
 \end{itemize}
 
-When ChatGPT is asked to create a knowledge graph regarding organs, this is what it produced:
+When asked to create a knowledge graph regarding organs, ChatGPT produced:
 
 \lstset
 {
@@ -189,18 +186,19 @@ When ChatGPT is asked to create a knowledge graph regarding organs, this is what
         -  The stops are connected to the pipes, indicating that the stops control which pipes are active and can produce sound.
 \end{lstlisting}
 
-This response represents a small knowledge graph mainly comprised of organ parts and how it produces sound. The output of the knowledge graph is in plain text so has to be manually read and interpreted, so is not in a machine-readable format. 
+This response represents a small knowledge graph mainly comprised of organ parts and how it produces sound. The output of the knowledge graph is in plain text so has to be manually read and interpreted, so is not in machine-readable format. 
 
-This approach is a very straightforward technique for generating an organ-related knowledge graph and makes use of the strengths of ChatGPT. The knowledge graph, although in prose, is very useful and easy to understand due to ChatGPT's ability to communicate conversationally. The information provided is based on the chatbot's general understanding of the organ and is consistent with the instrument's details. The nodes and edges in the graph that are stated in the knowledge graph are also consistent with the general information regarding an organ. 
+This approach is a very straightforward technique for generating an organ-related knowledge graph and makes use of the strengths of ChatGPT. The knowledge graph, although in prose, is very useful and easy to interpret due to ChatGPT's ability to communicate conversationally. The information provided is based on the chatbot's general understanding of the organ and is consistent with the instrument's details. The nodes and edges stated in the knowledge graph are also consistent with the elements of an organ. 
 
-However, this approach generates a small knowledge graph and has to be interpreted correctly in prose. In terms of the produced knowledge graph's validity, the knowledge graph does not include any real-world data, but more general topics regarding organs so the generated knowledge graph is a lot closer to an ontology than a real-world knowledge graph. The limitations of ChatGPT include that it is restricted to it's input domain \cite{chatgptwebsite}, so real-world data can not be found and passed into this ontology to create a suitable knowledge graph. 
+However, this approach generates a small knowledge graph and has to be interpreted correctly in prose. In terms of the produced knowledge graph's validity, the knowledge graph does not include any real-world data, but more general topics regarding organs so the generated knowledge graph is a lot closer to an ontology than a real-world knowledge graph. The limitations of ChatGPT include that it is restricted to it's input domain \cite{chatgptwebsite}, so real-world data can not be found and passed into this ontology to create an accurate knowledge graph. 
 
-In conclusion, the knowledge graph produced by ChatGPT is closer to an ontology about organs. The limitations surrounding ChatGPT do confine it to providing a generic solution, but if it can evolve to find a way to gather real-world data online using the Semantic Web, for instance, the knowledge graph created would be a viable solution (given the provided ontology).
+In conclusion, the knowledge graph produced by ChatGPT is closer to an organ ontology. The limitations surrounding ChatGPT do confine it to providing a generic solution, but if it can evolve to find a way to gather real-world data online using the Semantic Web, for instance, the knowledge graph created would be a viable solution (given the provided ontology).
 
 \subsubsection{SPARQL-Generate and RML}
-\hspace{0.5cm} Other solutions similar to SPARQL Anything's approach and implementation include: SPARQL-Generate and RML. But, the reasoning for selecting SPARQL-Anything will be detailed below.
+\hspace{0.5cm} Other solutions similar to SPARQL Anything's approach and implementation include: SPARQL-Generate and RML. But, the reasoning for selecting SPARQL-Anything over the other options will be detailed below.
 
-SPARQL-Generate and RML do not support Metadata or Embedded data formats. \cite{sparqlanything} SPARQL Anything allows more flexibility during implementation and has a broader scope. 
+SPARQL-Generate and RML do not support Metadata or Embedded data formats. \cite{sparqlanything} SPARQL Anything, therefore, allows more flexibility during implementation and has a broader scope. 
 
-SPARQL-Generate is an extension of SPARQL so requires the studying of the newly created extension. RML requires a mapping to RDF using a new R2RML vocabulary, so again requires studying a new language. SPARQL Anything, on the other hand, because it uses Facade-X, is reliant on SPARQL 1.1 knowledge. \cite{sparqlanything} This results in less time spent studying something completely new and easier learnability.
+SPARQL-Generate is an extension of SPARQL so requires the studying of the newly created extension. RML requires a mapping to RDF using a new R2RML vocabulary, so again requires studying a new language. SPARQL Anything, on the other hand, because it uses Facade-X, is reliant on SPARQL 1.1 knowledge. \cite{sparqlanything} This results in less time spent studying something completely new and has easier learnability given the vast amount of resources available around SPARQL.
 
+In terms of complexity, SPARQL Anything performs better in experiments using the number of distinct items or variables that need to be combined with the query as a measurement of complexity. \cite{sparqlanything} This is important when considering possible expansion of the knowledge graph and when assessing the speed of query execution. 
