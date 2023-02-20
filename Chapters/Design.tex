@@ -1,10 +1,63 @@
 \chapter{Design}
 This design chapter provides a high-level overview of what my software will do. With the aid of visual tools such as diagrams, I will create a basic plan for implementation. 
 
+\section{Ontology Structure}
+In this section, I will plan the general structure of the ontology based on the dataset, the provided ontology and any external websites. This will guide the process of creating a suitable ontology.  
+
+\bigskip
+\begin{center}
+    \begin{tikzpicture} [
+        circle/.style={draw=green, ellipse, ultra thick, fill=green!30},
+        align=center,
+        node distance=2.5cm ]
+    \node[circle] (q0) {Organ};
+    \node[circle, right of=q0] (q1)  {Technical};
+    \node[circle, left of=q0] (q2)  {Changes};
+    \node[circle, above of=q0] (q3)  {Disposition};
+    \node[circle, below of=q0] (q4)  {OrganWikidata};
+
+    \draw[] (q0.east) -- (q1.west);
+    \draw[] (q0.west) -- (q2.east);
+    \draw[] (q0.north) -- (q3.south);
+    \draw[] (q0.south) -- (q4.north);
+
+    \end{tikzpicture}
+\end{center}
+
+This diagram illustrates the main components to be expanded on in the ontology based on the data in the dataset. More details of the main nodes are detailed below:
+
+\begin{enumerate}
+    \item \textbf{Organ}: The main component that will have many more relationships with other nodes.
+    \item \textbf{Changes}: This component details the organ adjustments details and specific maintenance changes in the organ.
+    \item \textbf{Disposition}: This component refers to the different parts of the organ and the specific details relating to them.
+    \item \textbf{OrganWikidata}: This provides expansion of the existing knowledge graph from Wikidata.
+\end{enumerate}
+
+The ontology section specifically for the external Wikidata links can be structured in the same format as displayed on the website. From the diagram above, branching off the OrganWikidata node is the most plausible option. 
+
+For example, the organ page on wikidata \cite{organwikidata} contain organ related triples. An extract of \cite{organwikidata} is shown below:
+
+\lstset
+{
+    breaklines=true,
+    breakatwhitespace=true,
+    basicstyle=\ttfamily,
+}
+\begin{lstlisting}
+
+organ subclassOf keyboardInstrument
+organ subclassOf buildingComponent
+organ studiedBy organology 
+...
+
+\end{lstlisting}
+
+In this case, 'organ' can be replaced with our OrganWikidata node and the corresponding relationships and objects can be added to the ontology. All the extra nodes and edges can be added as external links to the knowledge graph using their unique wikidata URI. 
+
 \section{Query Flow Diagram}
 \hspace{0.5cm} A flow diagram is a graphical representation of the sequence of steps or actions that need to be taken to complete a process. \cite{flowchart}
 
-In this section, I will illustrate the logic required to build the SPARQL Anything Query in the form of a flow diagram. This will help provide me the framework in order to build the query and produce a knowledge graph.
+In this section, I will illustrate the logic required to build the SPARQL Anything Query in the form of a flow diagram. This will help provide me with the framework in order to build the query and produce a knowledge graph.
 
 \bigskip
 \begin{center}
@@ -36,18 +89,18 @@ In this section, I will illustrate the logic required to build the SPARQL Anythi
 This diagram illustrates the logic required for the SPARQL Anything query and lays the foundation for the query to be built. The nodes in the diagram represent actions that need to be done and the edges are sometimes explicitly stated transitions so that the process is more clear when I start the implementation phase. Below, I will provide an explanation of each node: 
 
 \begin{enumerate}
-  \item 'Add ontology' node refers to the addition of the ontology to the query.
-  \item 'Query dataset' node uses SPARQL Anything to search for and find the relevant data within the dataset.
-  \item 'Clean \& Refine data' node involves two pathways to account for the data with no external links, which skips the steps involving them.
-  \item 'Get external links' node uses the clean and refined data above to find other links, but only if requested.
-  \item 'String manipulation with external links' node configures the links in a readable or useful format to be put into the knowledge graph.
-  \item 'Add to knowledge graph' node adds both the clean and refined data from the third node as well as the external links to the knowledge graph.
-  \item 'Add any other external links' node adds any other links that do not require data from the dataset.
-  \item 'Output knowledge graph' node produces the result.
+  \item \textbf{'Add ontology' node} refers to the addition of the ontology to the query.
+  \item \textbf{'Query dataset' node} uses SPARQL Anything to search for and find the relevant data within the dataset.
+  \item \textbf{'Clean \& Refine data' node} involves two pathways to account for the data with no external links, which skips the steps involving them.
+  \item \textbf{'Get external links' node} uses the clean and refined data above to find other links, but only if requested.
+  \item \textbf{'String manipulation with external links' node} configures the links in a readable or useful format to be put into the knowledge graph.
+  \item \textbf{'Add to knowledge graph' node} adds both the clean and refined data from the third node as well as the external links to the knowledge graph.
+  \item \textbf{'Add any other external links' node} adds any other links that do not require data from the dataset.
+  \item \textbf{'Output knowledge graph' node} produces the result.
 \end{enumerate}
 
 \section{Query Skeleton Structure}
-\hspace{0.5cm} In this section, I will use the flow diagram illustrated in the previous section to write the skeleton of the query I am going to create.
+\hspace{0.5cm} In this section, I will use the flow diagram illustrated in the previous section to set the structure of the query I am going to create.
 
 \lstset
 {
@@ -63,15 +116,28 @@ CONSTRUCT {
 } 
 WHERE 
     { 
-        SERVICE <file:///...>  # Query dataset
-            { ... # Clean and refine data AND # Data out
-                WHERE SERVICE <https://query.wikidata.org/...> ... # Query external links
-                ... # Clean and Refine external data AND         # External data out
-            }
-            ... # Merge dataset data with external data
-            # Output graph
+        SERVICE <x-sparql-anything:file:./___.json>  # Query dataset
+        { 
+            ... # Clean and refine data
+            ... # Get external links (if any)
+            ... # String manipulation with external links (if applicable)
+            ... # Add to knowledge graph
+        } 
+        SERVICE <x-sparql-anything:file:./___`.json>  # Query dataset
+        { 
+            ... # Clean and refine data
+            ... # Get external links (if any)
+            ... # String manipulation with external links (if applicable)
+            ... # Add to knowledge graph
+        } 
+        .
+        .
+        .
+        ... # Add any other external links 
+        # Output knowledge graph
     }
 
 \end{lstlisting}
 
-This basic query skeleton satisfies all the nodes in the flow graph above and can be used in the creation of the query that generates the knowledge graph. I commented on the lines of the skeleton query where the nodes were relevant by adding a comment starting with a '\#'. 
+This basic query structure satisfies all the nodes in the flow graph above and can be used in the creation of the query that generates the knowledge graph. This can be seen in the comments next to the each line that corresponds to a node in the flow diagram created. It also outlines the basic structure that will be used to create the query. The multiple SERVICE calls refer to the different .json files in the dataset being called. 
+

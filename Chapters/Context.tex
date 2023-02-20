@@ -108,7 +108,7 @@ The main aim of this project is to combine computational tools and methods to ac
 The section my project is involved in is the creation of a knowledge graph in the context of pipe organs. The dataset was provided and previously put into an organised format by a musicologist as part of this project. The general organ ontology was also created prior to my project commence but requires refinement and some changes in order to create the knowledge graph. Due to the project being European-based, the data stored in the dataset is in Dutch and the knowledge graph created will also produce dutch text or terms.  
 
 \subsection{Organ Dataset}
-\hspace{0.5cm} The organ dataset provided describes the various specifics about a given organ. The dataset itself is split into many different folders and it groups specific details about an organ in one .JSON file. Each .JSON file contains information about many different organs, which can be uniquely identified by their unique id. The structure of the .JSON files follow the same format: an organs and the corresponding details about each organ in the form of a .JSON. An example of two files "base.json" and "history\_base.json" can be seen below. 
+\hspace{0.5cm} The organ dataset provided describes the various specifics about a given organ. The dataset itself is split into many different folders and it groups specific details about an organ in one .JSON file. Each .JSON file contains information about many different organs, which can be uniquely identified by their unique id. The structure of the .JSON files follow the same format: an organ and the corresponding details about each organ in the form of a .JSON. An example of two files "base.json" and "history\_base.json" can be seen below. 
 
 \begin{lstlisting}
     # base.json extract
@@ -150,7 +150,10 @@ The section my project is involved in is the creation of a knowledge graph in th
     }
 \end{lstlisting}
 
-The data is split into two different files and the unique organ name, with it's grouped relevant data, appear.  
+The data is split into multiple different files containing the unique organ name with it's relevant grouped data.  
+
+\subsection{Organ Ontology}
+The provided organ ontology contains all the relevant information relating to an organ, ranging from it's location to the parts within it. The ontology is extremely vast and may contain nodes or relationships that do not appear within the dataset. Therefore, refinement and adjustment of the ontology to fit the needs of the provided dataset are required. Carefully selecting parts of the ontology to act as the framework of the resulting knowledge graph is vital to ensure all relevant data in the dataset is represented. 
 
 \section{SPARQL Anything}
 \hspace{0.5cm} SPARQL Anything acts as an extension of SPARQL and allows knowledge graphs to be generated from a dataset. SPARQL Anything uses Facade-X, which is similar to the Facade design pattern. The facade design pattern is a useful way to improve the usability of a complex system by providing a simpler and more intuitive interface to it. In this case, SPARQL Anything masks the complex components by allowing the user to continue to use SPARQL syntax, so familiar functions such as BIND() or CONCAT() can be used. Using SPARQL Anything, the SERVICE operator can be overridden and we can use SPARQL Anything within a query. \cite{sparqlanything}
@@ -161,7 +164,7 @@ SPARQL Anything allows us to query a dataset to suit our needs and generate a kn
 
 \section{Other Tools}
 
-\hspace{0.5cm} In this section, I will detail another way of generating knowledge graphs, in the context of organs, describing the approach as well as the positives and negatives of the suggested approach.
+\hspace{0.5cm} In this section, I will detail other ways of generating knowledge graphs, in the context of organs, describing the approach as well as the positives and negatives of suggested approaches.
 
 \subsubsection{ChatGPT}
 \hspace{0.5cm}  ChatGPT is a machine-learning-based tool developed by OpenAI and is an interactive chatbot. Answers provided by the chatGPT are in a conversational manner so answers are easy to understand and are suggested to be the best chatbot to date. \cite{chatgpt} This OpenAi released a prototype chatbot on 30th November 2022 and is currently free to use. Uses of ChatGPT include:
@@ -200,3 +203,4 @@ In conclusion, the knowledge graph produced by ChatGPT is closer to an ontology 
 SPARQL-Generate and RML do not support Metadata or Embedded data formats. \cite{sparqlanything} SPARQL Anything allows more flexibility during implementation and has a broader scope. 
 
 SPARQL-Generate is an extension of SPARQL so requires the studying of the newly created extension. RML requires a mapping to RDF using a new R2RML vocabulary, so again requires studying a new language. SPARQL Anything, on the other hand, because it uses Facade-X, is reliant on SPARQL 1.1 knowledge. \cite{sparqlanything} This results in less time spent studying something completely new and easier learnability.
+
