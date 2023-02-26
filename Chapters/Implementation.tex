@@ -1,0 +1,157 @@
+\chapter{Implementation}
+In this chapter, I will detail the implementation phase of the project and how I arrived at the end solution. Using the design section and following my specification, I will create my solution and mention any appropriate changes. 
+
+% Testing based off requirements & specification
+\section{Command Line Command}
+\hspace*{0.5cm} Before starting implementation, familiarising myself with the command line commands was necessary to understand in order to commence implementation. Since the executable .jar file enables us to use SPARQL-Anything, starting the command with execution of the .jar file is needed. For example:
+
+\lstset
+{
+    breaklines=true,
+    breakatwhitespace=true,
+    basicstyle=\ttfamily,
+}
+\begin{lstlisting}
+    java -jar sparql-anything-0.8.0.jar 
+\end{lstlisting}
+
+\noindent Then, we can start expanding it to specify the file that contains the query by specifying it's location. For example:
+
+\lstset
+{
+    breaklines=true,
+    breakatwhitespace=true,
+    basicstyle=\ttfamily,
+}
+\begin{lstlisting}
+    -q filepath/filename.sparql
+\end{lstlisting}
+
+\noindent Because our project involves generating a knowledge graph of the user's choice, passing a parameter into the query is vital. It can be done as follows: 
+
+\lstset
+{
+    breaklines=true,
+    breakatwhitespace=true,
+    basicstyle=\ttfamily,
+}
+\begin{lstlisting}
+    --values variable=variablevalue
+\end{lstlisting}
+
+\noindent The assigned variable can be used in the SPARQL query by specifying the variable name by adding a question mark and underscore at the front. So passing the parameter 'variable', following the previous example, can be accessed using:
+
+\lstset
+{
+    breaklines=true,
+    breakatwhitespace=true,
+    basicstyle=\ttfamily,
+}
+\begin{lstlisting}
+    ?_variable
+\end{lstlisting}
+
+\noindent If necessary, the resulting knowledge graph can be output into a file given a folder location. For example:
+
+\lstset
+{
+    breaklines=true,
+    breakatwhitespace=true,
+    basicstyle=\ttfamily,
+}
+\begin{lstlisting}
+    --output filepath/outptufile.ttl
+\end{lstlisting}
+
+\noindent Altogether, the command will look like this:
+
+\lstset
+{
+    breaklines=true,
+    breakatwhitespace=true,
+    basicstyle=\ttfamily,
+}
+\begin{lstlisting}
+    java -jar sparql-anything-0.8.0.jar
+    -q filepath/filename.sparql --values variable=variablevalue --output filepath/outptufile.ttl
+\end{lstlisting}
+
+\noindent In English, this command states: \\
+\hspace*{0.5cm} "Using the executable file sparql-anything-0.8.0.jar, execute the query in filename.sparql from the filepath folder and pass in variable into the query with value variablevalue and output the knowledge in outputfile.ttl from the same filepath". 
+
+\section{Prefixes}
+% TODO
+
+\section{Ontology Reconstruction}
+\hspace*{0.5cm} As mentioned in the design, the scope of the provided ontology was too broad for the envisioned knowledge graph. Therefore, refinement of the provided ontology and exploration with external links was necessary to produce a relevant ontology. In the following subsections, I will detail the process of creating the ontology using the dataset and external data. This ontology will be put into the CONSTRUCT segment of the query which acts as the framework for the knowledge graph as mentioned in the context chapter. 
+
+\subsection{Dataset Ontology}
+\hspace*{0.5cm} Using the core structures outlined in my design, I gathered relevant data for each of the sections and will identify relevant data.
+
+\subsubsection{Organ}
+\hspace*{0.5cm} After selecting the most relevant information to the organ from each of the .json files that stores the data, I attached it to the organ node. Using the provided ontology to identify data relevant to the organ node was used as well to ensure the correct relationships were stated. Relevant data and relationship to the organ are listed below:
+
+\begin{itemize}
+    \item \textit{technicals} - xyz:technicals
+    \item \textit{disposition}
+    \item \textit{change}
+    \item builder - oont:builder
+    \item originallocation - oont:consolelocation
+    \item dateOfBirth - oont:dateOfBirth
+    \item building - oont:monument
+    \item monumentNumber - oont:monumentNumber
+    \item organName - oont:name
+    \item organNumber - oont:organNumber 
+    \item state - oont:state 
+    \item particularity - oont:particularities
+    \item history - oont:history
+    \item creator - oont:creator
+    \item moreInformation - oont:moreInformation 
+\end{itemize}
+
+This data is directly relevant to the organ as illustrated in the provided organ ontology. Data such as originallocation, dateOfbirth and state were added as they were part of the dataset and relevant to the organ. Because technicals, disposition and change were identified as nodes for further expansion, I originally connected them to the main organ node. 
+
+The relationships used to describe the relation between the organ and it's objects were provided and usually had intuitive names usually based on the object. 
+
+\subsubsection{Technicals}
+\hspace*{0.5cm} This branch of technical data regarding the organ was mainly derived off one .json file and the section of the provided ontology that referred to it's 'parthood'. All relationships branching from this 'technicals' node were provided. Relevnat data and relationships identified are below:
+
+\begin{itemize}
+    \item systemPlayingAids - oont:systemPlayingAids
+    \item pitch - oont:pitch
+    \item range1 -  oont:keyboardRange
+    \item range2 - oont:pedalRange
+    \item temperature - oont:temperature
+    \item windPressure - oont:windPressure
+    \item windSystem - oont:windSystem
+\end{itemize}
+
+\textit{range1} and \textit{range2} corresponded to the ranges of the keyboard and pedal respectively so their relationship noted it as such. 
+
+\subsubsection{Disposition}
+
+
+\subsubsection{Change}
+
+
+\subsection{External Ontology}
+
+\subsection{Final Ontology}
+
+
+\section{Knowledge Graph Generation}
+\hspace*{0.5cm} The process of creating the knowledge graph generation query for my ontology will be detailed below:
+
+\subsection{Dataset Knowledge Graph Query}
+
+\subsection{External Knowledge Graph Query}
+
+\subsection{Final Knowledge Graph Query}
+
+
+\section{Resulting Knowledge Graph}
+\hspace*{0.5cm} 
+
+
+
+
