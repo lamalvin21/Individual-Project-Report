@@ -80,18 +80,34 @@ In this chapter, I will detail the implementation phase of the project and how I
 \hspace*{0.5cm} "Using the executable file sparql-anything-0.8.0.jar, execute the query in filename.sparql from the filepath folder and pass in variable into the query with value variablevalue and output the knowledge in outputfile.ttl from the same filepath". 
 
 \section{Prefixes}
-% TODO
+\hspace*{0.5cm} The prefixes used in the ontology are mainly used in the relationship part of the triples. Below are the PREFIX that will be used:
+
+\lstset
+{
+    breaklines=true,
+    breakatwhitespace=true,
+    basicstyle=\ttfamily,
+}
+\begin{lstlisting}
+    PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX fx:   <http://sparql.xyz/facade-x/ns/>
+    PREFIX xyz:  <http://sparql.xyz/facade-x/data/>
+    PREFIX oont: <http://w3id.org/polifonia/ontology/organs/>
+    PREFIX wd: <https://www.wikidata.org/wiki/> 
+\end{lstlisting}
 
 \section{Ontology Reconstruction}
 \hspace*{0.5cm} As mentioned in the design, the scope of the provided ontology was too broad for the envisioned knowledge graph. Therefore, refinement of the provided ontology and exploration with external links was necessary to produce a relevant ontology. In the following subsections, I will detail the process of creating the ontology using the dataset and external data. This ontology will be put into the CONSTRUCT segment of the query which acts as the framework for the knowledge graph as mentioned in the context chapter. 
 
 \subsection{Dataset Ontology}
-\hspace*{0.5cm} Using the core structures outlined in my design, I gathered relevant data for each of the sections and will identify relevant data.
+\hspace*{0.5cm} Using the core structures outlined in my design, I identified and grouped relevant data to create an updated ontology. 
 
 \subsubsection{Organ}
 \hspace*{0.5cm} After selecting the most relevant information to the organ from each of the .json files that stores the data, I attached it to the organ node. Using the provided ontology to identify data relevant to the organ node was used as well to ensure the correct relationships were stated. Relevant data and relationship to the organ are listed below:
 
 \begin{itemize}
+    \itemsep0em 
     \item \textit{technicals} - xyz:technicals
     \item \textit{disposition}
     \item \textit{change}
@@ -117,6 +133,7 @@ The relationships used to describe the relation between the organ and it's objec
 \hspace*{0.5cm} This branch of technical data regarding the organ was mainly derived off one .json file and the section of the provided ontology that referred to it's 'parthood'. All relationships branching from this 'technicals' node were provided. Relevnat data and relationships identified are below:
 
 \begin{itemize}
+    \itemsep0em 
     \item systemPlayingAids - oont:systemPlayingAids
     \item pitch - oont:pitch
     \item range1 -  oont:keyboardRange
@@ -129,15 +146,83 @@ The relationships used to describe the relation between the organ and it's objec
 \textit{range1} and \textit{range2} corresponded to the ranges of the keyboard and pedal respectively so their relationship noted it as such. 
 
 \subsubsection{Disposition}
+\hspace*{0.5cm} This branch of data referred to the qualities of the selected organ. The provided ontology covered this section but had nodes that did not appear in the dataset so needed to be adjusted. Relationships were also provided. The readjustment of the ontology would include:
 
+\begin{itemize}
+    \itemsep0em 
+    \item divisionname - xyz:divisionName
+    \item partition - oont:partition
+    \item specification - oont:AdditionalSpecification
+\end{itemize}
 
 \subsubsection{Change}
+\hspace*{0.5cm} This branch stated the changes made to the organ during it's lifetime. The provided ontology did not mention changes of a given organ so I added a section in to represent it from the dataset into the knowledge graph. The relationships used were provided. The new section added to the ontology were:
 
+\begin{itemize}
+    \itemsep0em 
+    \item datechange - oont:date 
+    \item description - oont:AdditionalSpecification
+    \item maintainer - oont:Builder
+\end{itemize}
 
 \subsection{External Ontology}
+\hspace*{0.5cm} The method in which external data will be added to the knowledge graph will involve the ontology structure illustrated in the design section.
+
+\subsubsection{External Data Sources}
+\hspace*{0.5cm} As mentioned in the specification section, Wikidata and MusicBrainz can be used to expand the existing knowledge graph. I followed my design and created a node branching out of organ to represent Wikidata's organ page \cite{organwikidata} from which I then mirrored the structure displayed on it. The relationships used were the same as those on Wikidata. The data branching off the organwikidata node with their corresponding relationship were:
+
+\begin{itemize}
+    \itemsep0em 
+    \item keyboardinstrument - wd:Property:P279
+    \item buildingcomponent - wd:Property:P279
+    \item organology - wd:Property:P2579 
+    \item westernclassicalmusic - wd:Property:P366
+    \item musictradition - wd:Property:P366
+    \item organexpert - wd:Property:P3095
+    \item organist - wd:Property:P1535
+    \item catholicencyclopedia - wd:Property:P1343
+    \item metropolitanmuseumofarttaggingvocabulary - wd:Property:P1343
+    \item dbpedia - wd:Property:P1709
+    \item organcase - wd:Property:P527
+    \item organpipe - wd:Property:P527
+    \item musicalkeyboard - wd:Property:P527
+    \item pedalkeyboard - wd:Property:P527
+    \item organstop - wd:Property:P527
+    \item organconsole - wd:Property:P527
+    \item swellbox - wd:Property:P527
+    \item pipeorgan - wd:Property:P1889
+\end{itemize}
+
+The external data from MusicBrainz's organ page \cite{organmusicbrainz} was not as vast but extended the knowledge graph in a different way to Wikidata with overlapping data being connected. I expanded from the main organ node using relationships defined on MusicBrainz.  I also expanded on some of the nodes using MusicBrainz to provide more context. This can be seen below:
+
+\begin{itemize}
+    \itemsep0em 
+    \item barrelorgan
+    \item electricorgan
+    \item pipeorgan
+    \begin{itemize}
+        \itemsep0em 
+        \item pipeorganinfo
+    \end{itemize}
+    \item reedorgan
+    \begin{itemize}
+        \itemsep0em 
+        \item reedorganimage
+    \end{itemize}
+    \item windinstrument
+    \item organwikidata 
+\end{itemize}
+
+\subsubsection{Custom Links}
+\hspace*{0.5cm} 
+
+
+\subsubsection{Generic Links}
+\hspace*{0.5cm} 
+
 
 \subsection{Final Ontology}
-
+\hspace*{0.5cm} 
 
 \section{Knowledge Graph Generation}
 \hspace*{0.5cm} The process of creating the knowledge graph generation query for my ontology will be detailed below:
