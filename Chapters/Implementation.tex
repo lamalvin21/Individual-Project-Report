@@ -109,8 +109,8 @@ In this chapter, I will detail the implementation phase of the project and how I
 \begin{itemize}
     \itemsep0em 
     \item \textit{technicals} - xyz:technicals
-    \item \textit{disposition}
-    \item \textit{change}
+    \item \textit{disposition} - xyz:disposition
+    \item \textit{change} - xyz:change
     \item builder - oont:builder
     \item originallocation - oont:consolelocation
     \item dateOfBirth - oont:dateOfBirth
@@ -169,7 +169,7 @@ The relationships used to describe the relation between the organ and it's objec
 \hspace*{0.5cm} The method in which external data will be added to the knowledge graph will involve the ontology structure illustrated in the design section.
 
 \subsubsection{External Data Sources}
-\hspace*{0.5cm} As mentioned in the specification section, Wikidata and MusicBrainz can be used to expand the existing knowledge graph. I followed my design and created a node branching out of organ to represent Wikidata's organ page \cite{organwikidata} from which I then mirrored the structure displayed on it. The relationships used were the same as those on Wikidata. The data branching off the organwikidata node with their corresponding relationship were:
+\hspace*{0.5cm} As mentioned in the specification section, Wikidata and MusicBrainz can be used to expand the existing knowledge graph. I followed my design and created a node branching out of organ to represent Wikidata's organ page \cite{organwikidata} from which I mirrored the structure. The relationships used were the same as those on Wikidata. The data branching off the organwikidata node with their corresponding relationship were:
 
 \begin{itemize}
     \itemsep0em 
@@ -193,45 +193,150 @@ The relationships used to describe the relation between the organ and it's objec
     \item pipeorgan - wd:Property:P1889
 \end{itemize}
 
-The external data from MusicBrainz's organ page \cite{organmusicbrainz} was not as vast but extended the knowledge graph in a different way to Wikidata with overlapping data being connected. I expanded from the main organ node using relationships defined on MusicBrainz.  I also expanded on some of the nodes using MusicBrainz to provide more context. This can be seen below:
+The external data from MusicBrainz's organ page \cite{organmusicbrainz} was not as vast but extended the knowledge graph in a different way to Wikidata with overlapping data being connected. I expanded from the main organ node using relationships defined on MusicBrainz to provide more context with the relationships mirroring that of the MusicBrainz as well. This can be seen below:
 
 \begin{itemize}
     \itemsep0em 
-    \item barrelorgan
-    \item electricorgan
-    \item pipeorgan
+    \item barrelorgan - rdfs:subclassOf
+    \item electricorgan - rdfs:subclassOf
+    \item pipeorgan - rdfs:subclassOf
     \begin{itemize}
         \itemsep0em 
-        \item pipeorganinfo
+        \item pipeorganinfo - oont:extraInformation
     \end{itemize}
-    \item reedorgan
+    \item reedorgan - rdfs:subclassOf
     \begin{itemize}
         \itemsep0em 
-        \item reedorganimage
+        \item reedorganimage - oont:locationImage
     \end{itemize}
-    \item windinstrument
-    \item organwikidata 
+    \item windinstrument - rdf:type
+    \item organwikidata - 
 \end{itemize}
 
 \subsubsection{Custom Links}
-\hspace*{0.5cm} 
+\hspace*{0.5cm} These links used data from the dataset to form custom links, using string manipulation, as points of expansion. Identifying data from the dataset that was able to be expanded upon was difficult as data was very specific to the organ and external links online were too broad. However, data in the dataset that was more general such as locations could be expanded upon. Some points of expansion are:
 
+\begin{itemize}
+    \itemsep0em 
+    \item buildinginfo
+    \item stateinfo
+    \item maintainerinfo
+\end{itemize}
+
+The relationship for all additional nodes is "oont:extraInformation".
 
 \subsubsection{Generic Links}
-\hspace*{0.5cm} 
+\hspace*{0.5cm} These links are not organ-specific but provide more detail and general information regarding some aspects of the knowledge graph. The data in the dataset being so specific hinders the amount of external generic links that can be added, nevertheless, there are some points of expansion such as:
 
+\begin{itemize}
+    \itemsep0em 
+    \item pitchinfo
+    \item windPressureInfo
+    \item divisionInfo
+\end{itemize}
+
+The relationship for all additional nodes is "oont:extraInformation".
 
 \subsection{Final Ontology}
-\hspace*{0.5cm} 
+\hspace*{0.5cm} Combining both dataset and external data to form one ontology can be seen in RDF below:
+
+\lstset
+{
+    breaklines=true,
+    breakatwhitespace=true,
+    basicstyle=\ttfamily,
+}
+\begin{lstlisting}
+    ?organ a oont:Organ ;
+        oont:builder ?builder ;
+        oont:consolelocation ?originallocation ;
+        oont:dateOfBirth ?dateOfBirth ;
+        oont:monument ?building ;
+        oont:monumentNumber ?monumentNumber ;
+        oont:name ?organName ;
+        oont:organNumber ?organNumber ;
+        oont:state ?state ;
+        oont:particularities ?particularity ;
+        oont:history ?history ;
+        oont:creator ?creator ;
+        oont:moreInformation ?moreInformation ;
+        xyz:technicals ?technicals ; 
+        xyz:disposition ?disposition ;
+        xyz:change ?change ;
+        .
+
+	?technicals oont:systemPlayingAids ?systemPlayingAids .
+	?technicals oont:pitch ?pitch .
+	?technicals oont:keyboardRange ?range1 . 
+	?technicals oont:pedalRange ?range2 . 
+	?technicals oont:temperature ?temperature .
+	?technicals oont:windPressure ?windPressure .
+	?technicals oont:windSystem ?windSystem .
+	
+	?disposition xyz:divisionName ?divisionname . 
+	?disposition oont:partition ?partition .
+	?disposition oont:AdditionalSpecification ?specification .
+
+	?change oont:date ?datechange .
+	?change oont:AdditionalSpecification ?changedescription . 
+	?change oont:Builder ?maintainer .
+
+	?building oont:extraInformation ?buildinginfo .
+	?state oont:extraInformation ?stateinfo .
+	?maintainer oont:extraInformation ?maintainerinfo .
+
+	?pitch oont:extraInformation ?pitchinfo .
+	?windPressure oont:extraInformation ?windPressureInfo .
+	?windSystem oont:extraInformation ?windPressureInfo .
+	?divisionname oont:extraInformation ?divisioninfo .
+
+	?organ rdfs:subClassOf ?barrelorgan .
+	?organ rdfs:subClassOf ?electricorgan .
+	?organ rdfs:subClassOf ?pipeorgan .
+	?organ rdfs:subClassOf ?reedorgan .
+	?organ rdf:type ?windinstrument . 
+
+	?pipeorgan oont:extraInformation ?pipeorganinfo .
+	?reedorgan oont:locationImage ?reedorganimage .
+	?organ oont:extraInformation ?organwikidata .
+
+	?organwikidata wd:Property:P279 ?keyboardinstrument .
+	?organwikidata wd:Property:P279 ?buildingcomponent .
+	?organwikidata wd:Property:P2579 ?organology .
+	?organwikidata wd:Property:P366 ?westernclassicalmusic .
+	?organwikidata wd:Property:P366 ?musictradition .
+	?organwikidata wd:Property:P3095 ?organexpert .
+	?organwikidata wd:Property:P1535 ?organist .
+	?organwikidata wd:Property:P1343 ?catholicencyclopedia .
+	?organwikidata wd:Property:P1343 ?metropolitanmuseumofarttaggingvocabulary .
+	?organwikidata wd:Property:P1709 ?dbpedia .
+
+	?organwikidata wd:Property:P527 ?organcase .
+	?organwikidata wd:Property:P527 ?organpipe .
+	?organwikidata wd:Property:P527 ?musicalkeyboard .
+	?organwikidata wd:Property:P527 ?pedalkeyboard .
+	?organwikidata wd:Property:P527 ?organstop .
+	?organwikidata wd:Property:P527 ?organconsole .
+	?organwikidata wd:Property:P527 ?swellbox .
+
+	?organwikidata wd:Property:P1889 ?pipeorgan .
+\end{lstlisting}
+
+This ontology can be placed in the CONSTRUCT section of the query.
 
 \section{Knowledge Graph Generation}
 \hspace*{0.5cm} The process of creating the knowledge graph generation query for my ontology will be detailed below:
 
 \subsection{Dataset Knowledge Graph Query}
+\hspace*{0.5cm} 
+
 
 \subsection{External Knowledge Graph Query}
+\hspace*{0.5cm} 
+
 
 \subsection{Final Knowledge Graph Query}
+\hspace*{0.5cm} 
 
 
 \section{Resulting Knowledge Graph}
