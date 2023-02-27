@@ -1,9 +1,8 @@
 \chapter{Implementation}
-In this chapter, I will detail the implementation phase of the project and how I arrived at the end solution. Using the design section and following my specification, I will create my solution and mention any appropriate changes. 
+This chapter will detail the implementation phase of the project and how the solution was reached using the design section and following the specification. 
 
-% Testing based off requirements & specification
 \section{Command Line Command}
-\hspace*{0.5cm} Before starting implementation, familiarising myself with the command line commands was necessary to understand in order to commence implementation. Since the executable .jar file enables us to use SPARQL-Anything, starting the command with execution of the .jar file is needed. For example:
+\hspace*{0.5cm} Before starting implementation, familiarisation of command line commands is necessary to understand in order to commence implementation. Since the executable .jar file enables anyone to use SPARQL-Anything, starting the command with the execution of the .jar file is needed. For example:
 
 \lstset
 {
@@ -15,7 +14,7 @@ In this chapter, I will detail the implementation phase of the project and how I
     java -jar sparql-anything-0.8.0.jar 
 \end{lstlisting}
 
-\noindent Then, we can start expanding it to specify the file that contains the query by specifying it's location. For example:
+\noindent Then, expand it to specify the file that contains the query by specifying it's location. For example:
 
 \lstset
 {
@@ -27,7 +26,7 @@ In this chapter, I will detail the implementation phase of the project and how I
     -q filepath/filename.sparql
 \end{lstlisting}
 
-\noindent Because our project involves generating a knowledge graph of the user's choice, passing a parameter into the query is vital. It can be done as follows: 
+\noindent Because the project involves generating a knowledge graph of the user's choice, passing a parameter into the query is vital. It can be done as follows: 
 
 \lstset
 {
@@ -98,13 +97,13 @@ In this chapter, I will detail the implementation phase of the project and how I
 \end{lstlisting}
 
 \section{Ontology Reconstruction}
-\hspace*{0.5cm} As mentioned in the design, the scope of the provided ontology was too broad for the envisioned knowledge graph. Therefore, refinement of the provided ontology and exploration with external links was necessary to produce a relevant ontology. In the following subsections, I will detail the process of creating the ontology using the dataset and external data. This ontology will be put into the CONSTRUCT segment of the query which acts as the framework for the knowledge graph as mentioned in the context chapter. 
+\hspace*{0.5cm} As mentioned in the design, the scope of the provided ontology was too broad for the envisioned knowledge graph. Therefore, refinement of the provided ontology and exploration with external links was necessary to produce a relevant ontology. In the following subsections, the process of creating the ontology using the dataset and external data will be detailed. This ontology will be input into the CONSTRUCT segment of the query which acts as the framework for the knowledge graph as mentioned in the context chapter. 
 
 \subsection{Dataset Ontology}
-\hspace*{0.5cm} Using the core structures outlined in my design, I identified and grouped relevant data to create an updated ontology. 
+\hspace*{0.5cm} Using the core structures outlined in the design, identification and grouping of relevant data to create an updated ontology. 
 
 \subsubsection{Organ}
-\hspace*{0.5cm} After selecting the most relevant information to the organ from each of the .json files that stores the data, I attached it to the organ node. Using the provided ontology to identify data relevant to the organ node was used as well to ensure the correct relationships were stated. Relevant data and relationship to the organ are listed below:
+\hspace*{0.5cm} After selecting the most relevant information to the organ from each of the .json files that stores the data, it was attached to the organ node. Using the provided ontology to identify data relevant to the organ node was used as well to ensure the correct relationships were stated. Relevant data and relationship to the organ are listed below:
 
 \begin{itemize}
     \itemsep0em 
@@ -112,7 +111,7 @@ In this chapter, I will detail the implementation phase of the project and how I
     \item \textit{disposition} - xyz:disposition
     \item \textit{change} - xyz:change
     \item builder - oont:builder
-    \item originallocation - oont:consolelocation
+    \item originalLocation - oont:consolelocation
     \item dateOfBirth - oont:dateOfBirth
     \item building - oont:monument
     \item monumentNumber - oont:monumentNumber
@@ -125,7 +124,7 @@ In this chapter, I will detail the implementation phase of the project and how I
     \item moreInformation - oont:moreInformation 
 \end{itemize}
 
-This data is directly relevant to the organ as illustrated in the provided organ ontology. Data such as originallocation, dateOfbirth and state were added as they were part of the dataset and relevant to the organ. Because technicals, disposition and change were identified as nodes for further expansion, I originally connected them to the main organ node. 
+This data is directly relevant to the organ as illustrated in the provided organ ontology. Data such as originalLocation, dateOfbirth and state were added as they were part of the dataset and relevant to the organ. Because technicals, disposition and change were identified as nodes for further expansion, they were connected to the main organ node. 
 
 The relationships used to describe the relation between the organ and it's objects were provided and usually had intuitive names usually based on the object. 
 
@@ -150,17 +149,17 @@ The relationships used to describe the relation between the organ and it's objec
 
 \begin{itemize}
     \itemsep0em 
-    \item divisionname - xyz:divisionName
+    \item divisionName - xyz:divisionName
     \item partition - oont:partition
     \item specification - oont:AdditionalSpecification
 \end{itemize}
 
 \subsubsection{Change}
-\hspace*{0.5cm} This branch stated the changes made to the organ during it's lifetime. The provided ontology did not mention changes of a given organ so I added a section in to represent it from the dataset into the knowledge graph. The relationships used were provided. The new section added to the ontology were:
+\hspace*{0.5cm} This branch stated the changes made to the organ during it's lifetime. The provided ontology did not mention changes of a given organ so it was added to represent it from the dataset into the knowledge graph. The relationships used were provided. The new section added to the ontology were:
 
 \begin{itemize}
     \itemsep0em 
-    \item datechange - oont:date 
+    \item dateChange - oont:date 
     \item description - oont:AdditionalSpecification
     \item maintainer - oont:Builder
 \end{itemize}
@@ -169,7 +168,7 @@ The relationships used to describe the relation between the organ and it's objec
 \hspace*{0.5cm} The method in which external data will be added to the knowledge graph will involve the ontology structure illustrated in the design section.
 
 \subsubsection{External Data Sources}
-\hspace*{0.5cm} As mentioned in the specification section, Wikidata and MusicBrainz can be used to expand the existing knowledge graph. I followed my design and created a node branching out of organ to represent Wikidata's organ page \cite{organwikidata} from which I mirrored the structure. The relationships used were the same as those on Wikidata. The data branching off the organwikidata node with their corresponding relationship were:
+\hspace*{0.5cm} As mentioned in the specification section, Wikidata and MusicBrainz can be used to expand the existing knowledge graph. Following the design created, a node branching out of the main organ node was made to represent Wikidata's organ page \cite{organwikidata} from which the same structure was employed. The relationships used were the same as those on Wikidata. The data branching off the organwikidata node with their corresponding relationship were:
 
 \begin{itemize}
     \itemsep0em 
@@ -193,7 +192,7 @@ The relationships used to describe the relation between the organ and it's objec
     \item pipeorgan - wd:Property:P1889
 \end{itemize}
 
-The external data from MusicBrainz's organ page \cite{organmusicbrainz} was not as vast but extended the knowledge graph in a different way to Wikidata with overlapping data being connected. I expanded from the main organ node using relationships defined on MusicBrainz to provide more context with the relationships mirroring that of the MusicBrainz as well. This can be seen below:
+The external data from MusicBrainz's organ page \cite{organmusicbrainz} was not as vast but extended the knowledge graph in a different way to Wikidata with overlapping data being connected. Expanding from the main organ node using relationships defined on MusicBrainz, provided more context with the relationships mirroring that of MusicBrainz as well. This can be seen below:
 
 \begin{itemize}
     \itemsep0em 
@@ -238,7 +237,13 @@ The relationship for all additional nodes is "oont:extraInformation".
 The relationship for all additional nodes is "oont:extraInformation".
 
 \subsection{Final Ontology}
-\hspace*{0.5cm} Combining both dataset and external data to form one ontology can be seen in RDF below:
+\hspace*{0.5cm} Combining both dataset and external data to form one ontology can be seen in RDF. This ontology can be placed in the CONSTRUCT section of the query.
+
+\section{Knowledge Graph Generation}
+\hspace*{0.5cm} The process of creating the knowledge graph generation query for the ontology will be detailed below:
+
+\subsection{Dataset Knowledge Graph Query}
+\hspace*{0.5cm} This subsection will detail the process for creating the query that is responsible for extracting data from the dataset using the Query Skeleton Structure outlined in the design section. All code in this section will be part of the WHERE clause of the query. Below is an example of data abstraction from a .json file:
 
 \lstset
 {
@@ -247,101 +252,126 @@ The relationship for all additional nodes is "oont:extraInformation".
     basicstyle=\ttfamily,
 }
 \begin{lstlisting}
-    ?organ a oont:Organ ;
-        oont:builder ?builder ;
-        oont:consolelocation ?originallocation ;
-        oont:dateOfBirth ?dateOfBirth ;
-        oont:monument ?building ;
-        oont:monumentNumber ?monumentNumber ;
-        oont:name ?organName ;
-        oont:organNumber ?organNumber ;
-        oont:state ?state ;
-        oont:particularities ?particularity ;
-        oont:history ?history ;
-        oont:creator ?creator ;
-        oont:moreInformation ?moreInformation ;
-        xyz:technicals ?technicals ; 
-        xyz:disposition ?disposition ;
-        xyz:change ?change ;
-        .
+    SERVICE <x-sparql-anything:file:./output/history_base.json> 
+    {
+    BIND(CONCAT("$.", ?_organ, ".originallocation") AS ?organOriginalLocation) .
 
-	?technicals oont:systemPlayingAids ?systemPlayingAids .
-	?technicals oont:pitch ?pitch .
-	?technicals oont:keyboardRange ?range1 . 
-	?technicals oont:pedalRange ?range2 . 
-	?technicals oont:temperature ?temperature .
-	?technicals oont:windPressure ?windPressure .
-	?technicals oont:windSystem ?windSystem .
-	
-	?disposition xyz:divisionName ?divisionname . 
-	?disposition oont:partition ?partition .
-	?disposition oont:AdditionalSpecification ?specification .
+    fx:properties
+        fx:json.path.1 ?organOriginalLocation ; .
 
-	?change oont:date ?datechange .
-	?change oont:AdditionalSpecification ?changedescription . 
-	?change oont:Builder ?maintainer .
-
-	?building oont:extraInformation ?buildinginfo .
-	?state oont:extraInformation ?stateinfo .
-	?maintainer oont:extraInformation ?maintainerinfo .
-
-	?pitch oont:extraInformation ?pitchinfo .
-	?windPressure oont:extraInformation ?windPressureInfo .
-	?windSystem oont:extraInformation ?windPressureInfo .
-	?divisionname oont:extraInformation ?divisioninfo .
-
-	?organ rdfs:subClassOf ?barrelorgan .
-	?organ rdfs:subClassOf ?electricorgan .
-	?organ rdfs:subClassOf ?pipeorgan .
-	?organ rdfs:subClassOf ?reedorgan .
-	?organ rdf:type ?windinstrument . 
-
-	?pipeorgan oont:extraInformation ?pipeorganinfo .
-	?reedorgan oont:locationImage ?reedorganimage .
-	?organ oont:extraInformation ?organwikidata .
-
-	?organwikidata wd:Property:P279 ?keyboardinstrument .
-	?organwikidata wd:Property:P279 ?buildingcomponent .
-	?organwikidata wd:Property:P2579 ?organology .
-	?organwikidata wd:Property:P366 ?westernclassicalmusic .
-	?organwikidata wd:Property:P366 ?musictradition .
-	?organwikidata wd:Property:P3095 ?organexpert .
-	?organwikidata wd:Property:P1535 ?organist .
-	?organwikidata wd:Property:P1343 ?catholicencyclopedia .
-	?organwikidata wd:Property:P1343 ?metropolitanmuseumofarttaggingvocabulary .
-	?organwikidata wd:Property:P1709 ?dbpedia .
-
-	?organwikidata wd:Property:P527 ?organcase .
-	?organwikidata wd:Property:P527 ?organpipe .
-	?organwikidata wd:Property:P527 ?musicalkeyboard .
-	?organwikidata wd:Property:P527 ?pedalkeyboard .
-	?organwikidata wd:Property:P527 ?organstop .
-	?organwikidata wd:Property:P527 ?organconsole .
-	?organwikidata wd:Property:P527 ?swellbox .
-
-	?organwikidata wd:Property:P1889 ?pipeorgan .
+    [] a fx:root; 
+        rdf:_1 ?originalLocation ;
+    } 
 \end{lstlisting}
 
-This ontology can be placed in the CONSTRUCT section of the query.
+The snippet above follows the structure illustrated in the design and follows the same structure as most of the SPARQL-Anything SERVICE calls in the query. 
+\begin{enumerate}
+    \item SERVICE call itself queries the \textit{history\_base.json} file in the \textit{output} folder using SPARQL-Anything. 
+    \item BIND creates the JSON path using the parameter \textit{?\_organ} which was passed in through the command line, so the correct data can be found for the right organ. 
+    \item \textit{fx:properties} then locates the data, which is assigned to the variable \textit{?originalLocation}. 
+    \item ?originalLocation is used and added to the knowledge graph.
+\end{enumerate}
 
-\section{Knowledge Graph Generation}
-\hspace*{0.5cm} The process of creating the knowledge graph generation query for my ontology will be detailed below:
+This SPARQL-Anything call is followed by many other SPARQL-Anything calls to complete the knowledge graph. Although not explicitly stated in the design, the passed in organ \textit{?\_organ} is bound to the ontology variable \textit{?organ} in the first SPARQL-Anything call as seen below:
 
-\subsection{Dataset Knowledge Graph Query}
-\hspace*{0.5cm} 
-
+\lstset
+{
+    breaklines=true,
+    breakatwhitespace=true,
+    basicstyle=\ttfamily,
+}
+\begin{lstlisting}
+    BIND (?_organ AS ?organ) .
+\end{lstlisting}
 
 \subsection{External Knowledge Graph Query}
-\hspace*{0.5cm} 
+\hspace*{0.5cm} This subsection will describe the process in which external data was added to the knowledge graph and how it was implemented in the query. 
 
+\subsubsection{Custom Data}
+\hspace*{0.5cm} For links that required data from the dataset, the query skeleton structure and query flow diagram in the design section was followed providing the framework to create the query. Custom links were created from Wikipedia as it was one of the few websites that covered the scope of what could be added. It also gave adequate extra information for the data and sufficiently extended the breadth of the resulting knowledge graph. To match the context of the dataset, the link created was from the Dutch version of Wikipedia. As mentioned in the ontology creation section, custom links were difficult to identify using the dataset as data was very specific to a particular organ. An example of a custom link addition can be seen below:
+
+\lstset
+{
+    breaklines=true,
+    breakatwhitespace=true,
+    basicstyle=\ttfamily,
+}
+\begin{lstlisting}
+    SERVICE <x-sparql-anything:file:./output/base.json>
+    {
+        BIND(CONCAT("$.", ?_organ, ".building") AS ?organBuilding) .
+    
+        fx:properties
+            fx:json.path.1 ?organBuilding ; .
+    
+        [] a fx:root; 
+            rdf:_1 ?building ;
+    
+        BIND(IRI(REPLACE(CONCAT("https://nl.wikipedia.org/wiki/", ?building), " ", "_")) AS ?buildingInfo) . 
+    } 
+\end{lstlisting}
+
+The snippet above follows the structure in the design and is used whenever a custom external link is added to the knowledge graph. The beginning of the query follows the same format as the dataset knowledge graph query but has an extra line at the end.
+
+Using string manipulation and other SPARQL functions, the custom link is created as follows:
+\begin{enumerate}
+    \item \textbf{CONCAT} combines the building name retrieved from the dataset (stored in the \textit{?\_building} variable) with a generic Dutch Wikipedia link.
+    \item \textbf{REPLACE} removes spaces in the \textit{?\_building} variable (if any) and replaces them with underscores to create a valid link. 
+    \item \textbf{IRI} takes this new string and converts it into a URI.
+    \item \textbf{BIND} takes this newly created link and assigns it to the variable \textit{?buildingInfo} to be added to the knowledge graph. 
+\end{enumerate}
+
+This is an example of where SPARQL-Anything's Facade-X approach is useful because  features of SPARQL within a SPARQL-Anything query can be used without having to learn something completely new. 
+
+\subsubsection{General Data}
+\hspace*{0.5cm} For links that were independent of the dataset, they were added after the SPARQL-Anything calls to stay consistent with the query flow diagram in the design section. For the links personally identified, they were added with the corresponding node which they expanded upon. These specific links were found for data that had a broad scope, so websites regarding those subjects could be found. For example:
+
+\lstset
+{
+    breaklines=true,
+    breakatwhitespace=true,
+    basicstyle=\ttfamily,
+}
+\begin{lstlisting}
+    SERVICE <x-sparql-anything:file:./output/tech.json>
+    {
+        BIND(CONCAT("$.", ?_organ, ".pitch") AS ?organPitch) .
+    
+        fx:properties
+            fx:json.path.1 ?organPitch ; .
+    
+        [] a fx:root; 
+            rdf:_1 ?pitch ;
+        
+        BIND(URI("https://organhistoricalsociety.org/OrganHistory/works/works04.htm") AS ?pitchInfo) .
+    } 
+\end{lstlisting}
+
+This snippet follows the same structure as most SPARQL-Anything calls, but the last line binds the URI to \textit{?pitchInfo}. This website was found particularly to find more information describing the pitch of an organ. 
+
+External data regarding MusicBrainz and Wikidata were added by following the format on the website and bound to a variable in the ontology. Most data on the website used links from Wikidata so the PREFIX \textit{wd} (for Wikidata was used), but some had explicit links. For example:
+
+\lstset
+{
+    breaklines=true,
+    breakatwhitespace=true,
+    basicstyle=\ttfamily,
+}
+\begin{lstlisting}
+    BIND(wd:Q752638 AS ?barrelOrgan) . 
+    BIND(IRI("https://dbpedia.org/ontology/Organ") AS ?dbpedia) .
+\end{lstlisting}
 
 \subsection{Final Knowledge Graph Query}
-\hspace*{0.5cm} 
+\hspace*{0.5cm} The final query to generate the knowledge graph involves: 
 
+\begin{enumerate}
+    \item CONSTRUCT: Ontology
+    \item WHERE:
+    \begin{enumerate}
+        \item SERVICE: call to SPARQL-Anything
+        \item External Data
+    \end{enumerate}
+\end{enumerate}
 
-\section{Resulting Knowledge Graph}
-\hspace*{0.5cm} 
-
-
-
-
+% Testing based off requirements & specification

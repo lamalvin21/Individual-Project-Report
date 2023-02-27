@@ -1,8 +1,9 @@
 \chapter{Specification}
-In this chapter, I will go into more detail regarding each of the requirements specified in the previous chapter. More specifically, I will explain how I will go about achieving each requirement. 
+This chapter will go into more detail regarding each of the requirements specified in the previous chapter. More specifically, an explanation will be provided as to how each requirement will be achieved. 
 
 \section{Software Requirement Specification}
 \begin{longtable}{|p{2.25cm}|p{5.5cm}|p{5.5cm}|}
+\caption{Software Requirement Specification Table}
 \hline
 \textbf{Requirement No.} & \textbf{Requirement} & \textbf{Specification}\\
 \hline
@@ -24,23 +25,24 @@ Relevant parts of dataset are identified based on provided ontology and relevanc
 
 4&
 The knowledge graph must expand on the current dataset using external links. &
-Find external links for points of expansion outside of the dataset to extend my knowledge graph. Use web resources such as WikiData, MusicBrainz and Dbpedia to find potential expansion points of the resulting knowledge graph. Use multiple SERVICE calls (within the WHERE clause) to get external data and add it to current knowledge graph. String manipulation and string-to-link conversion (IRI) may be necessary to add the external links. \\
+Find external links for points of expansion outside of the dataset to extend my knowledge graph. Use web resources such as WikiData, MusicBrainz and Dbpedia to find potential expansion points of the resulting knowledge graph. Use multiple SERVICE calls (within the WHERE clause) to get external data and add it to current knowledge graph. String manipulation and string-to-link conversion (IRI) may be necessary to add external links. \\
 \hline
 
 5&
-Knowledge graph must be evaluated to prove correctness and validity. &
+Knowledge graphs must be evaluated to prove correctness and validity. &
 Validate the correctness of the knowledge graph produced. Look into the accuracy, coverage and coherency of the knowledge graph and analyse different aspects of those areas in more detail (more detail in evaluation section). \cite{knowledgegraphevaulationbook} will be used to help. \\ 
 \hline
 
 6&
 Speed of knowledge graph generation must be assessed. &
-Assess speed of query when generating the knowledge graph to ensure expansion of knowledge graph in the future is possible without encountering severe time constraints. This will measure scalability based off many different factors. More details in evaluation section. 
+Assess speed of query when generating the knowledge graph to ensure expansion of knowledge graph in the future is possible without encountering severe time constraints. This will measure scalability based off many different factors (more detail in evaluation section). 
 \hline
 \end{longtable}
 
 \begin{table}[h!]
 \section{User Requirement Specification}
 \begin{center}
+\caption{User Requirement Specification Table}
 \begin{tabular}{c|p{2in}p{2.55in}}
 Requirement \\ No.&Requirement&Specification\\\hline 
 
