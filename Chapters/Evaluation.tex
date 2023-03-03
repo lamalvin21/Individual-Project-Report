@@ -14,13 +14,14 @@ The main four sections used to assess knowledge graph quality are:
     \item Succinctness
 \end{itemize}
 
-For each section, generated knowledge graphs for five different organs will be used to measure overall quality. Organs to be tested from the dataset are: \textit{Part14\_000Brouwershaven}, \textit{Part14\_000Niezijl}, \textit{Part14\_000Offengawier}, \textit{Part14\_000AmsterdamDominicus} and \textit{Part14\_000Diemen}. 
+For each section, generated knowledge graphs for five different organs will be used to measure overall quality. Organs to be tested from the dataset are: \textit{Part14\_000Brouwershaven}, \textit{Part14\_000Niezijl}, \textit{Part14\_000Folsgare}, \textit{Part14\_000GravenhageNoorderkerk} and \textit{Part14\_000Groede}. For simplicity, a random sample of five was selected from the list of organ codes and the produced knowledge graphs will represent the quality of all possible organs. Generating the knowledge graphs and assessing the quality from the output files was the method employed. 
 
 \subsection{Accuracy}
 \hspace{0.5cm} "Accuracy refers to the extent to which entities and relations- encoded by nodes and edges in the graph- correctly represent real-life phenomena". \cite{knowledgegraphevaulationbook}. In this context, accuracy means that the knowledge graph generated (both subjects and relationships) needs to correctly reflect the relationships between the organ topic. 
 
 There are three types of accuracy: 
 \begin{itemize}
+    \itemsep0em 
 \item Syntactic Accuracy.
 \item Semantic Accuracy.
 \item Timeliness.
@@ -29,26 +30,32 @@ There are three types of accuracy:
 \subsubsection{Syntactic Accuracy}
 \hspace{0.5cm} Syntactic accuracy refers to whether the data presented is valid for it's given type. \cite{knowledgegraphevaulationbook}
 
-An example of a violation: 
+\noindent An example of a potential violation: 
 \begin{lstlisting}
     "This is an organ" would be incompatible with xsd:integer.
 \end{lstlisting}
 
+Upon assessing the produced knowledge graphs for each of the five organs, no syntactic inaccuracies were found. Due to the ontology being derived off the provided ontology and the external links, all resulting knowledge graphs did not contain any syntactic inaccuracies. 
+
 \subsubsection{Semantic Accuracy}
 \hspace{0.5cm} Semantic accuracy refers to whether data values are being correctly represented in the context of the real world. \cite{knowledgegraphevaulationbook}
 
-An example of a violation: 
+\noindent An example of a potential violation: 
 \begin{lstlisting}
     Date of build (for an organ) coming after today's date. 
 \end{lstlisting}
 
+In regards to semantic accuracy, none of the five organs contained inaccuracies in this context. This can be explained for the same reasons as the lack of syntactic inaccuracies. 
+
 \subsubsection{Timeliness}
 \hspace{0.5cm} Timeliness refers to how up-to-date or relevant the knowledge graph is with the real current state of the modern world. \cite{knowledgegraphevaulationbook}
 
-An example of a violation: 
+\noindent An example of a potential violation: 
 \begin{lstlisting}
     Organ's location stated as "Netherlands", but has been moved recently to Portugal and the knowledge graph has not been updated.
 \end{lstlisting}
+
+In the produced knowledge graphs, violations of timeliness can occur due to the static nature of the dataset. An example of a violation may occur when the ?organDivisionName is no longer the organ's current disposition in real life, but the data in the dataset does not update. This particular violation, will occur over time as the organ changes over time. At the time being, no timeliness violations occur in the produced knowledge graphs.
 
 \subsection{Coverage}
 \hspace{0.5cm} "Coverage refers to avoiding the omission of domain-relevant elements, which may yield incomplete results". \cite{knowledgegraphevaulationbook}
@@ -57,6 +64,7 @@ In this context, the knowledge graph result must have completely fill the ontolo
 
 There are two types of coverage: 
 \begin{itemize}
+\itemsep0em 
 \item Completeness.
 \item Representativeness.
 \end{itemize}
@@ -90,6 +98,7 @@ In this context, the knowledge graph result must follow the dataset and accurate
 
 There are two types of coherency:
 \begin{itemize}
+    \itemsep0em 
 \item Consistency
 \item Validity
 \end{itemize}
@@ -149,6 +158,7 @@ In this context, it means the knowledge graph created should be easily understan
 
 There are three types of succinctness: 
 \begin{itemize}
+    \itemsep0em 
 \item Conciseness.
 \item Representational Conciseness.
 \item Understandability.
