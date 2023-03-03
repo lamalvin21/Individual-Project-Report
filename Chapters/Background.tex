@@ -29,7 +29,6 @@ The object is an entity that the statement describes with relation to the subjec
 
 In this project, we will look closer at the Turtle (.TTL) format for RDF. A .TTL file stores data in RDF format (triples) with a subject, object and relationship. This format is specifically relevant when storing multiple related triples (RDF Graph) and allowing them to be readable by both human and machine. \cite{TTL}
 
-\medskip
 An example of an RDF statement (in Turtle- .TTL) can be seen below:
 
 \lstset
@@ -47,6 +46,7 @@ An example of an RDF statement (in Turtle- .TTL) can be seen below:
 
 \noindent In this example, 
 \begin{itemize}
+    \itemsep0em 
 \item \textbf{The subject is:} \\ \textit{"http://www.example.com/Alvin"}
 \item \textbf{The predicate is:} \\ \textit{"http://www.example.com/vocab\#studiesAt"}
 \item \textbf{The object is:} \\ \textit{"http://www.example.com/KCL"}
@@ -83,6 +83,7 @@ As mentioned previously, RDFs can also be visualised in graph format with numero
 
 The main components of an ontology are similar to the RDF triples we have seen but have different names. They involve:
 \begin{itemize}
+    \itemsep0em 
 \item \textbf{Classes}: \\
 A collection of objects or things that are related to each other in some way.
 
@@ -94,9 +95,9 @@ A characteristic or property that a class may have, which is described by the re
 
 \end{itemize}
 
-In the context of RDF statements, a connection between two nodes will have the subject and object as the nodes and the predicate will connect them, via an edge, given the relationship specified. Below, is an example of a graphical visualisation in the context of a football team:
+In the context of RDF statements, a connection between two nodes will have the subject and object as the nodes and the predicate will connect them, via an edge, given the relationship specified. \textit{Figure 2.1}, is an example of a graphical visualisation in the context of a football team:
 
- \bigskip
+\begin{figure}
 \begin{center}
     \begin{tikzpicture} [
         circle/.style={draw=brown, ellipse, ultra thick, fill=brown!30},
@@ -113,8 +114,10 @@ In the context of RDF statements, a connection between two nodes will have the s
     \draw (q3) edge[->,right] node {\tt selectsCaptain} (q2);
     \end{tikzpicture}
 \end{center}
+\caption{Example Arsenal Ontology}
+\end{figure}
 
-This ontology graph depicts a Football Team with a Manager and a Captain. The Manager and Captain (of the football team) also have a relationship because the manager selects a specific captain for the football team. The attribute 'Year' only describes the class 'Football Team' so is denoted as such.
+\textit{Figure 2.1} depicts a Football Team with a Manager and a Captain. The Manager and Captain (of the football team) also have a relationship because the manager selects a specific captain for the football team. The attribute 'Year' only describes the class 'Football Team' so is denoted as such.
 
 Ontologies are the framework in which knowledge graphs can be constructed and guide the generation of knowledge graphs. 
 
@@ -126,6 +129,7 @@ As mentioned, knowledge graphs apply real data from an ontology framework. With 
 Knowledge graphs are used in a variety of real-world applications including search engines, recommendation systems and natural language processors. Common examples of these applications include:
 
 \begin{itemize}
+    \itemsep0em 
 \item \textbf{Search Engines:} \\Knowledge graphs are used by search engines such as Google to find appropriate results given a search query. Results are interpreted and relevant information is displayed based on the relationships between the URIs and the meaning of the search term. The most relevant information with regard to the search query is displayed to the user. The method in which a knowledge graph aids a specific search query is called a "semantic search" and provides more accurate and relevant results. This mirrors how humans tend to think by emulating our natural ability to find associations between data.  \cite{searchengine}  
 
 \item \textbf{Recommendation Systems:} \\Knowledge graphs can be used in such systems because there are often many associations between different entities. Recommendation systems use relationships in the knowledge graph to display the most relevant data to the user. 
@@ -134,10 +138,9 @@ Knowledge graphs are used in a variety of real-world applications including sear
 
 \end{itemize}
 
-\medskip
-An example of a knowledge graph can be seen below, following the ontology example displayed in the ontology section above:
+An example of a knowledge graph can be in \textit{Figure 2.2}, following the ontology in \textit{Figure 2.1} displayed in the ontology section above:
 
-\bigskip
+\begin{figure}[H]
 \begin{center}
     \begin{tikzpicture} [
         circle/.style={draw=red, ellipse, ultra thick, fill=red!30},
@@ -154,8 +157,10 @@ An example of a knowledge graph can be seen below, following the ontology exampl
     \draw (q3) edge[->,right] node {\tt selectsCaptain} (q2);
     \end{tikzpicture}
 \end{center}
+\caption{Example Arsenal Knowledge Graph}
+\end{figure}
 
-The knowledge graph above describes the men's football team: Arsenal. Arteta is the manager of Arsenal and Arsenal's captain is Ødegaard. Arteta (the manager) also selects the captain. The year Arsenal was founded is depicted in the graph as 1886.
+\textit{Figure 2.2} describes the men's football team: Arsenal. Arteta is the manager of Arsenal and Arsenal's captain is Ødegaard. Arteta (the manager) also selects the captain. The year Arsenal was founded is depicted in the graph as 1886.
 
 The more linked data we add from the dataset, the larger the knowledge graph will grow.
 

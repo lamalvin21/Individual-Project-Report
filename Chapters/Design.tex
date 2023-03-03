@@ -4,27 +4,30 @@ This design chapter provides a high-level overview of the software implementatio
 \section{Ontology Structure}
 In this section, the plan for the ontology's general structure will be outlined based on the dataset, provided ontology and any external websites. 
 
-\bigskip
-\centering
-    \begin{tikzpicture} [
-        circle/.style={draw=blue, ellipse, ultra thick, fill=blue!30},
-        align=center,
-        node distance=2.5cm ]
-        
-    \node[circle] (q0) {Organ};
-    \node[circle, right of=q0] (q1)  {Technical};
-    \node[circle, left of=q0] (q2)  {Changes};
-    \node[circle, above of=q0] (q3)  {Disposition};
-    \node[circle, below of=q0] (q4)  {OrganWikidata};
+\begin{figure}[H]
+    \begin{center}
+        \begin{tikzpicture} [
+            circle/.style={draw=blue, ellipse, ultra thick, fill=blue!30},
+            align=center,
+            node distance=2.5cm ]
+            
+        \node[circle] (q0) {Organ};
+        \node[circle, right of=q0] (q1)  {Technical};
+        \node[circle, left of=q0] (q2)  {Changes};
+        \node[circle, above of=q0] (q3)  {Disposition};
+        \node[circle, below of=q0] (q4)  {OrganWikidata};
+    
+        \draw[] (q0.east) -- (q1.west);
+        \draw[] (q0.west) -- (q2.east);
+        \draw[] (q0.north) -- (q3.south);
+        \draw[] (q0.south) -- (q4.north);
+            
+        \end{tikzpicture}
+    \end{center}
+\caption{Core Organ Ontology}
+\end{figure}
 
-    \draw[] (q0.east) -- (q1.west);
-    \draw[] (q0.west) -- (q2.east);
-    \draw[] (q0.north) -- (q3.south);
-    \draw[] (q0.south) -- (q4.north);
-        
-    \end{tikzpicture}
-
-This diagram illustrates the main components to be expanded on in the ontology based on the data in the dataset. More details of the main nodes are detailed below:
+\textit{Figure 7.1} illustrates the main components to be expanded on in the ontology based on the data in the dataset. More details of the main nodes are detailed below:
 
 \begin{enumerate}
     \item \textbf{Organ}: The primary organ component that will connect to other many other nodes.
@@ -61,36 +64,37 @@ In this case, 'organ' can be replaced with our OrganWikidata node and the corres
 
 In this section, the logic required to build the SPARQL Anything Query will be illustrated in the form of a flow diagram. This will provide the structure required to build the query and produce a knowledge graph.
 
-\bigskip
-\begin{center}
-    \begin{tikzpicture} [
-        circle/.style={draw=green, ellipse, ultra thick, fill=green!30},
-        align=center,
-        node distance=2.5cm ]
-    \node[circle] (q0) {Add ontology};
-    \node[circle, below of=q0] (q1)  {Query dataset};
-    \node[circle, below of=q1] (q2)  {Clean \& Refine data};
-    \node[circle, below of=q2] (q3)  {Get external links};
-    \node[circle, below of=q3] (q4)  {String manipulation with external links};
-    \node[circle, below of=q4] (q5)  {Add to Knowledge graph};
-    \node[circle, below of=q5] (q6)  {Add any other external links};
-    \node[circle, below of=q6] (q7)  {Output Knowledge Graph};
+\begin{figure}[H]
+    \begin{center}
+        \begin{tikzpicture} [
+            circle/.style={draw=green, ellipse, ultra thick, fill=green!30},
+            align=center,
+            node distance=2.5cm ]
+        \node[circle] (q0) {Add ontology};
+        \node[circle, below of=q0] (q1)  {Query dataset};
+        \node[circle, below of=q1] (q2)  {Clean \& Refine data};
+        \node[circle, below of=q2] (q3)  {Get external links};
+        \node[circle, below of=q3] (q4)  {String manipulation with external links};
+        \node[circle, below of=q4] (q5)  {Add to Knowledge graph};
+        \node[circle, below of=q5] (q6)  {Add any other external links};
+        \node[circle, below of=q6] (q7)  {Output Knowledge Graph};
+    
+        \draw[->] (q0.south) -- (q1.north);
+        \draw[->] (q1.south) -- (q2.north);
+        \draw[->] (q2.south) -- (q3.north) node [midway, fill=white] {Using cleaned data};
+        \draw[->] (q3.south) -- (q4.north);
+        \draw[->] (q4.south) -- (q5.north);
+        \draw[->] (q5.south) -- (q6.north);
+        \draw[->] (q6.south) -- (q7.north);
+        \draw[->] (q2.east) to [out=0,in=0] (q5.east);
+        \draw[->] (q5.west) to [out=180,in=180] (q2.west);
+    
+        \end{tikzpicture}
+    \end{center}
+    \caption{Query Flow Diagram}
+\end{figure}
 
-    \draw[->] (q0.south) -- (q1.north);
-    \draw[->] (q1.south) -- (q2.north);
-    \draw[->] (q2.south) -- (q3.north) node [midway, fill=white] {Using cleaned data};
-    \draw[->] (q3.south) -- (q4.north);
-    \draw[->] (q4.south) -- (q5.north);
-    \draw[->] (q5.south) -- (q6.north);
-    \draw[->] (q6.south) -- (q7.north);
-    \draw[->] (q2.east) to [out=0,in=0] (q5.east);
-    \draw[->] (q5.west) to [out=180,in=180] (q2.west);
-
-    \end{tikzpicture}
-\end{center}
-
-
-The nodes in the diagram represent necessary actions and one of the edges is explicitly stated so that the process is clear. Below, an explanation for each node is provided: 
+The nodes in \textit{Figure 7.2} represent necessary actions and one of the edges is explicitly stated so that the process is clear. Below, an explanation for each node is provided: 
 
 \begin{enumerate}
   \item \textbf{'Add ontology' node} refers to the addition of the ontology to the query.

@@ -1,25 +1,23 @@
 \chapter{Evaluation}
-This chapter details how the knowledge graph is evaluated upon completion. I used the (https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/) book to help guide my quality assessment. The sections and subsections added in this chapter use the same structure as described in that book chapter. 
+This chapter details how the knowledge graph is evaluated upon completion. 
 
-\section{Knowledge Graph Evaluation}
-\hspace{0.5cm} The knowledge graph presented must follow each of the sections detailed below to ensure correctness and it's validity. 
+\section{Knowledge Graph Quality Assessment}
+\hspace{0.5cm} Assessment knowledge graph quality is important to ensure the produced knowledge graph is valid and correct, using \cite{knowledgegraphevaulationbook} as guidance to assess knowledge graph quality.
 
-The main four sections I will use to assess the quality of the knowledge graph are:
+The main four sections used to assess knowledge graph quality are: 
 
 \begin{itemize}
-\item Accuracy
-\item Coverage
-\item Coherency
-\item Succinctness
+    \itemsep0em 
+    \item Accuracy
+    \item Coverage
+    \item Coherency
+    \item Succinctness
 \end{itemize}
 
-For each subsection, I have provided fictional examples for each of the sections and subsections in the context of the organ dataset. This is to give context to each section and try to find any potential violations. 
-% After each section and subsection,  I also compared the knowledge graph I created and measured whether it breaks any of the quality assessments.
+For each section, generated knowledge graphs for five different organs will be used to measure overall quality. Organs to be tested from the dataset are: \textit{Part14\_000Brouwershaven}, \textit{Part14\_000Niezijl}, \textit{Part14\_000Offengawier}, \textit{Part14\_000AmsterdamDominicus} and \textit{Part14\_000Diemen}. 
 
 \subsection{Accuracy}
-\hspace{0.5cm} "Accuracy refers to the extent to which entities and relations- encoded by nodes and edges in the graph- correctly represent real-life phenomena". \\ (https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/). 
-
-In this context, accuracy means that the knowledge graph generated (both subjects and relationships) needs to correctly reflect the relationships between the organ topic. 
+\hspace{0.5cm} "Accuracy refers to the extent to which entities and relations- encoded by nodes and edges in the graph- correctly represent real-life phenomena". \cite{knowledgegraphevaulationbook}. In this context, accuracy means that the knowledge graph generated (both subjects and relationships) needs to correctly reflect the relationships between the organ topic. 
 
 There are three types of accuracy: 
 \begin{itemize}
@@ -29,8 +27,7 @@ There are three types of accuracy:
 \end{itemize}
 
 \subsubsection{Syntactic Accuracy}
-\hspace{0.5cm} Syntactic accuracy refers to whether the data presented is valid for it's given type. \\
-(https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/) 
+\hspace{0.5cm} Syntactic accuracy refers to whether the data presented is valid for it's given type. \cite{knowledgegraphevaulationbook}
 
 An example of a violation: 
 \begin{lstlisting}
@@ -38,7 +35,7 @@ An example of a violation:
 \end{lstlisting}
 
 \subsubsection{Semantic Accuracy}
-\hspace{0.5cm} Semantic accuracy refers to whether data values are being correctly represented in the context of the real world.  \\ (https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/) 
+\hspace{0.5cm} Semantic accuracy refers to whether data values are being correctly represented in the context of the real world. \cite{knowledgegraphevaulationbook}
 
 An example of a violation: 
 \begin{lstlisting}
@@ -46,7 +43,7 @@ An example of a violation:
 \end{lstlisting}
 
 \subsubsection{Timeliness}
-\hspace{0.5cm} Timeliness refers to how up-to-date or relevant the knowledge graph is with the real current state of the modern world. \\ (https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/) 
+\hspace{0.5cm} Timeliness refers to how up-to-date or relevant the knowledge graph is with the real current state of the modern world. \cite{knowledgegraphevaulationbook}
 
 An example of a violation: 
 \begin{lstlisting}
@@ -54,7 +51,7 @@ An example of a violation:
 \end{lstlisting}
 
 \subsection{Coverage}
-\hspace{0.5cm} "Coverage refers to avoiding the omission of domain-relevant elements, which may yield incomplete results". \\ (https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/). 
+\hspace{0.5cm} "Coverage refers to avoiding the omission of domain-relevant elements, which may yield incomplete results". \cite{knowledgegraphevaulationbook}
 
 In this context, the knowledge graph result must have completely fill the ontology framework required in all of it's nodes and edges. This is to accurately represent the entire dataset given. 
 
@@ -65,7 +62,7 @@ There are two types of coverage:
 \end{itemize}
 
 \subsubsection{Completeness}
-\hspace{0.5cm} Completeness ensures the knowledge graph is correctly filled with all the relevant information present in a particular dataset. \\(https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/)
+\hspace{0.5cm} Completeness ensures the knowledge graph is correctly filled with all the relevant information present in a particular dataset. \cite{knowledgegraphevaulationbook}
 
 Some examples of violations: 
 \begin{lstlisting}
@@ -75,8 +72,7 @@ Some examples of violations:
 \end{lstlisting}
 
 \subsubsection{Representativeness}
-\hspace{0.5cm} Representativeness ensures the knowledge graph does not involve any bias and it does not exclude anything relevant. \\
-(https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/) 
+\hspace{0.5cm} Representativeness ensures the knowledge graph does not involve any bias and it does not exclude anything relevant. \cite{knowledgegraphevaulationbook}
 
 Some examples of violations: 
 \begin{lstlisting}
@@ -88,7 +84,7 @@ Some examples of violations:
 \end{lstlisting}
 
 \subsection{Coherency}
-\hspace{0.5cm} "Coherency refers to how well the knowledge graph conforms to the formal semantics and constraints defined at schema level". \\  (https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/). 
+\hspace{0.5cm} "Coherency refers to how well the knowledge graph conforms to the formal semantics and constraints defined at schema level". \cite{knowledgegraphevaulationbook}
 
 In this context, the knowledge graph result must follow the dataset and accurately display the data appropriately. 
 
@@ -99,8 +95,7 @@ There are two types of coherency:
 \end{itemize}
 
 \subsubsection{Consistency}
-\hspace{0.5cm} Consistency ensures the knowledge graph does not involve any contradictions with regard to logic.  \\
-(https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/) 
+\hspace{0.5cm} Consistency ensures the knowledge graph does not involve any contradictions with regard to logic. \cite{knowledgegraphevaulationbook}
 
 An example of a violation: 
 \begin{center}
@@ -128,8 +123,7 @@ An example of a violation:
 This is an example of a contradiction because, logically, an organist can not be both: the same as and different to the owner. Note that data is not input into the classes for explanation purposes.
 
 \subsubsection{Validity}
-\hspace{0.5cm} Validity means that the resulting knowledge graph does not include any constraint violations, with respect to the shapes involved. \\
-(https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/) 
+\hspace{0.5cm} Validity means that the resulting knowledge graph does not include any constraint violations, with respect to the shapes involved. \cite{knowledgegraphevaulationbook}
 
 An example of a violation:
 \begin{center}
@@ -149,7 +143,7 @@ An example of a violation:
 This example is a violation because "Organ Location"'s constraints have only one node as an Organ can only be in one location at once. Therefore, there can only be one city branching out of the node 'Organ Location'.
 
 \subsection{Succinctness}
-\hspace{0.5cm} "Succinctness refers to the inclusion of relevant content that is represented in a concise and intelligible manner."\\ (https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/). 
+\hspace{0.5cm} "Succinctness refers to the inclusion of relevant content that is represented in a concise and intelligible manner." \cite{knowledgegraphevaulationbook}
 
 In this context, it means the knowledge graph created should be easily understandable and to the point. 
 
@@ -161,8 +155,7 @@ There are three types of succinctness:
 \end{itemize}
 
 \subsubsection{Conciseness}
-\hspace{0.5cm} Conciseness refers to the need of avoiding the input and addition of irrelevant data into the dataset, and subsequently, into the knowledge graph. \\
-(https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/)
+\hspace{0.5cm} Conciseness refers to the need of avoiding the input and addition of irrelevant data into the dataset, and subsequently, into the knowledge graph. \cite{knowledgegraphevaulationbook}
 
 An example of a violation: 
 \begin{lstlisting}
@@ -170,8 +163,7 @@ An example of a violation:
 \end{lstlisting}
 
 \subsubsection{Representational Conciseness}
-\hspace{0.5cm} Representational conciseness refers to the extent to which the knowledge graph content is compactly represented.  \\
-(https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/)
+\hspace{0.5cm} Representational conciseness refers to the extent to which the knowledge graph content is compactly represented. \cite{knowledgegraphevaulationbook}
 
 An example of a violation: 
 \begin{lstlisting}
@@ -192,8 +184,7 @@ An example of a violation:
 Note that the actual names of the organist and organ player are not in the example nodes of the knowledge graph for explanation purposes. 
 
 \subsubsection{Understandability}
-\hspace{0.5cm} Understandability refers to the need for readability and ease of understanding the knowledge graph generated.  
-\\(https://www.emse.fr/~zimmermann/KGBook/Multifile/quality-assessment/)
+\hspace{0.5cm} Understandability refers to the need for readability and ease of understanding the knowledge graph generated. \cite{knowledgegraphevaulationbook}
 
 An example of a violation: 
 \begin{lstlisting}
