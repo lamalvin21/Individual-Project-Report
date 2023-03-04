@@ -1,5 +1,50 @@
 \chapter{Evaluation}
-This chapter details how the knowledge graph is evaluated upon completion. 
+This chapter details how the knowledge graph is evaluated upon completion and measure implementation success.
+
+\section{Requirements-Based Assessment}
+\hspace{0.5cm} Assessing whether the requirements listed in the requirements chapter were achieved is important to measure the success of implementation. For each requirement, a description stating whether it was achieved and how it was achieved will be provided. 
+
+\subsection{Software Requirement Assessment}
+\begin{longtable}{|p{2.25cm}|p{5.5cm}|p{5.5cm}|}
+
+\hline
+\textbf{Requirement No.} & \textbf{Requirement} & \textbf{Assessment}\\
+\hline
+
+1& 
+Ontology must be correctly configured and input into SPARQL-Anything CONSTRUCT &
+Organ ontology created will match data from the given dataset and only relevant sections of the provided ontology will be included. Extracting the relevant parts of the ontology ensures the correct types are defined and certifies all classes are correctly converted to guarantee the generation of a valid knowledge. Ensure all relationships are accounted for and the ontology is concise with no redundant details. \\
+\hline
+
+2&
+The knowledge graph created must correctly reflect the organ dataset and follow ontology structure. &
+Identify data from the dataset in the knowledge graph and ensure relationships are consistent. Compare ontology with knowledge graph and ensure the framework is being followed. Override the SERVICE keyword in the query to use services of SPARQL-Anything. \\
+\hline
+
+3&
+The dataset must be refined to ensure correct data is being input into the knowledge graph. &
+Relevant parts of dataset are identified based on provided ontology and relevancy, therefore knowledge graph will contain suitable data. In the WHERE section of the query, ensure data being input into the knowledge graph is understandable and concise (if not already). String manipulation and some other methods of querying may be required to ensure knowledge graph nodes/edges are useful. \\
+\hline
+
+4&
+The knowledge graph must expand on the current dataset using external links. &
+Find external links for points of expansion outside of the dataset to extend my knowledge graph. Use web resources such as WikiData, MusicBrainz and Dbpedia to find potential expansion points of the resulting knowledge graph. Use multiple SERVICE calls (within the WHERE clause) to get external data and add it to current knowledge graph. String manipulation and string-to-link conversion (IRI) may be necessary to add external links. \\
+\hline
+
+5&
+Knowledge graphs must be evaluated to prove correctness and validity. &
+Validate the correctness of the knowledge graph produced. Look into the accuracy, coverage and coherency of the knowledge graph and analyse different aspects of those areas in more detail (more detail in evaluation section). \cite{knowledgegraphevaulationbook} will be used to help. \\ 
+\hline
+
+6&
+Speed of knowledge graph generation must be assessed. &
+Assess speed of query when generating the knowledge graph to ensure expansion of knowledge graph in the future is possible without encountering severe time constraints. This will measure scalability based off many different factors (more detail in evaluation section). 
+\hline
+\caption{Software Requirement Assessment Table}
+\end{longtable}
+
+\subsection{User Requirement Assessment}
+
 
 \section{Knowledge Graph Quality Assessment}
 \hspace{0.5cm} Assessment of knowledge graph quality is important to ensure the produced knowledge graph is valid and correct, using \cite{knowledgegraphevaulationbook} as guidance to assess knowledge graph quality. The 18 qualitative requirements detailed in \cite{evaluationpaper} are also used to assess quality. For each sections, specific details are assessed with explanations and assessment of the knowledge graph quality. 
@@ -186,3 +231,6 @@ Each knowledge graph is created with the purpose of making them concise. Creatio
 \end{figure}
 
 Data in the dataset is understandable from the perspective of a Dutch reader. Given the relationships meaning of data can be easily derived. However, there are some cases in the produced knowledge graphs where nodes produce an empty string "" due to empty data in the dataset. For example, in the the variable \textit{?partition} in the ontology is often empty and out of the five tested organs, four of the partitions data is missing. 
+
+\section{Query Scalability Assessment}
+
