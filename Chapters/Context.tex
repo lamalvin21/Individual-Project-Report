@@ -4,9 +4,11 @@ This chapter will contextualise the dataset and project, providing reasoning for
 \section{Organs}
 \hspace{0.5cm} The dataset that has been provided revolves around the musical instrument: Organs. Mozart once described organs as:
 
-\begin{quote}
+\vspace{-0.15cm}
+\begin{displayquote}
     \textit{"The king of instruments."}
-\end{quote}
+\end{displayquote}
+\vspace{-0.15cm}
 
 An organ can come in various different sizes ranging from a small upright piano to a large structure consisting of many sub-systems. The following chapter will provide a description of the instrument's components.
 
@@ -22,29 +24,39 @@ Due to the modernisation of the world, creation of organs became a lot easier al
 \hspace{0.5cm} Operation of the organ involves generating and directing airflow to the requested pipe causing them to vibrate and produce sound. The organist uses the keyboard and pedals to control the flow of air to pipes and draws stops to combine different sets of pipes to produce unique, blended sounds.  \cite{organvideo}
 
 \noindent Generally, the organ system works as follows:
+\vspace{-0.15cm}
 \begin{enumerate}
     \itemsep0em 
 \item Note is played on keyboard.
+\vspace{-0.1cm}
 \item Pressurised air is passed through organ system.
+\vspace{-0.1cm}
 \item When a particular stop is pulled, an internal slider is moved allowing air to pass through pipes.
+\vspace{-0.1cm}
 \item Sound for that particular key and stop is produced.
 \end{enumerate}
+\vspace{-0.1cm}
 
 \noindent \textbf{Pipe Types:}
+\vspace{-0.15cm}
 \begin{itemize}
     \itemsep0em 
 \item \underline{Reed Pipes}: Passes air through a reed (similar to a clarinet).
 \item \underline{Flue Pipes}: Forces air through a pipe (similar to recorder).
 \end{itemize}
+\vspace{-0.2cm}
 \cite{organvideo}
 
 \noindent \textbf{Stops:}
 \\ \hspace*{0.5cm}Drawing/selecting a stop gives the player access to that stop's set of pipes available (for a particular key on the keyboard). Types of stops include:
+\vspace{-0.15cm}
 \begin{itemize}
     \itemsep0em 
 \item Draw Stops
+\vspace{-0.1cm}
 \item Tabs
 \end{itemize}
+\vspace{-0.15cm}
 
 Multiple stops can be drawn at once in the same division and multiple pipes will produce sound (pressurised air will be passed through them) from the press of one key. \cite{organvideo}
 
@@ -57,14 +69,21 @@ For example, a rank of spire flue pipes all produce the same wind instrument sou
 \medskip
 \noindent \textbf{Divisions:}
 \\ \hspace*{0.5cm} An organ division is a set of pipes found within an organ controlled by the keyboard or pedals. Stops of an organ are arranged into divisions, which are usually given unique names. For example, some divisions include:
+
+\vspace{-0.15cm}
 \begin{itemize}
     \itemsep0em 
 \item Swell (smaller pipes).
+\vspace{-0.1cm}
 \item Great (larger pipes).
+\vspace{-0.1cm}
 \item Pedal.
+\vspace{-0.1cm}
 \item Choir.
+\vspace{-0.1cm}
 \item Positiv
 \end{itemize}
+\vspace{-0.15cm}
 
 All of these divisions usually accompany whatever is deemed appropriate for the given context. For example, when accompanying a choir, using the choir division would be suitable so as to not drown out the voices of the choir. \cite{organvideo}
 
@@ -74,14 +93,20 @@ All of these divisions usually accompany whatever is deemed appropriate for the 
 
 \medskip
 \noindent \textbf{Wind System:}
-\\ \hspace*{0.5cm} Wind systems are responsible for:
+\\ Wind systems are responsible for:
+
+\vspace{-0.15cm}
 \begin{itemize}
     \itemsep0em 
 \item Producing
+\vspace{-0.1cm}
 \item Storing
+\vspace{-0.1cm}
 \item Delivering
 \end{itemize}
-air within the organ system.
+\vspace{-0.15cm}
+
+\noindent air within the organ system.
 
 The organ wind system is a subsystem of the organ, which is responsible for delivering air to the organ's different pipes. Wind is generated within the system and then directed through a series of channels to the organ's pipes. Upon delivery of air to each individual pipe, a sound is made based on the key or pedal pressed. \cite{organvideo}
 
@@ -141,21 +166,32 @@ The data is split into multiple different files containing the unique organ name
 \hspace{0.5cm} The provided organ ontology contains all the relevant information relating to an organ, ranging from it's location to the parts within it. 
 
 The ontology includes classes for the organ system:
+
+\vspace{-0.15cm}
 \begin{itemize}
     \itemsep0em 
 \item Organ Console
+\vspace{-0.1cm}
 \item Organ Wind System
+\vspace{-0.1cm}
 \item Organ Case
+\vspace{-0.1cm}
 \item Organ Action
+\vspace{-0.1cm}
 \item Organ Division
 \end{itemize}
+\vspace{-0.15cm}
 
-But the ontology also includes classes about a particular organ's owner and offers background on a given organ. For example:
+\noindent But the ontology also includes classes about a particular organ's owner and offers background on a given organ. For example:
+
+\vspace{-0.15cm}
 \begin{itemize}
     \itemsep0em 
 \item Description
+\vspace{-0.1cm}
 \item Agent and the role of this agent (owner, organist, builder etc.)
 \end{itemize}
+\vspace{-0.15cm}
 
 The ontology is extremely vast and may contain nodes or relationships that do not appear within the dataset. Therefore, refinement and adjustment of the ontology to fit the needs of the provided dataset is required. Carefully selecting parts of the ontology to act as the framework of the resulting knowledge graph is vital to ensure all relevant data in the dataset is accurately represented. 
 
@@ -172,11 +208,15 @@ The CONSTRUCT operator allows knowledge graphs to be generated, by using the fra
 
 \subsubsection{ChatGPT}
 \hspace{0.5cm}  ChatGPT is a machine-learning-based tool developed by OpenAI and is an interactive chatbot. Answers provided by the chatGPT are conversational so answers are easy to understand and is suggested to be the best chatbot to date. \cite{chatgpt} OpenAi released a prototype chatbot on 30th November 2022 and is currently free to use. Uses of ChatGPT include:
+
+\vspace{-0.15cm}
 \begin{itemize}
     \itemsep0em 
 \item Solving programming questions.
+\vspace{-0.1cm}
 \item Fixing bugs in code.
 \end{itemize}
+\vspace{-0.15cm}
 
 When asked to create a knowledge graph regarding organs, ChatGPT produced:
 
