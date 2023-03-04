@@ -2,49 +2,82 @@
 This chapter details how the knowledge graph is evaluated upon completion and measure implementation success.
 
 \section{Requirements-Based Assessment}
-\hspace{0.5cm} Assessing whether the requirements listed in the requirements chapter were achieved is important to measure the success of implementation. For each requirement, a description stating whether it was achieved and how it was achieved will be provided. 
+\hspace{0.5cm} Assessing whether the requirements listed in the requirements chapter were achieved is important to measure the success of implementation. For each requirement, a description stating whether it was achieved will be provided. 
 
 \subsection{Software Requirement Assessment}
 \begin{longtable}{|p{2.25cm}|p{5.5cm}|p{5.5cm}|}
 
 \hline
-\textbf{Requirement No.} & \textbf{Requirement} & \textbf{Assessment}\\
+\textbf{Requirement No.} & \textbf{Software Requirement} & \textbf{Assessment}\\
 \hline
 
 1& 
 Ontology must be correctly configured and input into SPARQL-Anything CONSTRUCT &
-Organ ontology created will match data from the given dataset and only relevant sections of the provided ontology will be included. Extracting the relevant parts of the ontology ensures the correct types are defined and certifies all classes are correctly converted to guarantee the generation of a valid knowledge. Ensure all relationships are accounted for and the ontology is concise with no redundant details. \\
+Ontology has been refined and adapted based on the needs of the project. All relationships or triples have either been derived from the provided ontology or appended to the ontology based on the dataset. \\
 \hline
 
 2&
 The knowledge graph created must correctly reflect the organ dataset and follow ontology structure. &
-Identify data from the dataset in the knowledge graph and ensure relationships are consistent. Compare ontology with knowledge graph and ensure the framework is being followed. Override the SERVICE keyword in the query to use services of SPARQL-Anything. \\
+A knowledge graph produced does reflect data from the organ dataset. More detail on the quality of the knowledge graph is in the next section. \\
 \hline
 
 3&
 The dataset must be refined to ensure correct data is being input into the knowledge graph. &
-Relevant parts of dataset are identified based on provided ontology and relevancy, therefore knowledge graph will contain suitable data. In the WHERE section of the query, ensure data being input into the knowledge graph is understandable and concise (if not already). String manipulation and some other methods of querying may be required to ensure knowledge graph nodes/edges are useful. \\
+Ontology creation extracted relevant parts of the provided ontology and data from the dataset usually mapped onto the ontology one-to-one, without further adjustment. \\
 \hline
 
 4&
 The knowledge graph must expand on the current dataset using external links. &
-Find external links for points of expansion outside of the dataset to extend my knowledge graph. Use web resources such as WikiData, MusicBrainz and Dbpedia to find potential expansion points of the resulting knowledge graph. Use multiple SERVICE calls (within the WHERE clause) to get external data and add it to current knowledge graph. String manipulation and string-to-link conversion (IRI) may be necessary to add external links. \\
+Using the organ Wikidata site \cite{organwikidata} and organ MusicBrainz site \cite{organmusicbrainz}, data was added to the existing knowledge graph. Custom links based on data in the dataset were also added to the knowledge graph acting as further information. \\
 \hline
 
 5&
 Knowledge graphs must be evaluated to prove correctness and validity. &
-Validate the correctness of the knowledge graph produced. Look into the accuracy, coverage and coherency of the knowledge graph and analyse different aspects of those areas in more detail (more detail in evaluation section). \cite{knowledgegraphevaulationbook} will be used to help. \\ 
+This will be evaluated in the next section: \textit{Knowledge Graph Assessment Quality} \\ 
 \hline
 
 6&
 Speed of knowledge graph generation must be assessed. &
-Assess speed of query when generating the knowledge graph to ensure expansion of knowledge graph in the future is possible without encountering severe time constraints. This will measure scalability based off many different factors (more detail in evaluation section). 
+This will be assessed and evaluated in detail in the \textit{Query Scalability Assessment} section. \\ 
 \hline
 \caption{Software Requirement Assessment Table}
 \end{longtable}
 
 \subsection{User Requirement Assessment}
 
+\begin{longtable}{|p{2.25cm}|p{4.5cm}|p{6.5cm}|}
+\hline
+\textbf{Requirement No.} & \textbf{User Requirement} & \textbf{Assessment}\\
+\hline
+
+1& 
+User must be able to execute written query. &
+User can download SPARQL Anything and execute given query on command line. \\
+\hline
+
+2&
+User must be able to select an organ to view information on. &
+User can view the codes of all available organs in the dataset they can view information on. This organ code can then be passed through command line. \\
+\hline
+
+3&
+User must be able to see the knowledge graph after the query is executed. &
+User can either view the knowledge graph on command line or in a .TTL file with a location and a name that they specify. \\
+\hline
+
+4&
+User must be able to see relevant data in the knowledge graph. &
+User can view the knowledge graph and see relevant data corresponding to the request organ. \\
+\hline
+
+5&
+User must be able to view other relevant external data in the knowledge graph. &
+User can view the knowledge graph as see external links as well as custom links based on the data from the requested organ. \\ 
+\hline
+
+\caption{User Requirement Assessment Table}
+\end{longtable}
+\vspace{-1.1cm}
 
 \section{Knowledge Graph Quality Assessment}
 \hspace{0.5cm} Assessment of knowledge graph quality is important to ensure the produced knowledge graph is valid and correct, using \cite{knowledgegraphevaulationbook} as guidance to assess knowledge graph quality. The 18 qualitative requirements detailed in \cite{evaluationpaper} are also used to assess quality. For each sections, specific details are assessed with explanations and assessment of the knowledge graph quality. 
@@ -233,4 +266,31 @@ Each knowledge graph is created with the purpose of making them concise. Creatio
 Data in the dataset is understandable from the perspective of a Dutch reader. Given the relationships meaning of data can be easily derived. However, there are some cases in the produced knowledge graphs where nodes produce an empty string "" due to empty data in the dataset. For example, in the the variable \textit{?partition} in the ontology is often empty and out of the five tested organs, four of the partitions data is missing. 
 
 \section{Query Scalability Assessment}
+In this section, scalability of the knowledge graph will be tested. In particular, the areas being measured to assist the quantification of knowledge graph scalability are: 
+
+\vspace{-0.1cm}
+\begin{itemize}
+\itemsep0cm
+    \item Number of Service Calls.
+    \vspace{-0.1cm}
+    \item Size of Files.
+    \vspace{-0.1cm}
+    \item Number of Files Queried.
+\end{itemize}
+\vspace{-0.1cm}
+
+For each one, measurement of scalability will be computed using the time required to execute the query on command line, which is how long it takes to generate the knowledge graph. This will make use of a command on the Windows OS called: \textit{Measure-Command} \cite{measurecommand}, which measures the time required for a command to execute. 
+
+The same sample of five organs will be selected for knowledge graph generation and tests will be run on a 64-bit OS with Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz 1.80 GHz and 8GB RAM. 
+
+\subsection{Number of Service Calls}
+\hspace{0.5cm} 
+
+
+\subsection{Size of Files}
+\hspace{0.5cm} 
+
+
+\subsection{Number of Files Queried}
+\hspace{0.5cm} 
 
