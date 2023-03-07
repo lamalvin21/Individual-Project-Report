@@ -1,5 +1,5 @@
 \chapter{Evaluation}
-This chapter details how the knowledge graph is evaluated upon completion and measure implementation success.
+This chapter details how the knowledge graph is evaluated upon completion and measure implementation success. Both qualitative and quantitative methods were used during this section to provide a comprehensive evaluation.
 
 \section{Requirements-Based Assessment}
 \hspace{0.5cm} Assessing whether the requirements listed in the requirements chapter were achieved is important to measure the success of implementation. For each requirement, a description stating whether it was achieved will be provided. 
@@ -265,7 +265,6 @@ Each knowledge graph is created with the purpose of making them concise. Creatio
 
 Data in the dataset is understandable from the perspective of a Dutch reader. Given the relationships meaning of data can be easily derived. However, there are some cases in the produced knowledge graphs where nodes produce an empty string "" due to empty data in the dataset. For example, in the the variable \textit{?partition} in the ontology is often empty and out of the five tested organs, four of the partitions data is missing. 
 
-% 1917 organs in total
 \section{Query Scalability Assessment}
 In this section, scalability of the knowledge graph will be tested. In particular, the areas being measured to assist the quantification of knowledge graph scalability are: 
 
@@ -275,8 +274,6 @@ In this section, scalability of the knowledge graph will be tested. In particula
     \item Number of Service Calls.
     \vspace{-0.1cm}
     \item Size of Files.
-    \vspace{-0.1cm}
-    \item Number of Files Queried.
 \end{itemize}
 \vspace{-0.1cm}
 
@@ -292,10 +289,10 @@ For each one, measurement of scalability will be computed using the time require
     Measure-Command{java -jar sparql-anything-0.8.0.jar -q queries/organ-details.sparql --values organ=Part01_001MIDDE -o output/output.ttl}
 \end{lstlisting}
 
-The same sample of five organs will be selected for knowledge graph generation and tests will be run on a 64-bit OS with Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz 1.80 GHz and 8GB RAM. With regards to time calculation, each of the five sampled organs will be run 5 times using \textit{Measure-Command} and an average time will be calculated per organ. Then, mean for the five organs will be recorded.
+The same sample of five organs will be selected for knowledge graph generation and tests will be run on a 64-bit OS with Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz 1.80 GHz and 8GB RAM. With regards to time calculation, each of the five sampled organs will be run 5 times using \textit{Measure-Command} and an average time will be calculated per organ. Then, mean times for the five organs will be recorded.
 
 \subsection{Size of Files}
-\hspace{0.5cm} For this test, knowledge graph generation with respect to .json file size in the dataset is tested. For testing purposes, some organs may be removed from relevant data files used to generate the knowledge graph in order to measure the effect of file size. This is possible since the structure of each .json file follows the same format as shown in the \textit{Context} section. Inclusion of external links were left in the query as their addition does not significantly effect results. After removing organs to test file size, actual size of a file will be calculated using a VS Code extension: \textit{filesize}. A graph plotted with cumulative file sizes against time, can be seen in \textit{Figure 9.3}.
+\hspace{0.5cm} For this test, knowledge graph generation was calculated with respect to .json file size (from the dataset). For testing purposes, some organs may be removed from relevant data files used to generate the knowledge graph in order to measure the effect of file size. This is possible since the structure of each .json file follows the same format as shown in the \textit{Context} section. Inclusion of external links were left in the query as their addition does not significantly affect results. After removing organs to test file size, actual size of a file will be calculated using a VS Code extension: \textit{filesize}. A graph plotted with cumulative file sizes against time can be seen in \textit{Figure 9.3}.
 
 \begin{figure}[H]
 \begin{center}
@@ -303,12 +300,14 @@ The same sample of five organs will be selected for knowledge graph generation a
 \begin{axis}[
     axis x line=bottom,
     axis y line=left,
-    xlabel=\textit{file size},
+    xlabel=\textit{file size (MiB)},
     ylabel=\textit{time (ms)}, ]
 \addplot[smooth,blue] plot coordinates {
-    (0,10)
-    (8,30)
-    (16,40)
+    (0.01,1353.7575)
+    (7.498502, 1751.012)
+    (11.9024 ,2021.9029)
+    (15.27645, 2213.0641)
+    (21.8746, 2464.1894)
 };
 \end{axis}
 \end{tikzpicture}
@@ -317,12 +316,12 @@ The same sample of five organs will be selected for knowledge graph generation a
 \caption{Analysis of File Size}
 \end{figure}
 
-
+\textit{Figure 9.3} shows an initial linear relationship between the file size and time. This shows that the knowledge graph generating query produced is scalable to a certain extent. It is unknown, however, how well the query will perform for much larger file sizes. 
 
 \subsection{Number of Service Calls}
-\hspace{0.5cm} In this test, the number of service calls within the query are tested to observe their effect on speed of knowledge graph generation. In the implemented query, removal of service calls will be done incrementally and plotted against execution time. This will be indicative of the scalability of the knowledge graph as measurement of service calls will be important to identifying whether how vast the knowledge graph can get. 
+\hspace{0.5cm} In this test, the number of service calls within the query are tested to observe their effect on speed of knowledge graph generation. In the implemented query, removal of service calls will be done incrementally and plotted against execution time. This will be indicative of the scalability of the knowledge graph as the measurement of service calls will be important to identify how vast the knowledge graph can get. 
 
-For this project, knowledge graph size will increase proportionally with the number of service calls. To keep the test consistent, any other additional service calls were appended to the ontology and subsequently added to the knowledge graph for the purposes of this test, but were not representative of an actual organ knowledge graph. This was to account for time taken to add data onto the knowledge graph during command execution. In this particular test, all external links in the knowledge graph were removed so as to not effect the execution time. The graph for number of service calls against time can be seen in \textit{Figure 9.4}.
+For this project, knowledge graph size will increase proportionally with the number of service calls. To keep the test consistent, any other additional service calls were appended to the ontology and subsequently added to the knowledge graph for the purposes of this test, but were not representative of an actual organ knowledge graph. This was to account for time taken to add data onto the knowledge graph during command execution. In this particular test, all external links in the knowledge graph were removed so as to not affect the execution time. The graph for number of service calls against time can be seen in \textit{Figure 9.4}.
 
 \begin{figure}[H]
 \begin{center}
@@ -350,29 +349,6 @@ For this project, knowledge graph size will increase proportionally with the num
 \caption{Analysis of Service Calls}
 \end{figure}
 
-After plotting the graph of up to 100 service calls, a linear relationship can be seen between variables. The expandability of the knowledge graph is possible within reason. However, this graph only plots values for up to 100 service calls so time required for extremely large amounts of service calls may differ. 
+After plotting the graph (\textit{Figure 9.4}) of up to 100 service calls, an initial linear relationship can be seen between variables. The expandability of the knowledge graph is possible within reason. However, this graph only plots values for up to 100 service calls so time required for extremely large amounts of service calls may differ. 
 
-\subsection{Number of Files Queried}
-\hspace{0.5cm} In this final test, 
-
-\begin{figure}[H]
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[
-    axis x line=bottom,
-    axis y line=left,
-    xlabel=\textit{no. files queried},
-    ylabel=\textit{time}, ]
-\addplot[smooth,blue] plot coordinates {
-    (0,10)
-    (8,30)
-    (16,40)
-};
-\end{axis}
-\end{tikzpicture}
-\end{center}
-\vspace{-0.75cm}
-\caption{Analysis of Files Queried}
-\end{figure}
-
-
+% Competency question survey + evaluate no files queried
