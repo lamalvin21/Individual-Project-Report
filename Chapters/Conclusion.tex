@@ -13,13 +13,24 @@ The query created to generate the knowledge graph was evaluated using both quali
 If additional time was permitted during the course of this project, more sections of the provided ontology could be used- possibly with external organ datasets or other resources. 
 
 \section{Limitations}
-Limitations of the project will be detailed below:
+Limitations of the project have been identified during the course of the project as well as in the \textit{Evaluation} section. These limitations are split into subsections and listed below:
 
-Needs to be maintained lots to ensure accurate info is kept on there (eval quality point)
+\subsection{General Limitations}
+\begin{itemize}
+    \item Dependence on the SPARQL Anything tool. The maintenance of this tool by it's owners is vital to ensure that the created query still runs and generates a knowledge graph. Errors or deprecation of the tool will render the query unusable as \textit{SERVICE} calls within the query use the services of SPARQL Anything. 
+    \item Bias being introduced from the provided resources. The provided dataset and ontology may include pre-existing biases from it's creation as they may only include data that has been specially curated for the Polifonia project. 
+\end{itemize}
 
+\subsection{Evaluation Identified Limitations}
+\begin{itemize}
+    \item Dataset will need to be maintained and kept up to date to ensure data accuracy of the produced knowledge graph. 
+    \item Dataset is written in Dutch so is limited to external links surrounding Dutch organs. Therefore, the produced knowledge graph is mostly contains Dutch data and is limited to Dutch readers.  
+    \item Missing data in the dataset may be seen in some cases, so the knowledge graph is limited, to an extent, by the completeness of the provided dataset.
+    \item  Evaluation based on size of files and number of service calls only measured up to certain values so relationship between them and time, may change with larger numbers. Therefore, affecting potential scalability of the knowledge graph generation query. 
+\end{itemize}
 
 \section{Future Work \& Extensions}
-Discussion of future work and possible extensions of this project will be done below. They may also provide solutions to the limitations identified above.
+This section discusses future work and possible extensions of this project, which may also provide solutions to the limitations identified above.
 
 \begin{itemize}
     \item \textbf{Extension:} \\ Use of external datasets from websites such as Kaggle \cite{kaggle}, Google Dataset Search \cite{googledatasetsearch} and many others, could further extend the knowledge graph and potentially provide a more detailed solution. 
