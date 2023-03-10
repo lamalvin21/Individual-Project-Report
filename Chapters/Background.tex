@@ -6,7 +6,7 @@
 First, background of the project is discussed and suitable explanations provide context for the entire project. The broad scope of the project is presented before going into project-specific details in the context section.
 
 \section{The Semantic Web}
-\hspace*{0.5cm} The Semantic Web is an extension of the World Wide Web (WWW) that allows information on it to be machine-readable. \cite{semanticweb} The concept of the Semantic Web was founded by Tim Berners-Lee (founder of the WWW) with the idea that machines can easily interpret the information available on the WWW. Tim Berners-Lee initially thought of this idea in 1999 stating "I have a dream for the Web [in which computers] become capable of analyzing all the data on the Web – the content, links, and transactions between people and computers. A 'Semantic Web'" \cite{berners-TBLBook}. Ultimately, the semantic web aims to empower the knowledge embedded online so that it can be parsed by machines. \cite{semanticweb} 
+\hspace*{0.5cm} The Semantic Web is an extension of the World Wide Web (WWW) that allows information on it to be machine-readable. \cite{semanticweb} The concept of the Semantic Web was founded by Tim Berners-Lee (founder of the WWW) with the idea that machines can easily interpret the information available on the WWW. Tim Berners-Lee initially thought of this idea in 1999 stating ``I have a dream for the Web [in which computers] become capable of analyzing all the data on the Web – the content, links, and transactions between people and computers. A 'Semantic Web'" \cite{berners-TBLBook}. Ultimately, the semantic web aims to empower the knowledge embedded online so that it can be parsed by machines. \cite{semanticweb} 
 
 An example of these developments can be seen by a data storage project that contains data interpretable by both humans and machines- Wikidata. Wikidata is a large open knowledge base that is part of the Wikimedia family (including Wikipedia) and is connected to other datasets as well. \cite{wikidata} Data is stored in WikiData using various web data storage methods such as JSON, XML and RDF (Resource Description Framework). The latter (RDF) is described in more detail in the next section.  
 
@@ -55,13 +55,13 @@ An example of an RDF statement (in Turtle- .TTL) can be seen below:
 \vspace{-0.15cm}
 \begin{itemize}
     \itemsep0em 
-\item \textbf{The subject is:} \\ \textit{"http://www.example.com/Alvin"}
-\item \textbf{The predicate is:} \\ \textit{"http://www.example.com/vocab\#studiesAt"}
-\item \textbf{The object is:} \\ \textit{"http://www.example.com/KCL"}
+\item \textbf{The subject is:} \\ \textit{``http://www.example.com/Alvin"}
+\item \textbf{The predicate is:} \\ \textit{``http://www.example.com/vocab\#studiesAt"}
+\item \textbf{The object is:} \\ \textit{``http://www.example.com/KCL"}
 \end{itemize}
 \vspace{-0.1cm}
 
-This statement indicates that the entity \textit{"http://www.example.com/Alvin"} studies at the entity \textit{"http://www.example.com/KCL"}, according to the vocabulary defined by \\\textit{"http://www.example.com/vocab"}. However, writing all the various URI links separately is tedious and can look confusing for the human reader so using prefixes as shown below can make it more concise:
+This statement indicates that the entity \textit{``http://www.example.com/Alvin"} studies at the entity \textit{``http://www.example.com/KCL"}, according to the vocabulary defined by \\\textit{``http://www.example.com/vocab"}. However, writing all the various URI links separately is tedious and can look confusing for the human reader so using prefixes as shown below can make it more concise:
 
 \vspace{-0.2cm}
 \lstset
@@ -85,7 +85,7 @@ An English translation of the RDF statement is written below:
 
 \vspace{-0.1cm}
 \begin{center}
-    \textit{"Alvin studies at KCL". }
+    \textit{``Alvin studies at KCL". }
 \end{center}
 \vspace{-0.1cm}
 
@@ -149,7 +149,7 @@ Knowledge graphs are used in a variety of real-world applications including sear
 \vspace{-0.1cm}
 \begin{itemize}
     \itemsep0em 
-\item \textbf{Search Engines:} \\Knowledge graphs are used by search engines such as Google to find appropriate results given a search query. Results are interpreted and relevant information is displayed based on the relationships between the URIs and the meaning of the search term. The most relevant information with regard to the search query is displayed to the user. The method in which a knowledge graph aids a specific search query is called a "semantic search" and provides more accurate and relevant results. This mirrors how humans tend to think by emulating our natural ability to find associations between data.  \cite{searchengine}  
+\item \textbf{Search Engines:} \\Knowledge graphs are used by search engines such as Google to find appropriate results given a search query. Results are interpreted and relevant information is displayed based on the relationships between the URIs and the meaning of the search term. The most relevant information with regard to the search query is displayed to the user. The method in which a knowledge graph aids a specific search query is called a ``semantic search" and provides more accurate and relevant results. This mirrors how humans tend to think by emulating our natural ability to find associations between data.  \cite{searchengine}  
 
 \item \textbf{Recommendation Systems:} \\Knowledge graphs can be used in such systems because there are often many associations between different entities. Recommendation systems use relationships in the knowledge graph to display the most relevant data to the user. 
 

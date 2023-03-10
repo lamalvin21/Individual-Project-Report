@@ -78,7 +78,7 @@ This chapter will detail the implementation phase of the project and how the sol
 \end{lstlisting}
 
 \noindent In English, this command states: \\
-\hspace*{0.5cm} "Using the executable sparql-anything-0.8.0.jar, run the query in filename.sparql from the filepath folder and pass in \textit{variable} into the query with value variablevalue. Finally, output the knowledge graph in outputfile.ttl from the same file location". 
+\hspace*{0.5cm} ``Using the executable sparql-anything-0.8.0.jar, run the query in filename.sparql from the filepath folder and pass in \textit{variable} into the query with value variablevalue. Finally, output the knowledge graph in outputfile.ttl from the same file location". 
 
 \section{Prefixes}
 \hspace*{0.5cm} The prefixes in the ontology are mainly used in the relationship part of the triples. Below are the PREFIX that will be used:
@@ -289,7 +289,7 @@ External data from MusicBrainz's organ page \cite{organmusicbrainz} was not as v
 \end{itemize}
 \vspace{-0.1cm}
 
-\noindent The relationship for all additional nodes was "oont:extraInformation".
+\noindent The relationship for all additional nodes was ``oont:extraInformation".
 
 \subsubsection{Generic Links}
 \hspace*{0.5cm} These links were not organ-specific but provided more detail and general information regarding some aspects of the knowledge graph. Data in the dataset being so specific restricts the amount of external generic links that can be added, nevertheless, there are some points of expansion such as:
@@ -307,7 +307,7 @@ External data from MusicBrainz's organ page \cite{organmusicbrainz} was not as v
 \end{itemize}
 \vspace{-0.1cm}
 
-\noindent The relationship for all additional nodes was "oont:extraInformation".
+\noindent The relationship for all additional nodes was ``oont:extraInformation".
 
 \subsection{Final Ontology}
 \hspace*{0.5cm} Combining both dataset and external ontologies forms one ontology that can be seen in RDF. This ontology can be placed in the CONSTRUCT section of the query.
@@ -423,7 +423,7 @@ SERVICE <x-sparql-anything:file:./output/tech.json>
 
 This snippet follows the same structure as most SPARQL-Anything calls, but the last line binds the URI to \textit{?pitchInfo}. This website, in particular, found more information describing the pitch of an organ. 
 
-External data regarding MusicBrainz and Wikidata were added by following the format on the website and bound to a variable in the ontology. Most data on the website used links from Wikidata so the PREFIX \textit{wd} for Wikidata was used, but some data contained explicit links. For example:
+External data regarding MusicBrainz and Wikidata were added by following the format on the website and bound to a variable in the ontology. Most data on the website used links from Wikidata so the PREFIX \textit{wd} for Wikidata was used, but some data contained explicit links. Specific SERVICE calls for Wikidata or MusicBrainz were not necessary as all the data added to the knowledge graph came from the same organ Wikidata website \cite{organwikidata}. An example of two relationships stated on Wikidata being added to the knowledge graph:
 
 \lstset
 {

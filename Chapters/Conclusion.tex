@@ -2,23 +2,23 @@
 In this final chapter, the project will be concluded with directions for future work or possible extensions. Limitations of the project will also be discussed. 
 
 \section{Concluding Remarks}
-\hspace{0.5cm} Generating a knowledge graph using SPARQL Anything to display data on the web is a quick and simple solution to address the lack of computationally represented data on the web. The process for generating knowledge graphs has been an extensive procedure, but compared to other tools, is an effective and uncomplicated method for converting any dataset into a knowledge graph. 
+\hspace{0.5cm} Generating a knowledge graph using SPARQL Anything to display data on the web is a quick and simple solution to address the lack of computationally represented data. The process for generating knowledge graphs has been an extensive procedure, but compared to other tools, is an effective and uncomplicated method for converting any dataset into a knowledge graph. 
 
 Nonetheless, using SPARQL Anything as a tool for knowledge graph generation was challenging. Having no prior experience with SPARQL or using the tool SPARQL Anything, was difficult, so careful reading of documentation \cite{sparqlanythinggithub} and studying SPARQL, itself, using \cite{sparlbook} was required. 
 
 Extensive background and context research were also essential to understanding the project scope and provided resources. These were all relevant to generating the knowledge graph during implementation and evaluation of the solution. 
 
-The query created to generate the knowledge graph was evaluated using both qualitative and quantitative methods to ensure it's quality and measure scalability. Critiquing the solution was vital to provide an extensive review of the solution, so improvements can be made in the future. 
+The query created to generate the knowledge graph was evaluated using both qualitative and quantitative methods to ensure it's quality and measure scalability. Critiquing the solution was vital to provide an extensive review, so improvements can be made in the future. 
 
 If additional time was permitted during the course of this project, more sections of the provided ontology could be used- possibly with external organ datasets or other resources. 
 
 \section{Limitations}
-Limitations of the project have been identified during the course of the project as well as in the \textit{Evaluation} section. These limitations are split into subsections and listed below:
+Limitations of the project have been identified during the design, implementation and \textit{Evaluation} sections. These limitations are split into subsections and listed below:
 
 \subsection{General Limitations}
 \begin{itemize}
-    \item Dependence on the SPARQL Anything tool. The maintenance of this tool by it's owners is vital to ensure that the created query still runs and generates a knowledge graph. Errors or deprecation of the tool will render the query unusable as \textit{SERVICE} calls within the query use the services of SPARQL Anything. 
-    \item Bias being introduced from the provided resources. The provided dataset and ontology may include pre-existing biases from it's creation as they may only include data that has been specially curated for the Polifonia project. 
+    \item \textbf{Dependence on the SPARQL Anything tool.} The maintenance of this tool by it's owners is vital to ensure that the created query still runs and generates a knowledge graph. Errors or deprecation of the tool will render the query unusable as \textit{SERVICE} calls within the query use the services of SPARQL Anything. 
+    \item \textbf{Bias being introduced from the provided resources.} The provided dataset and ontology may include pre-existing biases from it's creation as they may only include data that has been specially curated for the Polifonia project. 
 \end{itemize}
 
 \subsection{Evaluation Identified Limitations}
@@ -33,10 +33,11 @@ Limitations of the project have been identified during the course of the project
 This section discusses future work and possible extensions of this project, which may also provide solutions to the limitations identified above.
 
 \begin{itemize}
-    \item \textbf{Extension:} \\ Use of external datasets from websites such as Kaggle \cite{kaggle}, Google Dataset Search \cite{googledatasetsearch} and many others, could further extend the knowledge graph and potentially provide a more detailed solution. 
+    \item \textbf{Extension:} \\ Use of external datasets from websites such as Kaggle \cite{kaggle}, Google Dataset Search \cite{googledatasetsearch} and many others, could further extend the knowledge graph and potentially provide a more detailed solution. Finding external datasets, however, may prove challenging due to the specificity of the current dataset.  
     \item \textbf{Extension:} \\ Use of DBpedia \cite{organdbpedia} as an external data source, similar to how Wikidata and MusicBrainz were used. However, when researching it's potential use, external links were not as relevant as the selected options. 
-    \item \textbf{Future Work:} \\ Use the provided ontology to it's fullest extent through the use of external data sources or create relevant data files by extracting information from the WWW to supplement the existing dataset and complete the knowledge graph. Application of Natural Language Processing techniques can be used to extract and integrate relevant information from the WWW into the knowledge graph. This may also present the opportunity to explore datasets in other languages other than Dutch, which can broaden the scope of datasets that can be found. 
-    \item \textbf{Future Work:} \\ Develop a user interface or visualization tool that enables user interaction with the generated knowledge graph by providing a visual display of it. This will aid understandability of the knowledge graph as well as make it more intuitive from a user's perspective. 
+    \item \textbf{Future Work:} \\ Use the provided ontology to its fullest extent by using external data sources. Creation of relevant data files by extracting information from the WWW may also supplement the existing dataset and will fully leverage the potential of the provided ontology. 
+    \item \textbf{Future Work:} \\ Application of Natural Language Processing techniques can be used to extract and integrate relevant information from the WWW into the knowledge graph. This may also present the opportunity to explore datasets in other languages other than Dutch, which can broaden the scope of datasets that can be found. 
+    \item \textbf{Future Work:} \\ Develop a user interface or visualization tool that enables user interaction with the generated knowledge graph by providing a visual display. This will aid understandability of the knowledge graph as well as make it more intuitive from a user's perspective. It will also help lay users who want to use or interpret the knowledge graphs for themselves. 
     \item \textbf{Future Work:} \\ Evaluate the knowledge graph using much larger values than those used to measure scalability in the \textit{Evaluation} section. For both extremely large datasets and large amounts of service calls. 
 \end{itemize}
 
