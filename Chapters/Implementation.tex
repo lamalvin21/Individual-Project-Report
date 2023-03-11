@@ -109,7 +109,7 @@ The provided ontology to identify data relevant to the organ node was used as we
 \subsubsection{Organ}
 \hspace*{0.5cm} This node posed as the main node in which all data would branch from. It represents the requested organ and relevant data will be branched from it. 
 
-Upon selection of relevant information from the dataset's .json files, they were appended to the organ node. The provided ontology was also used to correctly identify relationships to the organ node. Relevant data and relationships to the organ are listed below:
+Upon selection of relevant information from the dataset's .JSON files, they were appended to the organ node. The provided ontology was also used to correctly identify relationships to the organ node. Relevant data and relationships to the organ are listed below:
 
 \vspace{-0.15cm}
 \begin{itemize}
@@ -147,10 +147,10 @@ Upon selection of relevant information from the dataset's .json files, they were
 
 This data is directly relevant to the organ as illustrated in the provided organ ontology. Data such as originalLocation, dateOfbirth and state were added as they were part of the dataset and provided extra relevant detail. Because technicals, disposition and change were identified as nodes for further expansion, they were also connected to the main organ node. 
 
-Relationships used to describe the relation between the organ and it's objects were provided and usually had intuitive names based on the object. 
+Relationships used to describe the relation between the organ and its objects were provided and usually had intuitive names based on the object. 
 
 \subsubsection{Technicals}
-\hspace*{0.5cm} This branch of technical data regarding an organ was mainly derived off one .json file and a section of the provided ontology that referred to it's 'parthood'. All relationships branching from this 'technicals' node were provided. Relevant data and their relationships identified are below:
+\hspace*{0.5cm} This branch of technical data regarding an organ was mainly derived off one .JSON file and a section of the provided ontology that referred to its 'parthood'. All relationships branching from this 'technicals' node were provided. Relevant data and their relationships identified are below:
 
 \vspace{-0.1cm}
 \begin{itemize}
@@ -186,7 +186,7 @@ Relationships used to describe the relation between the organ and it's objects w
 \end{itemize}
 
 \subsubsection{Change}
-\hspace*{0.5cm} This branch stated changes made to the organ during it's lifetime. The provided ontology did not mention changes of a given organ so it was added to represent it in the knowledge graph. Relationships used were provided. The new sections added to the ontology were:
+\hspace*{0.5cm} This branch stated changes made to the organ during its lifetime. The provided ontology did not mention changes of a given organ so it was added to represent it in the knowledge graph. Relationships used were provided. The new sections added to the ontology were:
 
 \vspace{-0.15cm}
 \begin{itemize}
@@ -316,7 +316,7 @@ External data from MusicBrainz's organ page \cite{organmusicbrainz} was not as v
 \hspace*{0.5cm} The process of creating the knowledge graph generation query for the ontology will be detailed below:
 
 \subsection{Dataset Knowledge Graph Query}
-\hspace*{0.5cm} This subsection will detail the process for creating the query that is responsible for extracting data from the dataset using \textit{Figure 7.2} and the query skeleton structure in the design section. All code in this section will be part of the query's WHERE clause. Below is an example of data abstraction from a .json file:
+\hspace*{0.5cm} This subsection will detail the process for creating the query that is responsible for extracting data from the dataset using \textit{Figure 7.2} and the query skeleton structure in the design section. All code in this section will be part of the query's WHERE clause. Below is an example of data abstraction from a .JSON file:
 
 \lstset
 {

@@ -34,14 +34,14 @@ In this section, the plan for the ontology's general structure will be outlined 
 \begin{enumerate}
     \item \textbf{Organ}: The primary organ component that will connect to other many other nodes.
     \item \textbf{Changes}: This component specifies the organ adjustment details and maintenance changes in the organ.
-    \item \textbf{Disposition}: This component refers to the organ' current components and details relating to them.
+    \item \textbf{Disposition}: This component refers to the organ's current components and details relating to them.
     \item \textbf{Technicals:} This component was responsible for the specific musical details of the organ. 
     \item \textbf{OrganWikidata}: This provides expansion of the existing knowledge graph from Wikidata.
 \end{enumerate}
 
-The section of the ontology specifically for external Wikidata links can be structured in the same format as displayed on it's website. From the diagram above, extending the OrganWikidata node is most plausible.
+The section of the ontology specifically for external Wikidata links can be structured in the same format as displayed on its website. From the diagram above, extending the \textit{OrganWikidata} node is most plausible.
 
-For example, the organ page on wikidata \cite{organwikidata} contains organ-related triples. An extract of \cite{organwikidata} is shown below:
+For example, the organ page on Wikidata \cite{organwikidata} contains organ-related triples. An extract of \cite{organwikidata} is shown below:
 
 \lstset
 {
@@ -59,7 +59,7 @@ organ studiedBy organology
 \end{lstlisting}
 (from \cite{organwikidata})
 
-In this case, 'organ' can be replaced with our OrganWikidata node and the corresponding relationships and objects can be added to the ontology. All the extra nodes and edges can be added as external links to the knowledge graph using their unique wikidata URI. 
+In this case, 'organ' can be replaced with our \textit{OrganWikidata} node and the corresponding relationships and objects can be added to the ontology. All the extra nodes and edges can be added as external links to the knowledge graph using their unique Wikidata URI. 
 
 \section{Query Flow Diagram}
 \hspace{0.5cm} A flow diagram is a graphical representation of the sequence of steps or actions that need to be taken to complete a process. \cite{flowchart}
@@ -103,7 +103,7 @@ The nodes in \textit{Figure 7.2} represent necessary actions and one of the edge
 \begin{enumerate}
   \item \textbf{'Add ontology' node} refers to the addition of the ontology to the query.
   \item \textbf{'Query dataset' node} uses SPARQL Anything to search for and find relevant data within the dataset.
-  \item \textbf{'Clean \& Refine data' node} Refines data to be put into knowledge graph or to be used as external links. Involves two pathways to account for the data with no external links.
+  \item \textbf{'Clean \& Refine data' node} Refines data to be put into the knowledge graph or to be used as external links. Involves two pathways to account for the data with no external links.
   \item \textbf{'Get external links' node} uses the clean and refined data above to find other links, but only if requested.
   \item \textbf{'String manipulation with external links' node} configures links in a readable or useful format (URI) to be put into the knowledge graph.
   \item \textbf{'Add to knowledge graph' node} adds either clean and refined data from node 3 as well as external links to the knowledge graph. Once a specific file from the dataset has been queried, it loops again on a different file until all files have been queried.
@@ -151,5 +151,5 @@ WHERE
 
 \end{lstlisting}
 
-This basic query structure follows all steps in the flow graph above and aids query creation to generate a knowledge graph. This can be observed in the comments next to each line, which correspond to a step in the flow diagram created. It also outlines the basic structure that will be used to create the query. The multiple SERVICE calls refer to the multiple .json files in the dataset being queried. 
+This basic query structure follows all steps in the flow graph above and aids query creation to generate a knowledge graph. This can be observed in the comments next to each line, which correspond to a step in the flow diagram created. It also outlines the basic structure that will be used to create the query. The multiple SERVICE calls refer to the multiple .JSON files in the dataset being queried. 
 

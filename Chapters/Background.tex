@@ -3,12 +3,12 @@
 \usetikzlibrary {patterns}
 
 \chapter{Background}
-First, background of the project is discussed and suitable explanations provide context for the entire project. The broad scope of the project is presented before going into project-specific details in the context section.
+First, the background of this project is discussed and suitable explanations provide context for the entire project. The broad scope of the project is presented before going into project-specific details in the context section.
 
 \section{The Semantic Web}
 \hspace*{0.5cm} The Semantic Web is an extension of the World Wide Web (WWW) that allows information on it to be machine-readable. \cite{semanticweb} The concept of the Semantic Web was founded by Tim Berners-Lee (founder of the WWW) with the idea that machines can easily interpret the information available on the WWW. Tim Berners-Lee initially thought of this idea in 1999 stating ``I have a dream for the Web [in which computers] become capable of analyzing all the data on the Web – the content, links, and transactions between people and computers. A 'Semantic Web'" \cite{berners-TBLBook}. Ultimately, the semantic web aims to empower the knowledge embedded online so that it can be parsed by machines. \cite{semanticweb} 
 
-An example of these developments can be seen by a data storage project that contains data interpretable by both humans and machines- Wikidata. Wikidata is a large open knowledge base that is part of the Wikimedia family (including Wikipedia) and is connected to other datasets as well. \cite{wikidata} Data is stored in WikiData using various web data storage methods such as JSON, XML and RDF (Resource Description Framework). The latter (RDF) is described in more detail in the next section.  
+An example of these developments can be seen in a data storage project that contains data interpretable by both humans and machines- Wikidata. Wikidata is a large open knowledge base that is part of the Wikimedia family (including Wikipedia) and is connected to other datasets as well. \cite{wikidata} Data is stored in WikiData using various web data storage methods such as JSON, XML and RDF (Resource Description Framework). The latter (RDF) is described in more detail in the next section.  
 
 Another example within the project scope is MusicBrainz. MusicBrainz also provides information that is stored using RDF. \cite{musicbrainz} In this case, MusicBrainz's focus is around music so it may be more relevant and provide more specific data for the project.  
 
@@ -30,9 +30,9 @@ The subject is the entity that the statement is about or refers to, which is typ
 The predicate describes the relationship between the subject and object (i.e. how they are related). 
 
 \textbf{Object:} \\
-The object is an entity that the statement describes with relation to the subject. This can also be blank. 
+The object is an entity that the statement describes in relation to the subject. This can also be blank. 
 
-In this project, we will look closer at the Turtle (.TTL) format for RDF. A .TTL file stores data in RDF format (triples) with a subject, object and relationship. This format is specifically relevant when storing multiple related triples (RDF Graph) and allowing them to be readable by both human and machine. \cite{TTL}
+In this project, we will look closer at the Turtle (.TTL) format for RDF. A .TTL file stores data in RDF format (triples) with a subject, object and relationship. This format is specifically relevant when storing multiple related triples (RDF Graph) and allowing them to be readable by both humans and machines. \cite{TTL}
 
 An example of an RDF statement (in Turtle- .TTL) can be seen below:
 
@@ -103,7 +103,7 @@ The main components of an ontology are similar to the RDF triples we have seen b
 A collection of objects or things that are related to each other in some way.
 
 \item \textbf{Relationship}: \\
-A link between a class and attribute that describe how they are related. 
+A link between a class and an attribute that describe how they are related. 
 
 \item \textbf{Attributes}:\\ 
 A characteristic or property that a class may have, which is described by the relationship between them.
@@ -140,7 +140,7 @@ In the context of RDF statements, a connection between two nodes will have the s
 Ontologies are the framework in which knowledge graphs can be constructed and guide the generation of knowledge graphs. 
 
 \subsection{Knowledge Graphs}
-\hspace{0.5cm} A knowledge graph is a graph (i.e. data graph) that depicts real-world knowledge or data. \cite{knowledgegraph} Similar to ontologies, knowledge graphs are often represented as a network of interconnected nodes and edges, but instead the nodes represent real-world entities (such as people or places) and the edges represent the real-world relationships between them (such as 'owns' or 'discovered'). 
+\hspace{0.5cm} A knowledge graph is a graph (i.e. data graph) that depicts real-world knowledge or data. \cite{knowledgegraph} Similar to ontologies, knowledge graphs are often represented as a network of interconnected nodes and edges, but instead, nodes represent real-world entities (such as people or places) and edges represent the real-world relationships between them (such as 'owns' or 'discovered'). 
 
 As mentioned, knowledge graphs apply real data from an ontology framework. With a dataset and relevant ontology, we can create specific instances of each ontological relationship. 
 

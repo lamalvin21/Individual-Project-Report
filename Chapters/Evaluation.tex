@@ -80,7 +80,7 @@ User can view the knowledge graph and see external links as well as custom links
 \vspace{-1.1cm}
 
 \section{Knowledge Graph Quality Assessment}
-\hspace{0.5cm} Assessment of knowledge graph quality is important to ensure the produced knowledge graph is valid and correct, using \cite{knowledgegraphevaulationbook} as guidance to assess knowledge graph quality. The 18 qualitative requirements detailed in \cite{evaluationpaper} are also used to assess quality. For each sections, specific details are assessed with explanations and assessment of knowledge graph quality. 
+\hspace{0.5cm} Assessment of knowledge graph quality is important to ensure the produced knowledge graph is valid and correct, using \cite{knowledgegraphevaulationbook} as guidance to assess knowledge graph quality. The 18 qualitative requirements detailed in \cite{evaluationpaper} are also used to assess quality. For each section, specific details are assessed with explanations and assessment of knowledge graph quality. 
 
 The main three sections used to assess knowledge graph quality are: 
 
@@ -114,17 +114,17 @@ There are three types of accuracy:
 \vspace{-0.4cm}
 
 \subsubsection{Syntactic Accuracy}
-\hspace{0.5cm} Syntactic accuracy refers to whether the data presented is valid for it's given type. \cite{knowledgegraphevaulationbook}
+\hspace{0.5cm} Syntactic accuracy refers to whether the data presented is valid for its given type. \cite{knowledgegraphevaulationbook}
 
 \noindent An example of a potential violation: 
 \begin{displayquote}
     \textit{``This is an organ" would be incompatible with xsd:integer.}
 \end{displayquote}
 
-Upon assessing the produced knowledge graphs for each of the five organs, no syntactic inaccuracies were found. Checks for each organ were carried out and due to the ontology being derived off the provided ontology and external links, all resulting knowledge graphs should not, in theory, contain any syntactic inaccuracies. 
+Upon assessing the produced knowledge graphs for each of the five organs, no syntactic inaccuracies were found. Checks for each organ were carried out and due to the ontology being derived from the provided ontology and external links, all resulting knowledge graphs should not, in theory, contain any syntactic inaccuracies. 
 
 \subsubsection{Semantic Accuracy}
-\hspace{0.5cm} Semantic accuracy refers to whether data values are being correctly represented in real-world context. \cite{knowledgegraphevaulationbook}
+\hspace{0.5cm} Semantic accuracy refers to whether data values are being correctly represented in a real-world context. \cite{knowledgegraphevaulationbook}
 
 \noindent An example of a potential violation: 
 \begin{displayquote}
@@ -141,10 +141,10 @@ In regards to semantic accuracy, none of the five organs contained semantic inac
     \textit{Organ's location stated as ``Netherlands", but has recently been moved to Portugal and the knowledge graph has not been updated.}
 \end{displayquote}
 
-In the produced knowledge graphs, violations of timeliness can occur due to the static nature of the dataset. An example of a violation may occur when the \textit{?divisionName} is no longer the organ's current disposition in real life, but data in the dataset is not up-to-date. This particular violation, will occur over time as the organ's divisions can change over time. However, at the current moment in time, no timeliness violations occur in the five produced knowledge graphs.
+In the produced knowledge graphs, violations of timeliness can occur due to the static nature of the dataset. An example of a violation may occur when the \textit{?divisionName} is no longer the organ's current disposition in real life, but data in the dataset is not up-to-date. This particular violation will occur over time as the organ's divisions can change over time. However, at the current moment in time, no timeliness violations occur in the five produced knowledge graphs.
 
 \subsection{Coverage}
-\hspace{0.5cm} ``Coverage refers to avoiding the omission of domain-relevant elements, which may yield incomplete results". \cite{knowledgegraphevaulationbook}. In this context, the knowledge graph must completely fill the ontology framework in all of it's nodes and edges. This is to accurately represent the entire dataset given. 
+\hspace{0.5cm} ``Coverage refers to avoiding the omission of domain-relevant elements, which may yield incomplete results". \cite{knowledgegraphevaulationbook}. In this context, the knowledge graph must completely fill the ontology framework in all of its nodes and edges. This is to accurately represent the entire dataset given. 
 
 \noindent There are two types of coverage: 
 
@@ -158,7 +158,7 @@ In the produced knowledge graphs, violations of timeliness can occur due to the 
 \vspace{-0.4cm}
 
 \subsubsection{Completeness}
-\hspace{0.5cm} Completeness ensures the knowledge graph is correctly filled with all the relevant information present in a particular dataset. \cite{knowledgegraphevaulationbook}. Adding contextual information of entities and from different resources \cite{evaluationpaper} is also important to ensure completeness. 
+\hspace{0.5cm} Completeness ensures the knowledge graph is correctly filled with all the relevant information present in a particular dataset. \cite{knowledgegraphevaulationbook}. Adding contextual information about entities and from different resources \cite{evaluationpaper} is also important to ensure completeness. 
 
 \noindent Some examples of potential violations:
 
@@ -172,7 +172,7 @@ In the produced knowledge graphs, violations of timeliness can occur due to the 
 \end{displayquote}
 \vspace{-0.1cm}
 
-With regard to dataset coverage, most of the data is represented in the knowledge graph. The reason for omission of some data is related to how it can be represented in the knowledge graph without it causing confusion. For example, the specific ranges of a given organ for each keyboard or pedal is omitted due to the possible confusion it may cause when representing the keyboard and pedal ranges (\textit{?range1} and \textit{?range2}). Also, representing all that data concisely would be challenging and it may be seen as unnecessary. However, this is only relevant for some data. 
+With regard to dataset coverage, most of the data is represented in the knowledge graph. Reasoning for the omission of some data is related to how it can be represented in the knowledge graph without it causing confusion. For example, the specific ranges of a given organ for each keyboard or pedal are omitted due to the possible confusion it may cause when representing the keyboard and pedal ranges (\textit{?range1} and \textit{?range2}). Also, representing all that data concisely would be challenging and it may be seen as unnecessary. However, this is only relevant to some data. 
 
 Contextual information is added in the form of descriptions and custom links in all assessed knowledge graphs. The relationship \textit{oont:extraInformation}, for instance, provides context and extra detail for a specific node. 
 
@@ -193,7 +193,7 @@ Different resources can be seen in the five knowledge graphs such as: Wikidata l
 \end{displayquote}
 \vspace{-0.1cm}
 
-Violations regarding under-representation stem from the dataset provided. For example, the dataset is written in Dutch so organ data is limited to the Dutch language. In terms of under-representating people, anyone involved with the organ is mentioned in all five knowledge graphs such as: \textit{?maintainer} and \textit{?builder} so no violations occur in that regard.
+Violations regarding under-representation stem from the dataset provided. For example, the dataset is written in Dutch so organ data is limited to the Dutch language. With regard to the under-representation of people, anyone involved with the organ is mentioned in all five knowledge graphs such as: \textit{?maintainer} and \textit{?builder} so no violations occur in that regard.
 
 \subsection{Succinctness}
 \hspace{0.5cm} ``Succinctness refers to the inclusion of relevant content that is represented in a concise and intelligible manner." \cite{knowledgegraphevaulationbook}. In this context, it means the knowledge graph created should be easily understandable and to the point. 
@@ -290,10 +290,10 @@ For each one, measurement of scalability will be computed using the time require
     Measure-Command{java -jar sparql-anything-0.8.0.jar -q queries/organ-details.sparql --values organ=Part01_001MIDDE -o output/output.ttl}
 \end{lstlisting}
 
-The same sample of five organs will be selected for knowledge graph generation and tests will be run on a 64-bit OS with Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz 1.80 GHz and 8GB RAM. With regards to time calculation, each of the five sampled organs will be run 5 times using \textit{Measure-Command} and an average time will be calculated per organ. Then, mean times for the five organs will be recorded.
+The same sample of five organs will be selected for knowledge graph generation and tests will be run on a 64-bit OS with Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz 1.80 GHz and 8GB RAM. Regarding time calculation, the procedure will involve running each of the five sampled organs five times using \textit{Measure-Command}, followed by calculation of the average time per organ. Finally, the mean times for all five organs will be noted.
 
 \subsection{Size of Files}
-\hspace{0.5cm} For this test, knowledge graph generation was calculated with respect to .json file size (from the dataset). For testing purposes, some organs may be removed from relevant data files in order to measure the effect of file size. The five tested organs, however, will always remain in the files. This is possible since the structure of each .json file follows the same format as shown in the \textit{Context} section. External links were left in the query as their addition did not significantly affect results. After removing organs to test file size, actual size of a file will be noted using a VS Code extension: \textit{filesize}. A graph plotted with cumulative file sizes against time can be seen in \textit{Figure 9.3}.
+\hspace{0.5cm} For this test, knowledge graph generation was calculated with respect to .JSON file size (from the dataset). For testing purposes, some organs may be removed from relevant data files in order to measure the effect of file size. The five tested organs, however, will always remain in the files. This is possible since the structure of each .JSON file follows the same format as shown in the \textit{Context} section. External links were left in the query as their addition did not significantly affect results. After removing organs to test file size, the actual size of a file will be noted using a VS Code extension: \textit{filesize}. A graph plotted with cumulative file sizes against time can be seen in \textit{Figure 9.3}.
 
 \begin{figure}[H]
 \begin{center}
@@ -306,7 +306,7 @@ The same sample of five organs will be selected for knowledge graph generation a
 \addplot[smooth,blue] plot coordinates {
     (0.01,1353.7575)
     (7.498502, 1751.012)
-    (11.9024 ,2021.9029)
+    (11.9024, 2021.9029)
     (15.27645, 2213.0641)
     (21.8746, 2464.1894)
 };
@@ -317,10 +317,10 @@ The same sample of five organs will be selected for knowledge graph generation a
 \caption{Analysis of File Size}
 \end{figure}
 
-\textit{Figure 9.3} shows an initial linear relationship between the file size and time. This shows that the knowledge graph generating query produced is scalable to a certain extent. It is unknown, however, how well the query will perform for much larger file sizes. 
+\textit{Figure 9.3} shows an initial linear relationship between the file size and time. This shows that the knowledge graph-generating query produced is scalable to a certain extent. It is unknown, however, how well the query will perform for much larger file sizes. 
 
 \subsection{Number of SERVICE Calls}
-\hspace{0.5cm} In this test, number of SERVICE calls within the query are tested to observe their effect on speed of knowledge graph generation. In the implemented query, removal of SERVICE calls will be done incrementally and plotted against execution time. Measuring the number of SERVICE calls will indicate the scalability of the knowledge graph, providing insight into its capacity for expansion.
+\hspace{0.5cm} In this test, number of SERVICE calls within the query are tested to observe their effect on the speed of knowledge graph generation. In the implemented query, removal of SERVICE calls will be done incrementally and plotted against execution time. Measuring the number of SERVICE calls will indicate the scalability of the knowledge graph, providing insight into its capacity for expansion.
 
 For this project, knowledge graph size will increase proportionally with the number of SERVICE calls. A mock knowledge graph was created using additional SERVICE calls that were not in the project scope and added for testing purposes to measure expandability. Data gathered from the SERVICE call was added to the mock knowledge graph. This was to account for the time taken to add data onto the knowledge graph during command execution. In this particular test, all external links in the knowledge graph were removed so as to not affect execution time. The plotted graph for number of SERVICE calls against time can be seen in \textit{Figure 9.4}.
 
@@ -351,5 +351,3 @@ For this project, knowledge graph size will increase proportionally with the num
 \end{figure}
 
 After plotting the graph (\textit{Figure 9.4}) of up to 100 SERVICE calls, an initial linear relationship can be seen between variables. The expandability of the knowledge graph is possible within reason. However, this graph only plots values for up to 100 SERVICE calls so time required for extremely large amounts of SERVICE calls may differ. 
-
-% Competency question survey + evaluate no files queried
