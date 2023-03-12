@@ -1,8 +1,439 @@
 \chapter{Source Code}
-\section{Instructions}
-Complete source code listings must be submitted as an appendix to the report. The project source codes are usually spread out over several files/units. You should try to help the reader to navigate through your source code by providing a ``table of contents'' (titles of these files/units and one line descriptions). The first page of the program listings folder must contain the following statement certifying the work as your own: ``I verify that I am the sole author of the programs contained in this folder, except where explicitly stated to the contrary''. Your (typed) signature and the date should follow this statement.
+\section{Declaration}
+``I verify that I am the sole author of the programs contained in this folder, except where explicitly stated to the contrary''. Alvin Lam- \today
 
-All work on programs must stop once the code is submitted to KEATS. You are required to keep safely several copies of this version of the program and you must use one of these copies in the project examination. Your examiners may ask to see the last-modified dates of your program files, and may ask you to demonstrate that the program files you use in the project examination are identical to the program files you have uploaded to KEATS. Any attempt to demonstrate code that is not included in your submitted source listings is an attempt to cheat; any such attempt will be reported to the KCL Misconduct Committee.
+\section{Github Repository Link}
+Link to Github Repository containing all relevant files including the dataset. \\
+https://github.com/lamalvin21/ThirdYearProject
 
-\textbf{You may find it easier to firstly generate a PDF of your source code using a text editor and then merge it to the end of your report. There are many free tools available that allow you to merge PDF files.}
+\section{Knowledge Graph Generation Query}
+The final knowledge graph generation query is below:
 
+\lstset
+{
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\linespread{1}\ttfamily,
+}
+\begin{lstlisting}[caption={organ-details.sparql}]
+
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX fx:   <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:  <http://sparql.xyz/facade-x/data/>
+PREFIX oont: <http://w3id.org/polifonia/ontology/organs/>
+PREFIX wd: <https://www.wikidata.org/wiki/> 
+
+CONSTRUCT
+  {
+	?organ a oont:Organ ;
+		oont:builder ?builder ;
+		oont:consolelocation ?originalLocation ;
+		oont:dateOfBirth ?dateOfBirth ;
+		oont:monument ?building ;
+		oont:monumentNumber ?monumentNumber ;
+		oont:name ?organName ;
+		oont:organNumber ?organNumber ;
+		oont:state ?state ;
+		oont:particularities ?particularity ;
+		oont:history ?history ;
+		oont:creator ?creator ;
+		oont:moreInformation ?moreInformation ;
+		xyz:technicals ?technicals ; 
+		xyz:disposition ?disposition ;
+		xyz:change ?change ;
+		.
+
+	?technicals oont:systemPlayingAids ?systemPlayingAids .
+	?technicals oont:pitch ?pitch .
+	?technicals oont:keyboardRange ?range1 . 
+	?technicals oont:pedalRange ?range2 . 
+	?technicals oont:temperature ?temperature .
+	?technicals oont:windPressure ?windPressure .
+	?technicals oont:windSystem ?windSystem .
+	
+	?disposition xyz:divisionName ?divisionName . 
+	?disposition oont:partition ?partition .
+	?disposition oont:AdditionalSpecification ?specification .
+
+	?change oont:date ?dateChange .
+	?change oont:AdditionalSpecification ?changeDescription . 
+	?change oont:Builder ?maintainer .
+
+	?building oont:extraInformation ?buildingInfo .
+	?state oont:extraInformation ?stateInfo .
+	?maintainer oont:extraInformation ?maintainerInfo .
+
+	?pitch oont:extraInformation ?pitchInfo .
+	?windPressure oont:extraInformation ?windPressureInfo .
+	?windSystem oont:extraInformation ?windPressureInfo .
+	?divisionName oont:extraInformation ?divisionInfo .
+
+	?organ rdfs:subClassOf ?barrelOrgan .
+	?organ rdfs:subClassOf ?electricOrgan .
+	?organ rdfs:subClassOf ?pipeOrgan .
+	?organ rdfs:subClassOf ?reedOrgan .
+	?organ rdf:type ?windInstrument . 
+
+	?pipeOrgan oont:extraInformation ?pipeOrganInfo .
+	?reedOrgan oont:locationImage ?reedOrganImage .
+	?organ oont:extraInformation ?organWikidata .
+
+	?organWikidata wd:Property:P279 ?keyboardInstrument .
+	?organWikidata wd:Property:P279 ?buildingComponent .
+	?organWikidata wd:Property:P2579 ?organology .
+	?organWikidata wd:Property:P366 ?westernClassicalMusic .
+	?organWikidata wd:Property:P366 ?musicTradition .
+	?organWikidata wd:Property:P3095 ?organExpert .
+	?organWikidata wd:Property:P1535 ?organist .
+	?organWikidata wd:Property:P1343 ?catholicEncyclopedia .
+	?organWikidata wd:Property:P1343 ?metropolitanMuseumOfArtTaggingVocabulary .
+	?organWikidata wd:Property:P1709 ?dbpedia .
+
+	?organWikidata wd:Property:P527 ?organCase .
+	?organWikidata wd:Property:P527 ?organPipe .
+	?organWikidata wd:Property:P527 ?musicalKeyboard .
+	?organWikidata wd:Property:P527 ?pedalKeyboard .
+	?organWikidata wd:Property:P527 ?organStop .
+	?organWikidata wd:Property:P527 ?organConsole .
+	?organWikidata wd:Property:P527 ?swellBox .
+
+	?organWikidata wd:Property:P1889 ?pipeOrgan .
+  }
+WHERE
+  { 
+	SERVICE <x-sparql-anything:file:./output/history_base.json> 
+	{
+		BIND(CONCAT("$.", ?_organ, ".builder") AS ?organBuilder) .
+
+		fx:properties
+			fx:json.path.1 ?organBuilder ; .
+
+		[] a fx:root; 
+			rdf:_1 ?builder ; 
+
+		BIND (?_organ AS ?organ) .
+	} 
+	SERVICE <x-sparql-anything:file:./output/history_base.json> 
+	{
+		BIND(CONCAT("$.", ?_organ, ".originallocation") AS ?organOriginalLocation) .
+
+		fx:properties
+			fx:json.path.1 ?organOriginalLocation ; .
+
+		[] a fx:root; 
+			rdf:_1 ?originalLocation ;
+	} 
+	SERVICE <x-sparql-anything:file:./output/history_base.json> 
+	{
+		BIND(CONCAT("$.", ?_organ, ".year") AS ?organDob) .
+
+		fx:properties
+			fx:json.path.1 ?organDob ; .
+
+		[] a fx:root; 
+			rdf:_1 ?dateOfBirth ;
+	} 
+	SERVICE <x-sparql-anything:file:./output/base.json>
+	{
+		BIND(CONCAT("$.", ?_organ, ".building") AS ?organBuilding) .
+
+		fx:properties
+			fx:json.path.1 ?organBuilding ; .
+
+		[] a fx:root; 
+			rdf:_1 ?building ;
+
+		BIND(IRI(REPLACE(CONCAT("https://nl.wikipedia.org/wiki/", ?building), " ", "_")) AS ?buildingInfo) . 
+	} 
+	SERVICE <x-sparql-anything:file:./output/base.json>
+	{
+		BIND(CONCAT("$.", ?_organ, ".place") AS ?organPlace) .
+
+		fx:properties
+			fx:json.path.1 ?organPlace ; .
+
+		[] a fx:root; 
+			rdf:_1 ?state ;
+
+		BIND(IRI(REPLACE(CONCAT("https://nl.wikipedia.org/wiki/", ?state), " ", "_")) AS ?stateInfo) .
+	} 
+	SERVICE <x-sparql-anything:file:./output/base.json>
+	{
+		BIND(CONCAT("$.", ?_organ, ".monumentnumber") AS ?organMonumentNumber) .
+
+		fx:properties
+			fx:json.path.1 ?organMonumentNumber ; .
+
+		[] a fx:root; 
+			rdf:_1 ?monumentNumber ;
+	} 
+	SERVICE <x-sparql-anything:file:./output/base.json>
+	{
+		BIND(CONCAT("$.", ?_organ, ".name") AS ?organName1) .
+
+		fx:properties
+			fx:json.path.1 ?organName1 ; .
+
+		[] a fx:root; 
+			rdf:_1 ?organName ;
+	} 
+	SERVICE <x-sparql-anything:file:./output/base.json>
+	{
+		BIND(CONCAT("$.", ?_organ, ".organnumber") AS ?organNumber1) .
+
+		fx:properties
+			fx:json.path.1 ?organNumber1 ; .
+
+		[] a fx:root; 
+			rdf:_1 ?organNumber ;
+	} 
+	SERVICE <x-sparql-anything:file:./output/texts_tech.json> 
+	{
+		BIND(CONCAT("$.", ?_organ) AS ?organTechnicals) .
+
+		fx:properties
+			fx:json.path.1 ?organTechnicals; .
+
+		[] a fx:root; 
+			rdf:_1 ?technicals ; 
+	} 
+	SERVICE <x-sparql-anything:file:./output/tech.json>
+	{
+		BIND(CONCAT("$.", ?_organ, ".pitch") AS ?organPitch) .
+
+		fx:properties
+			fx:json.path.1 ?organPitch ; .
+
+		[] a fx:root; 
+			rdf:_1 ?pitch ;
+		
+		BIND(URI("https://organhistoricalsociety.org/OrganHistory/works/works04.htm") AS ?pitchInfo) .
+	} 
+	SERVICE <x-sparql-anything:file:./output/tech.json>
+	{
+		BIND(CONCAT("$.", ?_organ, ".pitch") AS ?organPitch) .
+
+		fx:properties
+			fx:json.path.1 ?organPitch ; .
+
+		[] a fx:root; 
+			rdf:_1 ?pitch ;
+		
+		BIND(URI("https://organhistoricalsociety.org/OrganHistory/works/works04.htm") AS ?pitchinfo) .
+	} 
+	SERVICE <x-sparql-anything:file:./output/tech.json>
+	{
+		BIND(CONCAT("$.", ?_organ, ".windPres") AS ?organWindPressure) .
+
+		fx:properties
+			fx:json.path.1 ?organWindPressure ; .
+
+		[] a fx:root; 
+			rdf:_1 ?windPressure ;
+
+		BIND(URI("https://organhistoricalsociety.org/OrganHistory/works/works06.htm") AS ?windPressureInfo) .
+	} 
+	SERVICE <x-sparql-anything:file:./output/tech.json>
+	{
+		BIND(CONCAT("$.", ?_organ, ".aids") AS ?organAids) .
+
+		fx:properties
+			fx:json.path.1 ?organAids ; .
+
+		[] a fx:root; 
+			rdf:_1 ?systemPlayingAids ;
+	} 
+	SERVICE <x-sparql-anything:file:./output/tech.json>
+	{
+		BIND(CONCAT("$.", ?_organ, ".range1") AS ?organRange1) .
+
+		fx:properties
+			fx:json.path.1 ?organRange1 ; .
+
+		[] a fx:root; 
+			rdf:_1 ?range1 ;
+	} 
+	SERVICE <x-sparql-anything:file:./output/tech.json>
+	{
+		BIND(CONCAT("$.", ?_organ, ".range2") AS ?organRange2) .
+
+		fx:properties
+			fx:json.path.1 ?organRange2 ; .
+
+		[] a fx:root; 
+			rdf:_1 ?range2 ;
+	} 
+	SERVICE <x-sparql-anything:file:./output/tech.json>
+	{
+		BIND(CONCAT("$.", ?_organ, ".temperature") AS ?organTemperature) .
+
+		fx:properties
+			fx:json.path.1 ?organTemperature ; .
+
+		[] a fx:root; 
+			rdf:_1 ?temperature ;
+	} 
+	SERVICE <x-sparql-anything:file:./output/tech.json>
+	{
+		BIND(CONCAT("$.", ?_organ, ".windSys") AS ?organWindSystem) .
+
+		fx:properties
+			fx:json.path.1 ?organWindSystem ; .
+
+		[] a fx:root; 
+			rdf:_1 ?windSystem ;
+	} 
+	SERVICE <x-sparql-anything:file:./output/dispositions.json>
+	{
+		BIND(CONCAT("$.", ?_organ, ".dispositions[?(@.current==true)].description") AS ?organDescription) .
+
+		fx:properties
+			fx:json.path.1 ?organDescription ; .
+
+		[] a fx:root; 
+			rdf:_1 ?disposition ;
+	} 
+	SERVICE <x-sparql-anything:file:./output/dispositions.json>
+	{
+		BIND(CONCAT("$.", ?_organ, ".dispositions[?(@.current==true)].disposition[0].division_name") AS ?organDivisionName) .
+
+		fx:properties
+			fx:json.path.1 ?organDivisionName ; .
+
+		[] a fx:root; 
+			rdf:_1 ?divisionName ;
+
+		BIND(URI("https://organhistoricalsociety.org/OrganHistory/works/works05.htm") AS ?divisionInfo) .
+	} 
+	SERVICE <x-sparql-anything:file:./output/dispositions.json>
+	{
+		BIND(CONCAT("$.", ?_organ, ".dispositions[?(@.current==true)].disposition[0].stoplist[0].partition") AS ?organPartition) .
+
+		fx:properties
+			fx:json.path.1 ?organPartition ; .
+
+		[] a fx:root; 
+			rdf:_1 ?partition ;
+	} 
+	SERVICE <x-sparql-anything:file:./output/dispositions.json>
+	{
+		BIND(CONCAT("$.", ?_organ, ".dispositions[?(@.current==true)].disposition[0].stoplist[0].spec") AS ?organSpec) .
+
+		fx:properties
+			fx:json.path.1 ?organSpec ; .
+
+		[] a fx:root; 
+			rdf:_1 ?specification ;
+	} 
+	SERVICE <x-sparql-anything:file:./output/history_projects.json>
+	{
+		BIND(CONCAT("$.", ?_organ, "[0].changes[0]") AS ?organChange) .
+
+		fx:properties
+			fx:json.path.1 ?organChange ; .
+
+		[] a fx:root; 
+			rdf:_1 ?change ;
+	} 
+	SERVICE <x-sparql-anything:file:./output/history_projects.json>
+	{
+		BIND(CONCAT("$.", ?_organ, "[0].date") AS ?organDateChange) .
+
+		fx:properties
+			fx:json.path.1 ?organDateChange ; .
+
+		[] a fx:root; 
+			rdf:_1 ?dateChange ;
+	} 
+	SERVICE <x-sparql-anything:file:./output/history_projects.json>
+	{
+		BIND(CONCAT("$.", ?_organ, "[0].description") AS ?organChangeDescription) .
+
+		fx:properties
+			fx:json.path.1 ?organChangeDescription ; .
+
+		[] a fx:root; 
+			rdf:_1 ?changeDescription ;
+	} 
+	SERVICE <x-sparql-anything:file:./output/history_projects.json>
+	{
+		BIND(CONCAT("$.", ?_organ, "[0].name") AS ?organMaintainer) .
+
+		fx:properties
+			fx:json.path.1 ?organMaintainer ; .
+
+		[] a fx:root; 
+			rdf:_1 ?maintainer ;
+
+		BIND(IRI(REPLACE(CONCAT("https://nl.wikipedia.org/wiki/", ?maintainer), " ", "_")) AS ?maintainerInfo) .
+	}
+	SERVICE <x-sparql-anything:file:./output/texts_bijzonderheden.json> 
+	{
+		BIND(CONCAT("$.", ?_organ) AS ?organParticularity) .
+
+		fx:properties
+			fx:json.path.1 ?organParticularity; .
+
+		[] a fx:root; 
+			rdf:_1 ?particularity ; 
+	} 
+	SERVICE <x-sparql-anything:file:./output/texts_hist.json> 
+	{
+		BIND(CONCAT("$.", ?_organ) AS ?organHistory) .
+
+		fx:properties
+			fx:json.path.1 ?organHistory; .
+
+		[] a fx:root; 
+			rdf:_1 ?history ; 
+	}
+	SERVICE <x-sparql-anything:file:./output/texts_kunst.json> 
+	{
+		BIND(CONCAT("$.", ?_organ) AS ?organCreator) .
+
+		fx:properties
+			fx:json.path.1 ?organCreator; .
+
+		[] a fx:root; 
+			rdf:_1 ?creator ; 
+	} 
+	SERVICE <x-sparql-anything:file:./output/texts_lit.json> 
+	{
+		BIND(CONCAT("$.", ?_organ) AS ?organMoreInformation) .
+
+		fx:properties
+			fx:json.path.1 ?organMoreInformation; .
+
+		[] a fx:root; 
+			rdf:_1 ?moreInformation ; 
+	}
+
+	BIND(wd:Q752638 AS ?barrelOrgan) .
+	BIND(wd:Q1327327 AS ?electricOrgan) .
+	BIND(wd:Q281460 AS ?pipeOrgan) .
+	BIND(IRI("https://en.wikisource.org/wiki/1911_Encyclopædia_Britannica/Organ ") AS ?pipeOrganInfo) .
+	BIND(wd:Q12460259 AS ?reedOrgan) .
+	BIND(IRI("https://staticbrainz.org/irombook/reed_organ/reed_organ.png") AS ?reedOrganImage) . 
+	BIND(wd:Q173453 AS ?windInstrument) .
+	BIND(wd:Q1444 AS ?organWikidata) .
+
+	BIND(wd:Q52954 AS ?keyboardInstrument) .
+	BIND(wd:Q19603939 AS ?buildingComponent) .
+	BIND(wd:Q11163731 AS ?organology) .
+	BIND(wd:Q9730 AS ?westernClassicalMusic) .
+	BIND(wd:Q60733114 AS ?musicTradition) .
+	BIND(wd:Q1495811 AS ?organExpert) .
+	BIND(wd:Q765778 AS ?organist) .
+	BIND(wd:Q302556 AS ?catholicEncyclopedia) .
+	BIND(wd:Q106727050 AS ?metropolitanMuseumOfArtTaggingVocabulary) .
+	BIND(IRI("https://dbpedia.org/ontology/Organ") AS ?dbpedia) .
+	BIND(wd:Q2927648 AS ?organCase) .
+	BIND(wd:Q1510738 AS ?organPipe) .
+	BIND(wd:Q901207 AS ?musicalKeyboard) .
+	BIND(wd:Q1758965 AS ?pedalKeyboard) .
+	BIND(wd:Q1446290 AS ?organStop) .
+	BIND(wd:Q392573 AS ?organConsole) .
+	BIND(wd:Q25112583 AS ?swellBox) .
+  }
+\end{lstlisting}

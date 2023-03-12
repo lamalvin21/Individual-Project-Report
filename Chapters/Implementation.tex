@@ -102,7 +102,7 @@ This chapter will detail the implementation phase of the project and how the sol
 \hspace*{0.5cm} As mentioned in the design, scope of the provided ontology was too broad for the envisioned knowledge graph. Therefore, refinement of the provided ontology and exploration with external links was necessary to produce a relevant ontology. As mentioned in the \textit{Context} chapter, the ontology will serve as the framework for the knowledge graph and will be placed in the CONSTRUCT segment of the query. In the following subsections, the process of creating the ontology using the dataset and external data will be detailed.
 
 \subsection{Dataset Ontology}
-\hspace*{0.5cm} Using \textit{Figure 7.1}, identification and grouping of relevant data was done and can now be expanded upon. 
+\hspace*{0.5cm} Using \textit{Figure 7.2}, identification and grouping of relevant data was done and can now be expanded upon. 
 
 The provided ontology to identify data relevant to the organ node was used as well to ensure the correct relationships were stated.
 
@@ -200,10 +200,10 @@ Relationships used to describe the relation between the organ and its objects we
 \vspace{-0.25cm}
 
 \subsection{External Ontology}
-\hspace*{0.5cm} The method in which external data was added to the knowledge graph involved following the flow in \textit{Figure 7.2}.
+\hspace*{0.5cm} The method in which external data was added to the knowledge graph involved following the flow in \textit{Figure 7.3}.
 
 \subsubsection{External Data Sources}
-\hspace*{0.5cm} As mentioned in the \textit{specification} section, Wikidata and MusicBrainz can be used to expand the existing knowledge graph. Following \textit{Figure 7.1}, a node branching out of the main organ node was made to represent Wikidata's organ page \cite{organwikidata} from which the same structure was employed. The relationships used were the same as those on Wikidata. Data branching off the organWikidata node with their corresponding relationship were:
+\hspace*{0.5cm} As mentioned in the \textit{specification} section, Wikidata and MusicBrainz can be used to expand the existing knowledge graph. Following \textit{Figure 7.2}, a node branching out of the main organ node was made to represent Wikidata's organ page \cite{organwikidata} from which the same structure was employed. The relationships used were the same as those on Wikidata. Data branching off the organWikidata node with their corresponding relationship were:
 
 \vspace{-0.15cm}
 \begin{itemize}
@@ -316,7 +316,7 @@ External data from MusicBrainz's organ page \cite{organmusicbrainz} was not as v
 \hspace*{0.5cm} The process of creating the knowledge graph generation query for the ontology will be detailed below:
 
 \subsection{Dataset Knowledge Graph Query}
-\hspace*{0.5cm} This subsection will detail the process for creating the query that is responsible for extracting data from the dataset using \textit{Figure 7.2} and the query skeleton structure in the design section. All code in this section will be part of the query's WHERE clause. Below is an example of data abstraction from a .JSON file:
+\hspace*{0.5cm} This subsection will detail the process for creating the query that is responsible for extracting data from the dataset using \textit{Figure 7.3} and the query skeleton structure in the design section. All code in this section will be part of the query's WHERE clause. Below is an example of data abstraction from a .JSON file:
 
 \lstset
 {
@@ -337,7 +337,7 @@ External data from MusicBrainz's organ page \cite{organmusicbrainz} was not as v
     } 
 \end{lstlisting}
 
-The snippet above follows \textit{Figure 7.2} and provides the template for most SPARQL-Anything SERVICE calls in the query. The query's sequence of events will be numbered below:
+The snippet above follows \textit{Figure 7.3} and provides the template for most SPARQL-Anything SERVICE calls in the query. The query's sequence of events will be numbered below:
 
 \begin{enumerate}
     \item SERVICE call queries the \textit{history\_base.json} file in the \textit{output} folder using SPARQL-Anything. 
@@ -362,7 +362,7 @@ This SPARQL-Anything call is followed by many other SPARQL-Anything calls to com
 \hspace*{0.5cm} This subsection will describe the process in which external data was added to the knowledge graph and how it was implemented in the query. 
 
 \subsubsection{Custom Data}
-\hspace*{0.5cm} For links that required data from the dataset, the query skeleton structure and \textit{Figure 7.2} were followed, providing the framework to create the query. Custom links were created from Wikipedia as it was one of the few websites that covered the scope of what could be added. It also gave adequate extra information for the data and sufficiently extended breadth of the resulting knowledge graph. To match the context of the dataset, the link created was from the Dutch version of Wikipedia. As mentioned in the ontology creation section, custom links were difficult to identify using the dataset as data was very specific to a particular organ. Nonetheless, an example of a custom link addition can be seen below:
+\hspace*{0.5cm} For links that required data from the dataset, the query skeleton structure and \textit{Figure 7.3} were followed, providing the framework to create the query. Custom links were created from Wikipedia as it was one of the few websites that covered the scope of what could be added. It also gave adequate extra information for the data and sufficiently extended breadth of the resulting knowledge graph. To match the context of the dataset, the link created was from the Dutch version of Wikipedia. As mentioned in the ontology creation section, custom links were difficult to identify using the dataset as data was very specific to a particular organ. Nonetheless, an example of a custom link addition can be seen below:
 
 \lstset
 {
@@ -385,7 +385,7 @@ This SPARQL-Anything call is followed by many other SPARQL-Anything calls to com
     } 
 \end{lstlisting}
 
-The snippet above also follows \textit{Figure 7.2} and is used whenever a custom external link is added to the knowledge graph. The beginning of the query follows the same format as the dataset knowledge graph query but has an extra line at the end.
+The snippet above also follows \textit{Figure 7.3} and is used whenever a custom external link is added to the knowledge graph. The beginning of the query follows the same format as the dataset knowledge graph query but has an extra line at the end.
 
 Using string manipulation and other SPARQL functions, the custom link is created as follows:
 \begin{enumerate}
@@ -398,7 +398,7 @@ Using string manipulation and other SPARQL functions, the custom link is created
 This is an example of where SPARQL-Anything's Facade-X approach is useful because  features of SPARQL within a SPARQL-Anything query can be used without having to learn something completely new. 
 
 \subsubsection{General Data}
-\hspace*{0.5cm} For links that were independent of the dataset, they were added after the SPARQL-Anything calls to stay consistent with \textit{Figure 7.2}. Links identified independently were added within the corresponding SERVICE call from which they branched out from. These specific links were found for data that had a broad scope, so websites regarding those subjects could be found. For example:
+\hspace*{0.5cm} For links that were independent of the dataset, they were added after the SPARQL-Anything calls to stay consistent with \textit{Figure 7.3}. Links identified independently were added within the corresponding SERVICE call from which they branched out from. These specific links were found for data that had a broad scope, so websites regarding those subjects could be found. For example:
 
 \lstset
 {
@@ -423,7 +423,7 @@ SERVICE <x-sparql-anything:file:./output/tech.json>
 
 This snippet follows the same structure as most SPARQL-Anything calls, but the last line binds the URI to \textit{?pitchInfo}. This website, in particular, found more information describing the pitch of an organ. 
 
-External data regarding MusicBrainz and Wikidata were added by following the format on the website and bound to a variable in the ontology. Most data on the website used links from Wikidata so the PREFIX \textit{wd} for Wikidata was used, but some data contained explicit links. Specific SERVICE calls for Wikidata or MusicBrainz were not necessary as all the data added to the knowledge graph came from the same organ Wikidata website \cite{organwikidata}. An example of two relationships stated on Wikidata being added to the knowledge graph:
+External data regarding MusicBrainz and Wikidata were added by following the format on the website and bound to a variable in the ontology. Most data on the website used links from Wikidata so the PREFIX \textit{wd} for Wikidata was used, but some data contained explicit links. Specific SERVICE calls for Wikidata or MusicBrainz were not necessary as all the data added to the knowledge graph came from the same organ Wikidata website \cite{organwikidata}. Physical extraction directly from the websites into the knowledge graph was a more suitable method of expansion than using more SERVICE calls. An example of two relationships stated on Wikidata being added to the knowledge graph:
 
 \lstset
 {

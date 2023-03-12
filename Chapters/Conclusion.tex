@@ -1,20 +1,20 @@
+% Past tense
 \chapter{Conclusion}
-% implications & improvements
 In this final chapter, the project will be concluded with directions for future work or possible extensions. Limitations of the project will also be discussed. 
 
 \section{Concluding Remarks}
-\hspace{0.5cm} Generating a knowledge graph using SPARQL Anything to display data on the web is a quick and simple solution to address the lack of computationally represented data. The process for generating knowledge graphs has been an extensive procedure, but compared to other tools, is an effective and uncomplicated method for converting any dataset into a knowledge graph. 
+\hspace{0.5cm} In general, knowledge graph generation using SPARQL Anything was successful. Generating a knowledge graph using SPARQL Anything to display data on the web was a quick and simple solution to address the lack of computationally represented data. The process for generating knowledge graphs has been an extensive procedure, but compared to other tools, was an effective and uncomplicated method for converting any dataset into a knowledge graph. 
 
-Nonetheless, using SPARQL Anything as a tool for knowledge graph generation was challenging. Having no prior experience with SPARQL or using the tool SPARQL Anything, was difficult, so careful reading of documentation \cite{sparqlanythinggithub} and studying SPARQL, itself, using \cite{sparlbook} was required. 
+Nonetheless, using SPARQL Anything as a tool for knowledge graph generation was challenging. Having no prior experience with SPARQL or using the tool SPARQL Anything, was difficult, so careful reading of documentation \cite{sparqlanythinggithub} and studying SPARQL, itself, using \cite{sparlbook} was required. Limited documentation surrounding SPARQL Anything was also problematic as resources surrounding the tool were scarce. Nevertheless, SPARQL Anything's Facade-X approach compensates for this problem by allowing users to use SPARQL syntax, where resources were plentiful. SPARQL Anything's use of existing technologies such as JSON path was also helpful as there was sufficient information surrounding it. Compared to other knowledge graph generation tools such as RML \cite{rml}, SPARQL-Generate \cite{sparqlgenerate} and ChatGPT \cite{chatgptwebsite}, it provided a simple yet accurate approach. 
 
-Extensive background and context research were also essential to understanding the project scope and provided resources. These were all relevant to generating the knowledge graph during implementation and evaluation of the solution. 
+Extensive background and context research were also essential to understanding the project scope and provided resources. These were all relevant to generating the knowledge graph throughout implementation and during evaluation of the solution. 
 
-The query created to generate the knowledge graph was evaluated using both qualitative and quantitative methods to ensure its quality and measure scalability. Critiquing the solution was vital to provide an extensive review, so improvements can be made in the future. 
+The query created to generate the knowledge graph was evaluated using both qualitative and quantitative methods to ensure its quality and measure scalability. Critiquing the solution was vital to provide an extensive review, so improvements could be made in the future. Evaluation revealed that knowledge graph quality was adequate but improvements, as always, could still be made and quantitative tests showed scalability to a certain extent. 
 
 If additional time was permitted during the course of this project, more sections of the provided ontology would be used- possibly with external organ datasets or other resources. 
 
 \section{Limitations}
-Limitations of the project have been identified during the design, implementation and \textit{Evaluation} sections. These limitations are split into subsections and listed below:
+Limitations of the project have been identified during the design, implementation and \textit{Evaluation} sections. Being aware of the project's limitations is vital to ensure readers intending to extend this work are knowledgeable of its bounds. These limitations are split into subsections and listed below:
 
 \subsection{General Limitations}
 \begin{itemize}
@@ -31,14 +31,15 @@ Limitations of the project have been identified during the design, implementatio
 \end{itemize}
 
 \section{Future Work \& Extensions}
-This section discusses future work and possible extensions of the project, which may also provide solutions to the limitations identified above.
+This section discusses future work and possible extensions of the project, which may also provide solutions to the limitations identified above. Anyone willing to continue or extend the work completed in this project is welcome to take the directions detailed below, but should also be wary of the project's limitations. 
 
 \begin{itemize}
-    \item \textbf{Extension:} \\ Use of external datasets from websites such as Kaggle \cite{kaggle}, Google Dataset Search \cite{googledatasetsearch} and many others, could further extend the knowledge graph and potentially provide a more detailed solution. Finding external datasets, however, may prove challenging due to the specificity of the current dataset.  
+    \item \textbf{Extension:} \\ Use of external datasets from websites such as Kaggle \cite{kaggle}, Google Dataset Search \cite{googledatasetsearch} and many others, could further extend the knowledge graph and potentially provide a more detailed solution. Finding external datasets, however, may prove challenging due to the specificity of the current dataset. 
     \item \textbf{Extension:} \\ Use of DBpedia \cite{organdbpedia} as an external data source, similar to how Wikidata and MusicBrainz were used. However, when researching its potential use, external links were not as relevant as the selected options. 
-    \item \textbf{Future Work:} \\ Use the provided ontology to its fullest extent by using external data sources. Creation of relevant data files by extracting information from the WWW may also supplement the existing dataset and will fully leverage the potential of the provided ontology. 
+    \item \textbf{Extensions:} \\ Use the provided ontology to its fullest extent by creating external data sources. Creation of relevant data files by extracting information from the WWW may also supplement the existing dataset and will fully leverage the potential of the provided ontology. 
     \item \textbf{Future Work:} \\ Application of Natural Language Processing techniques can be used to extract and integrate relevant information from the WWW into the knowledge graph. This may also present the opportunity to explore datasets in other languages other than Dutch, which can broaden the scope of datasets that can be found. 
     \item \textbf{Future Work:} \\ Develop a user interface or visualization tool that enables user interaction with the generated knowledge graph by providing a visual display. This will aid understandability of the knowledge graph as well as make it more intuitive from a user's perspective. It will also help lay users who want to use or interpret the knowledge graphs for themselves. 
     \item \textbf{Future Work:} \\ Evaluate the knowledge graph using much larger values than those used to measure scalability in the \textit{Evaluation} section. For both extremely large datasets and large amounts of service calls. 
 \end{itemize}
 
+Those looking to extend or replicate this project should pay close attention to SPARQL Anything \cite{sparqlanythinggithub} documentation and gain a comprehensive understanding of all available resources. Familiarity with the dataset and a broad understanding of the semantic web similar to this project's \textit{Context} and \textit{Background} chapters would be advised. Adequate planning such as ontology definition and data preprocessing may be necessary depending on the project. They should also be aware of the knowledge graph evaluation metrics discussed in the \textit{Evaluation} section and continue to adhere to the Code of Conduct \cite{bcs} and FAIR Principles \cite{fairprinciples} during development. 
