@@ -3,8 +3,25 @@
 Step-by-step instructions on how to execute the knowledge graph generation query will be detailed below:
 
 \begin{enumerate}
-    \item Download project zip file on github repository: https://github.com/lamalvin21/ThirdYearProject
-    \item 
+    \item Download project zip file on GitHub repository: \\ https://github.com/lamalvin21/ThirdYearProject
+    \item Unzip the file.
+    \item Download SPARQL Anything .jar file from \\ https://github.com/SPARQL-Anything/sparql.anything/releases
+    \item Install appropriate Java Development Kit based on Operating System ensuring java works on command line: \\ https://www.oracle.com/java/technologies/downloads/
+    \item Put the SPARQL Anything .jar executable in the project file.
+    \item Navigate to the correct directory on command line (wherever project is stored) and execute a query to test: \\ 
+\vspace{-0.4cm}
+\lstset
+{
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\linespread{1}\ttfamily,
+}
+\begin{lstlisting}
+java -jar sparql-anything-0.8.1.jar -q queries/organ-details.sparql --values organ=Part01_001MIDDE -o output/output.ttl
+\end{lstlisting}
+\vspace{-0.25cm}
+    \item Resulting knowledge graph should be in the output folder and in a file called output.ttl
+    \item Try passing in different organs, which can be found in the organid.json file.
 \end{enumerate}
 
-You must provide an adequate user guide for your software. The guide should provide easily understood instructions on how to use your software. A particularly useful approach is to treat the user guide as a walk-through of a typical session, or set of sessions, which collectively display all of the features of your package. Technical details of how the package works are rarely required. Keep the guide concise and simple. The extensive use of diagrams, illustrating the package in action, can often be particularly helpful. The user guide is sometimes included as a chapter in the main body of the report, but is often better included in an appendix to the main report.
+% The guide should provide easily understood instructions on how to use your software. A particularly useful approach is to treat the user guide as a walk-through of a typical session, or set of sessions, which collectively display all of the features of your package. The extensive use of diagrams, illustrating the package in action, can often be particularly helpful.

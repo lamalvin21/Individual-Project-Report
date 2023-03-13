@@ -266,6 +266,8 @@ Each knowledge graph is created with the purpose of making them concise. Creatio
 
 Data in the dataset is understandable from the perspective of a Dutch reader. Given the relationships, the meaning of data can be easily inferred. However, there are some cases in the produced knowledge graphs where nodes produce an empty string ``" due to empty data in the dataset. For example, the variable \textit{?partition} in the ontology is often empty and out of the five tested organs, four of the \textit{partition}'s data is missing. 
 
+From a lay user's perspective, it could also be argued that the Wikidata information can seem confusing at first glance due to the codes being displayed. However, this can be mitigated by physically clicking the URI link while viewing these external Wikidata links.  
+
 \section{Query Scalability Assessment}
 In this section, scalability of the knowledge graph will be tested. In particular, the areas being measured to assist quantification of the knowledge graph scalability are: 
 
@@ -287,11 +289,12 @@ For each one, measurement of scalability will be computed using the time require
     basicstyle=\ttfamily,
 }
 \begin{lstlisting}
-    Measure-Command{java -jar sparql-anything-0.8.0.jar -q queries/organ-details.sparql --values organ=Part01_001MIDDE -o output/output.ttl}
+    Measure-Command{java -jar sparql-anything-0.8.1.jar -q queries/organ-details.sparql --values organ=Part01_001MIDDE -o output/output.ttl}
 \end{lstlisting}
 
 The same sample of five organs will be selected for knowledge graph generation and tests will be run on a 64-bit OS with Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz 1.80 GHz and 8GB RAM. Regarding time calculation, the procedure will involve running each of the five sampled organs five times using \textit{Measure-Command}, followed by calculation of the average time per organ. Finally, the mean times for all five organs will be noted.
 
+% knowledge of previous exponential, which is not a problem for our KG. but short term linear.
 \subsection{Size of Files}
 \hspace{0.5cm} For this test, knowledge graph generation was calculated with respect to .JSON file size (from the dataset). For testing purposes, some organs may be removed from relevant data files in order to measure the effect of file size. The five tested organs, however, will always remain in the files. This is possible since the structure of each .JSON file follows the same format as shown in the \textit{Context} section. External links were left in the query as their addition did not significantly affect results. After removing organs to test file size, the actual size of a file will be noted using a VS Code extension: \textit{filesize}. A graph plotted with cumulative file sizes against time can be seen in \textit{Figure 9.3}.
 

@@ -1,8 +1,9 @@
+% maintainence: Depends on sparql, depends on sparql anything tool, dataset up to date, json format redundant. 
 \chapter{Implementation}
 This chapter will detail the implementation phase of the project and how the solution was reached using the design section and following the specification. 
 
 \section{Command Line Command}
-\hspace*{0.5cm} In order to begin implementation, it was necessary to become familiar with command line commands beforehand. Since the executable .jar file enables anyone to use SPARQL-Anything, starting the command with execution of the .jar file is needed. For example:
+\hspace*{0.5cm} In order to begin implementation, it was necessary to become familiar with command line commands beforehand. Since the executable .jar file enables anyone to use SPARQL-Anything, starting the command with execution of the .jar file is needed. The version of SPARQL Anything used during implementation will be the latest at the time: v0.8.1. For example:
 
 \lstset
 {
@@ -11,7 +12,7 @@ This chapter will detail the implementation phase of the project and how the sol
     basicstyle=\ttfamily,
 }
 \begin{lstlisting}
-    java -jar sparql-anything-0.8.0.jar 
+    java -jar sparql-anything-0.8.1.jar 
 \end{lstlisting}
 
 \noindent Then, expand it specifying the filepath and file that contains the query. For example:
@@ -71,14 +72,14 @@ This chapter will detail the implementation phase of the project and how the sol
     basicstyle=\ttfamily,
 }
 \begin{lstlisting}
-    java -jar sparql-anything-0.8.0.jar
+    java -jar sparql-anything-0.8.1.jar
     -q filepath/filename.sparql 
     --values variable=variablevalue 
     --output filepath/outputfile.ttl
 \end{lstlisting}
 
 \noindent In English, this command states: \\
-\hspace*{0.5cm} ``Using the executable sparql-anything-0.8.0.jar, run the query in filename.sparql from the filepath folder and pass in \textit{variable} into the query with value variablevalue. Finally, output the knowledge graph in outputfile.ttl from the same file location". 
+\hspace*{0.5cm} ``Using the executable sparql-anything-0.8.1.jar, run the query in filename.sparql from the filepath folder and pass in \textit{variable} into the query with value variablevalue. Finally, output the knowledge graph in outputfile.ttl from the same file location". 
 
 \section{Prefixes}
 \hspace*{0.5cm} The prefixes in the ontology are mainly used in the relationship part of the triples. Below are the PREFIX that will be used:
@@ -312,6 +313,8 @@ External data from MusicBrainz's organ page \cite{organmusicbrainz} was not as v
 \subsection{Final Ontology}
 \hspace*{0.5cm} Combining both dataset and external ontologies forms one ontology that can be seen in RDF. This ontology can be placed in the CONSTRUCT section of the query.
 
+The newly improved ontology is in the CONSTRUCT section of the final query located in the \textit{Appendix} section, specifically \textit{Listing.C1}.
+
 \section{Knowledge Graph Generation}
 \hspace*{0.5cm} The process of creating the knowledge graph generation query for the ontology will be detailed below:
 
@@ -362,7 +365,7 @@ This SPARQL-Anything call is followed by many other SPARQL-Anything calls to com
 \hspace*{0.5cm} This subsection will describe the process in which external data was added to the knowledge graph and how it was implemented in the query. 
 
 \subsubsection{Custom Data}
-\hspace*{0.5cm} For links that required data from the dataset, the query skeleton structure and \textit{Figure 7.3} were followed, providing the framework to create the query. Custom links were created from Wikipedia as it was one of the few websites that covered the scope of what could be added. It also gave adequate extra information for the data and sufficiently extended breadth of the resulting knowledge graph. To match the context of the dataset, the link created was from the Dutch version of Wikipedia. As mentioned in the ontology creation section, custom links were difficult to identify using the dataset as data was very specific to a particular organ. Nonetheless, an example of a custom link addition can be seen below:
+\hspace*{0.5cm} For links that required data from the dataset, the query skeleton structure and \textit{Figure 7.3} were followed, providing the framework to create the query. Custom links were created from Wikipedia as it was one of the few websites that covered the scope of what could be added. It also gave adequate extra information for the data and sufficiently extended breadth of the resulting knowledge graph. However, there is still a possibility that a Wikipedia page on a particular topic has not been created yet. To match the context of the dataset, the link created was from the Dutch version of Wikipedia. As mentioned in the ontology creation section, custom links were difficult to identify using the dataset as data was very specific to a particular organ. Nonetheless, an example of a custom link addition can be seen below:
 
 \lstset
 {
@@ -448,3 +451,5 @@ External data regarding MusicBrainz and Wikidata were added by following the for
         \item External Data
     \end{enumerate}
 \end{enumerate}
+
+Full query can be seen in the \textit{Appendix} section, specifically \textit{Listing C.1}. 

@@ -6,6 +6,21 @@
 Link to Github Repository containing all relevant files including the dataset. \\
 https://github.com/lamalvin21/ThirdYearProject
 
+\section{Command Line}
+An example command to run on command line to test knowledge graph generation:
+
+\lstset
+{
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\linespread{1}\ttfamily,
+}
+\begin{lstlisting}
+java -jar sparql-anything-0.8.1.jar -q queries/organ-details.sparql --values organ=Part01_001MIDDE -o output/output.ttl
+\end{lstlisting}
+
+Any organ can be passed in. The list of organ codes are in the organid.json file.
+
 \section{Knowledge Graph Generation Query}
 The final knowledge graph generation query is below:
 
