@@ -1,9 +1,8 @@
-% maintainence: Depends on sparql, depends on sparql anything tool, dataset up to date, json format redundant. 
-\chapter{Implementation}
+ \chapter{Implementation}
 This chapter will detail the implementation phase of the project and how the solution was reached using the design section and following the specification. 
 
 \section{Command Line Command}
-\hspace*{0.5cm} In order to begin implementation, it was necessary to become familiar with command line commands beforehand. Since the executable .jar file enables anyone to use SPARQL-Anything, starting the command with execution of the .jar file is needed. The version of SPARQL Anything used during implementation will be the latest at the time: v0.8.1. For example:
+\hspace*{0.5cm} In order to begin implementation, it was necessary to become familiar with command line commands beforehand. Since the executable .jar file enables anyone to use SPARQL Anything, starting the command with execution of the .jar file is needed. The version of SPARQL Anything used during implementation will be the latest at the time: v0.8.1. For example:
 
 \lstset
 {
@@ -79,7 +78,7 @@ This chapter will detail the implementation phase of the project and how the sol
 \end{lstlisting}
 
 \noindent In English, this command states: \\
-\hspace*{0.5cm} ``Using the executable sparql-anything-0.8.1.jar, run the query in filename.sparql from the filepath folder and pass in \textit{variable} into the query with value variablevalue. Finally, output the knowledge graph in outputfile.ttl from the same file location". 
+\hspace*{0.5cm} ``Using the executable sparql-anything-0.8.1.jar, run the query in \textit{filename.sparql} from the \textit{filepath} folder and pass in \textit{variable} into the query with value \textit{variablevalue}. Finally, output the knowledge graph in \textit{outputfile.ttl} from the same file location". 
 
 \section{Prefixes}
 \hspace*{0.5cm} The prefixes in the ontology are mainly used in the relationship part of the triples. Below are the PREFIX that will be used:
@@ -110,7 +109,7 @@ The provided ontology to identify data relevant to the organ node was used as we
 \subsubsection{Organ}
 \hspace*{0.5cm} This node posed as the main node in which all data would branch from. It represents the requested organ and relevant data will be branched from it. 
 
-Upon selection of relevant information from the dataset's .JSON files, they were appended to the organ node. The provided ontology was also used to correctly identify relationships to the organ node. Relevant data and relationships to the organ are listed below:
+Upon selection of relevant information from the dataset's JSON files, they were appended to the organ node. The provided ontology was also used to correctly identify relationships to the organ node. Relevant data and relationships to the organ are listed below:
 
 \vspace{-0.15cm}
 \begin{itemize}
@@ -151,7 +150,7 @@ This data is directly relevant to the organ as illustrated in the provided organ
 Relationships used to describe the relation between the organ and its objects were provided and usually had intuitive names based on the object. 
 
 \subsubsection{Technicals}
-\hspace*{0.5cm} This branch of technical data regarding an organ was mainly derived off one .JSON file and a section of the provided ontology that referred to its 'parthood'. All relationships branching from this 'technicals' node were provided. Relevant data and their relationships identified are below:
+\hspace*{0.5cm} This branch of technical data regarding an organ was mainly derived from one JSON file and a section of the provided ontology that referred to its 'parthood'. All relationships branching from this 'technicals' node were provided. Relevant data and their relationships identified are below:
 
 \vspace{-0.1cm}
 \begin{itemize}
@@ -319,7 +318,9 @@ The newly improved ontology is in the CONSTRUCT section of the final query locat
 \hspace*{0.5cm} The process of creating the knowledge graph generation query for the ontology will be detailed below:
 
 \subsection{Dataset Knowledge Graph Query}
-\hspace*{0.5cm} This subsection will detail the process for creating the query that is responsible for extracting data from the dataset using \textit{Figure 7.3} and the query skeleton structure in the design section. All code in this section will be part of the query's WHERE clause. Below is an example of data abstraction from a .JSON file:
+\hspace*{0.5cm} This subsection will detail the process for creating the query that is responsible for extracting data from the dataset using \textit{Figure 7.3} and the query skeleton structure in the design section. All code in this section will be part of the query's WHERE clause. 
+
+The snippet below follows \textit{Figure 7.3} and provides the template for most SPARQL Anything SERVICE calls that extract data from a JSON file. JSON Path is also used to navigate through JSON files as shown in the SPARQL Anything documentation \cite{sparqlanythinggithub}. Specific details regarding JSON path were found on its relevant GitHub \cite{jsonpath} to assist in path generation. 
 
 \lstset
 {
@@ -340,16 +341,16 @@ The newly improved ontology is in the CONSTRUCT section of the final query locat
     } 
 \end{lstlisting}
 
-The snippet above follows \textit{Figure 7.3} and provides the template for most SPARQL-Anything SERVICE calls in the query. The query's sequence of events will be numbered below:
+The query's sequence of events will be listed chronologically below:
 
 \begin{enumerate}
-    \item SERVICE call queries the \textit{history\_base.json} file in the \textit{output} folder using SPARQL-Anything. 
+    \item SERVICE call queries the \textit{history\_base.json} file in the \textit{output} folder using SPARQL Anything. 
     \item CONCAT creates the JSON path using the parameter \textit{?\_organ} which is passed in through command line, so correct data can be found for the right organ. BIND assigns the JSON path to the variable \textit{?organOriginalLocation}.
     \item \textit{fx:properties} then uses the JSON path stored in \textit{?organOriginalLocation} to locate the data.
     \item Data is found and assigned to the variable \textit{?originalLocation}, which is added to the knowledge graph.
 \end{enumerate}
 
-This SPARQL-Anything call is followed by many other SPARQL-Anything calls to complete the knowledge graph. Although not explicitly stated in the design, the passed in organ \textit{?\_organ} is bound to the ontology variable \textit{?organ} in the first SPARQL-Anything call as seen below:
+This SPARQL Anything call is followed by many others to complete the knowledge graph. Although not explicitly stated in the design, the passed in organ \textit{?\_organ} is bound to the ontology variable \textit{?organ} in the first SPARQL Anything call as seen below:
 
 \lstset
 {
@@ -398,10 +399,10 @@ Using string manipulation and other SPARQL functions, the custom link is created
     \item \textbf{BIND} takes this newly created link and assigns it to the variable \textit{?buildingInfo} to be added to the knowledge graph. 
 \end{enumerate}
 
-This is an example of where SPARQL-Anything's Facade-X approach is useful because  features of SPARQL within a SPARQL-Anything query can be used without having to learn something completely new. 
+This is an example of where SPARQL Anything's Facade-X approach is useful because features of SPARQL within a SPARQL Anything query can be used without having to learn something completely new. 
 
 \subsubsection{General Data}
-\hspace*{0.5cm} For links that were independent of the dataset, they were added after the SPARQL-Anything calls to stay consistent with \textit{Figure 7.3}. Links identified independently were added within the corresponding SERVICE call from which they branched out from. These specific links were found for data that had a broad scope, so websites regarding those subjects could be found. For example:
+\hspace*{0.5cm} For links that were independent of the dataset, they were added after the SPARQL Anything calls to stay consistent with \textit{Figure 7.3}. Links identified independently were added within the corresponding SERVICE call from which they branched out from. These specific links were found for data that had a broad scope, so websites regarding those subjects could be found. For example:
 
 \lstset
 {
@@ -424,7 +425,7 @@ SERVICE <x-sparql-anything:file:./output/tech.json>
 } 
 \end{lstlisting}
 
-This snippet follows the same structure as most SPARQL-Anything calls, but the last line binds the URI to \textit{?pitchInfo}. This website, in particular, found more information describing the pitch of an organ. 
+This snippet follows the same structure as most SPARQL Anything calls, but the last line binds the URI to \textit{?pitchInfo}. This website, in particular, found more information describing the pitch of an organ. 
 
 External data regarding MusicBrainz and Wikidata were added by following the format on the website and bound to a variable in the ontology. Most data on the website used links from Wikidata so the PREFIX \textit{wd} for Wikidata was used, but some data contained explicit links. Specific SERVICE calls for Wikidata or MusicBrainz were not necessary as all the data added to the knowledge graph came from the same organ Wikidata website \cite{organwikidata}. Physical extraction directly from the websites into the knowledge graph was a more suitable method of expansion than using more SERVICE calls. An example of two relationships stated on Wikidata being added to the knowledge graph:
 
@@ -447,9 +448,22 @@ External data regarding MusicBrainz and Wikidata were added by following the for
     \item WHERE:
     \begin{enumerate}
         \vspace{-0.25cm}
-        \item SERVICE: call to SPARQL-Anything
+        \item SERVICE: call to SPARQL Anything
         \item External Data
     \end{enumerate}
 \end{enumerate}
 
 Full query can be seen in the \textit{Appendix} section, specifically \textit{Listing C.1}. 
+
+\section{Software Maintenance}
+\hspace{0.5cm} Long-term maintenance of the query needs to be discussed to assess its longevity. Consideration of query maintenance is important for identifying any possible future software changes and for potential continuation of this work. Below are examples of some dependencies that may affect maintenance of software:  
+
+\begin{itemize}
+    \item \textbf{Dependence on SPARQL 1.1.} \\ This implementation depends on SPARQL 1.1 syntax as the query uses built-in methods such as \textit{BIND} and \textit{URI}. Discontinuation or significant changes to the relevant SPARQL 1.1 features may render the query unusable or inhibit execution.
+    \item \textbf{Dependence on SPARQL Anything.} \\ The implementation also depends on SPARQL Anything and its maintenance. Cessation or deprecation of this tool may affect the usability of the query. 
+    \item \textbf{Dataset maintenance.} \\ Dataset needs to be updated and maintained in a real-world context so the query does not produce an obsolete knowledge graph. 
+    \item \textbf{JSON format redundancy.} \\ If technological advancements were to make the JSON format outdated, repurposing the query would be challenging since the dataset is in JSON format. The query, itself, is also tailored to JSON formats.
+    \item \textbf{JSON Path redundancy.} \\ Alternate means of navigating through JSON files will be required if JSON Path were to become redundant as the query relies on navigation through the dataset's JSON files.
+    \item \textbf{Command Line redundancy.} \\ If use of the command line were to become redundant, execution of the query would not be possible and a knowledge graph could not be automatically generated. 
+\end{itemize}
+

@@ -12,7 +12,7 @@ This chapter details how the knowledge graph is evaluated upon completion and me
 \hline
 
 1& 
-Ontology must be correctly configured and input into SPARQL-Anything CONSTRUCT &
+Ontology must be correctly configured and input into SPARQL Anything CONSTRUCT &
 Ontology has been refined and adapted based on the needs of the project. All relationships or triples have either been derived from the provided ontology or appended to the ontology based on the dataset. \\
 \hline
 
@@ -62,7 +62,7 @@ User can view the codes of all available organs in the dataset. This organ code 
 
 3&
 User must be able to see the knowledge graph after the query is executed. &
-User can either view the knowledge graph on command line or in a .TTL file with a specified location and file name. \\
+User can either view the knowledge graph on command line or in a TTL file with a specified location and file name. \\
 \hline
 
 4&
@@ -294,9 +294,9 @@ For each one, measurement of scalability will be computed using the time require
 
 The same sample of five organs will be selected for knowledge graph generation and tests will be run on a 64-bit OS with Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz 1.80 GHz and 8GB RAM. Regarding time calculation, the procedure will involve running each of the five sampled organs five times using \textit{Measure-Command}, followed by calculation of the average time per organ. Finally, the mean times for all five organs will be noted.
 
-% knowledge of previous exponential, which is not a problem for our KG. but short term linear.
+% knowledge of previous exponential, which is not a problem for our KG. but short-term linear.
 \subsection{Size of Files}
-\hspace{0.5cm} For this test, knowledge graph generation was calculated with respect to .JSON file size (from the dataset). For testing purposes, some organs may be removed from relevant data files in order to measure the effect of file size. The five tested organs, however, will always remain in the files. This is possible since the structure of each .JSON file follows the same format as shown in the \textit{Context} section. External links were left in the query as their addition did not significantly affect results. After removing organs to test file size, the actual size of a file will be noted using a VS Code extension: \textit{filesize}. A graph plotted with cumulative file sizes against time can be seen in \textit{Figure 9.3}.
+\hspace{0.5cm} For this test, knowledge graph generation was calculated with respect to JSON file size (from the dataset). For testing purposes, some organs may be removed from relevant data files in order to measure the effect of file size. The five tested organs, however, will always remain in the files. This is possible since the structure of each JSON file follows the same format as shown in the \textit{Context} section. External links were left in the query as their addition did not significantly affect results. After removing organs to test file size, the actual size of a file will be noted using a VS Code extension: \textit{filesize}. A graph plotted with cumulative file sizes against time can be seen in \textit{Figure 9.3}.
 
 \begin{figure}[H]
 \begin{center}

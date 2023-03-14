@@ -1,5 +1,5 @@
 \chapter{Context}
-This chapter will contextualise the dataset and project, providing reasoning for all relevant information included in the organ dataset. Also, a brief introduction to the tool used to complete this project: SPARQL-Anything as well as reasoning for using it over other tools is provided. 
+This chapter will contextualise the dataset and project, providing reasoning for all relevant information included in the organ dataset. Also, a brief introduction to the tool used to complete this project: SPARQL Anything as well as reasoning for using it over other tools is provided. 
 
 \section{Organs}
 \hspace{0.5cm} The dataset that has been provided revolves around the musical instrument: Organs. Mozart once described organs as:
@@ -118,7 +118,7 @@ The main aim of this project is to combine computational tools and methods to ac
 The objective of this project is to create a knowledge graph in the context of organs. The dataset was provided and previously put into an organised format by a musicologist as part of this project. The general organ ontology was also created prior to the project's commence but requires refinement and some changes in order to create the knowledge graph. Due to the project being European-based, the data stored in the dataset is in Dutch and the knowledge graph created will also produce dutch text or terms.  
 
 \subsection{Organ Dataset}
-\hspace{0.5cm} The organ dataset provided describes the various specifics about a given organ. The dataset itself is split into many different folders and it groups specific details about an organ in one .JSON file. Each .JSON file contains information about many different organs, which can be uniquely identified by their unique id. The structure of the .JSON files follow the same format: an organ and the corresponding details about each organ in the form of a .JSON. An example of two files ``base.json" and ``history\_base.json" can be seen below. 
+\hspace{0.5cm} The organ dataset provided describes the various specifics about a given organ. The dataset itself is split into many different folders and it groups specific details about an organ in one JSON file. Each JSON file contains information about many different organs, which can be uniquely identified by their unique id. The structure of the JSON files follows the same format: an organ and the corresponding details regarding that organ. An example of two files ``base.json" and ``history\_base.json" can be seen below. 
 
 \begin{lstlisting}
     # base.json extract
@@ -243,7 +243,7 @@ However, this approach generates a small knowledge graph and has to be interpret
 In conclusion, the knowledge graph produced by ChatGPT is closer to an organ ontology. The limitations surrounding ChatGPT do confine it to providing a generic solution, but if it can evolve to find a way to gather real-world data online using the Semantic Web, for instance, the knowledge graph created would be a viable solution (given the provided ontology).
 
 \subsubsection{SPARQL-Generate and RML}
-\hspace{0.5cm} Other solutions similar to SPARQL Anything's approach and implementation include: SPARQL-Generate and RML. But, reasoning for selecting SPARQL-Anything over the other options will be detailed below.
+\hspace{0.5cm} Other solutions similar to SPARQL Anything's approach and implementation include: SPARQL-Generate and RML. But, reasoning for selecting SPARQL Anything over the other options will be detailed below.
 
 SPARQL-Generate and RML do not support Metadata or Embedded data formats. \cite{sparqlanything} SPARQL Anything, therefore, allows more flexibility during implementation and has a broader scope. 
 

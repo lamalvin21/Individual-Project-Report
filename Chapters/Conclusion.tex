@@ -18,7 +18,7 @@ Limitations of the project have been identified during the design, implementatio
 
 \subsection{General Limitations}
 \begin{itemize}
-    \item \textbf{Dependence on the SPARQL Anything tool.} The maintenance of this tool by its owners is vital to ensure that the created query still runs and generates a knowledge graph. Errors or deprecation of the tool will render the query unusable as \textit{SERVICE} calls within the query use the services of SPARQL Anything. 
+    \item \textbf{Software reliability on external factors.} Maintenance factors identified in the \textit{Implementation 8.5} section may limit the query's ability to execute in the future. Deprecation or significant changes in used tools may render the query ineffective and extension of the project may no longer be feasible. 
     \item \textbf{Bias being introduced from the provided resources.} The provided dataset and ontology may include pre-existing biases from its creation as they may only include data that has been specially curated for the Polifonia project. 
     \item \textbf{Wikipedia pages not existing for all external custom links.} Due to the particularity of some data in the dataset, custom links created may not always produce populated Wikipedia pages. However, relevant recommended Wikipedia pages can be seen if it has not been created yet.  
 \end{itemize}
@@ -44,3 +44,5 @@ This section discusses future work and possible extensions of the project, which
 \end{itemize}
 
 Those looking to extend or replicate this project should pay close attention to SPARQL Anything \cite{sparqlanythinggithub} documentation and gain a comprehensive understanding of all available resources. Familiarity with the dataset and a broad understanding of the semantic web similar to this project's \textit{Context} and \textit{Background} chapters would be advised. Adequate planning such as ontology definition and data preprocessing may be necessary depending on the project. They should also be aware of the knowledge graph evaluation metrics discussed in the \textit{Evaluation} section and continue to adhere to the Code of Conduct \cite{bcs} and FAIR Principles \cite{fairprinciples} during development. 
+
+% continuation should also consider maintenance issues and follow format of previous work if extending.
