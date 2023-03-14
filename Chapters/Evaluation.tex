@@ -294,7 +294,6 @@ For each one, measurement of scalability will be computed using the time require
 
 The same sample of five organs will be selected for knowledge graph generation and tests will be run on a 64-bit OS with Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz 1.80 GHz and 8GB RAM. Regarding time calculation, the procedure will involve running each of the five sampled organs five times using \textit{Measure-Command}, followed by calculation of the average time per organ. Finally, the mean times for all five organs will be noted.
 
-% knowledge of previous exponential, which is not a problem for our KG. but short-term linear.
 \subsection{Size of Files}
 \hspace{0.5cm} For this test, knowledge graph generation was calculated with respect to JSON file size (from the dataset). For testing purposes, some organs may be removed from relevant data files in order to measure the effect of file size. The five tested organs, however, will always remain in the files. This is possible since the structure of each JSON file follows the same format as shown in the \textit{Context} section. External links were left in the query as their addition did not significantly affect results. After removing organs to test file size, the actual size of a file will be noted using a VS Code extension: \textit{filesize}. A graph plotted with cumulative file sizes against time can be seen in \textit{Figure 9.3}.
 
@@ -321,6 +320,8 @@ The same sample of five organs will be selected for knowledge graph generation a
 \end{figure}
 
 \textit{Figure 9.3} shows an initial linear relationship between the file size and time. This shows that the knowledge graph-generating query produced is scalable to a certain extent. It is unknown, however, how well the query will perform for much larger file sizes. 
+
+Measurement of much larger input values was done in \cite{sparqlanything} and showed an exponential relationship between execution time and input size. However, the findings in relation to our input size are consistent as the paper does show a linear relationship in the small input sizes. So, is not a problem for the scope of our generated knowledge graph. Nevertheless, extremely large input sizes may pose a potential issue scalability-wise in the future.
 
 \subsection{Number of SERVICE Calls}
 \hspace{0.5cm} In this test, number of SERVICE calls within the query are tested to observe their effect on the speed of knowledge graph generation. In the implemented query, removal of SERVICE calls will be done incrementally and plotted against execution time. Measuring the number of SERVICE calls will indicate the scalability of the knowledge graph, providing insight into its capacity for expansion.
