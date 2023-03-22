@@ -3,14 +3,14 @@
 \usetikzlibrary {patterns}
 
 \chapter{Background}
-First, the background of this project is discussed and suitable explanations provide context for the entire project. The broad scope of the project is presented before going into project-specific details in the context section.
+First, the background of this project is discussed and suitable explanations provide context for the entire project. The broad scope of the project is presented before going into project-specific details in the \textit{context} chapter.
 
 \section{The Semantic Web}
 \hspace*{0.5cm} The Semantic Web is an extension of the World Wide Web (WWW) that allows information on it to be machine-readable. \cite{semanticweb} The concept of the Semantic Web was founded by Tim Berners-Lee (founder of the WWW) with the idea that machines can easily interpret the information available on the WWW. Tim Berners-Lee initially thought of this idea in 1999 stating ``I have a dream for the Web [in which computers] become capable of analyzing all the data on the Web – the content, links, and transactions between people and computers. A 'Semantic Web'" \cite{berners-TBLBook}. Ultimately, the semantic web aims to empower the knowledge embedded online so that it can be parsed by machines. \cite{semanticweb} 
 
 An example of these developments can be seen in a data storage project that contains data interpretable by both humans and machines- Wikidata. Wikidata is a large open knowledge base that is part of the Wikimedia family (including Wikipedia) and is connected to other datasets as well. \cite{wikidata} Data is stored in WikiData using various web data storage methods such as JSON, XML and RDF (Resource Description Framework). The latter is described in more detail in the next section.  
 
-Another example within the project scope is MusicBrainz. MusicBrainz also provides information that is stored using RDF. \cite{musicbrainz} In this case, MusicBrainz's focus is around music so it may be more relevant and provide more specific data for the project.  
+Another example within the project scope is MusicBrainz. MusicBrainz also provides information that is stored using RDF. \cite{musicbrainz} In this case, MusicBrainz's focus is around music so it may be more relevant and provide more specific data for the project. 
 
 \subsection{Resource Description Framework}
 \hspace*{0.5cm} Resource Description Framework (RDF) is a method in which data can be stored, similar to how data can be stored in JSON or XML formats. However, the structure of RDF is very different. The general idea of RDF revolves around the concept of linked and connected data so RDF stores data in triples with relationships between data. This allows data stored in this format to be both machine and human-readable, making the reuse and extension of data semantics possible \cite{rdf}. Each sentence store follows this structure: 
@@ -37,12 +37,13 @@ In this project, we will look closer at the Turtle (TTL) format for RDF. A TTL f
 An example of an RDF statement (in Turtle- TTL) can be seen below:
 
 \vspace{-0.4cm}
+\begin{center}
 \lstset
 {
     breaklines=true,
     breakatwhitespace=true,
+    basicstyle=\linespread{1.5}\ttfamily,
 }
-\begin{center}
 \begin{lstlisting}
     <http://www.example.com/Alvin> 
     <http://www.example.com/vocab#studiesAt> 
@@ -68,6 +69,7 @@ This statement indicates that the entity \textit{``http://www.example.com/Alvin"
 {
     breaklines=true,
     breakatwhitespace=true,
+    basicstyle=\linespread{1.5}\ttfamily,
 }
 \begin{center}
 \begin{lstlisting}
@@ -85,7 +87,7 @@ An English translation of the RDF statement is written below:
 
 \vspace{-0.1cm}
 \begin{center}
-    \textit{``Alvin studies at KCL". }
+    \textit{``Alvin studies at KCL".}
 \end{center}
 \vspace{-0.1cm}
 

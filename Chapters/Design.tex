@@ -2,15 +2,16 @@
 This design chapter provides a high-level overview of the software implementation. With the aid of visual tools such as diagrams, a plan for implementation will be outlined. 
 
 \section{UML Sequence Diagram}
-\hspace{0.5cm} A high-level overview from user input to output is important to illustrate so it may be followed in later sections of this chapter. Providing a visual representation also makes it easier to understand how all  relevant components of the project interact. Most SPARQL Anything calls follow the same format as depicted in \textit{Figure 4} of \cite{asprino2023knowledge} and is strictly followed in \textit{Figure 7.1}. A contextualised UML Sequence diagram is shown in \textit{Figure 7.1}: 
+\hspace{0.5cm} A high-level overview from user input to output is important to illustrate so it may be followed in the latter sections of this chapter. Providing a visual representation also makes it easier to understand how all  relevant components of the project interact. Most SPARQL Anything calls follow the same format as depicted in \textit{Figure 4} of \cite{asprino2023knowledge} and is strictly followed in \textit{Figure 7.1}. A contextualised UML Sequence diagram is shown in \textit{Figure 7.1}: 
 
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
     \includegraphics[width=8cm, height=6cm]{Images/UMLSequenceDiagram.drawio.png}
 \end{center}
-\vspace{-0.4cm}
+\vspace{-0.5cm}
 \caption{UML Sequence Diagram}
 \end{figure}
+\vspace{-0.7cm}
 
 \section{Ontology Structure}
 \hspace{0.5cm} In this section, the plan for the ontology's general structure will be outlined based on the dataset, provided ontology and any external websites. 
@@ -58,17 +59,14 @@ For example, the organ page on Wikidata \cite{organwikidata} contains organ-rela
 {
     breaklines=true,
     breakatwhitespace=true,
-    basicstyle=\ttfamily,
+    basicstyle=\linespread{1.5}\ttfamily,
 }
 \begin{lstlisting}
-
 organ subclassOf keyboardInstrument
 organ subclassOf buildingComponent
 organ studiedBy organology 
 ...
-
 \end{lstlisting}
-(from \cite{organwikidata})
 
 In this case, 'organ' can be replaced with our \textit{OrganWikidata} node and the corresponding relationships and objects can be added to the ontology. All the extra nodes and edges can be added as external links to the knowledge graph using their unique Wikidata URI. 
 
@@ -85,12 +83,13 @@ In this section, the logic required to build the SPARQL Anything Query will be i
             node distance=2.5cm ]
         \node[circle] (q0) {Add ontology};
         \node[circle, below of=q0] (q1)  {Query dataset};
-        \node[circle, below of=q1] (q2)  {Clean \& Refine data};
-        \node[circle, below of=q2] (q3)  {Get external links};
-        \node[circle, below of=q3] (q4)  {String manipulation with external links};
-        \node[circle, below of=q4] (q5)  {Add to Knowledge graph};
-        \node[circle, below of=q5] (q6)  {Add any other external links};
-        \node[circle, below of=q6] (q7)  {Output Knowledge Graph};
+        \node[circle, below of=q1] (q2)  {Clean \& create data path};
+        \node[circle, below of=q2] (q3)  {Retrieve data from dataset};
+        \node[circle, below of=q3] (q4)  {Add to Knowledge Graph};
+        \node[circle, below of=q4] (q5)  {Clean \& create external link};
+        \node[circle, below of=q5] (q6)  {Add to Knowledge Graph};
+        \node[circle, below of=q6] (q7)  {Add any other external links};
+        \node[circle, below of=q7] (q8)  {Output Knowledge Graph};
     
         \draw[->] (q0.south) -- (q1.north);
         \draw[->] (q1.south) -- (q2.north);
@@ -99,8 +98,10 @@ In this section, the logic required to build the SPARQL Anything Query will be i
         \draw[->] (q4.south) -- (q5.north);
         \draw[->] (q5.south) -- (q6.north);
         \draw[->] (q6.south) -- (q7.north);
-        \draw[->] (q2.east) to [out=0,in=0] (q5.east);
-        \draw[->] (q5.west) to [out=180,in=180] (q2.west);
+        \draw[->] (q7.south) -- (q8.north);
+        \draw[->] (q4.east) to [out=0,in=0] (q2.east);
+        \draw[->] (q4.east) to [out=0,in=0] (q7.east);
+        \draw[->] (q6.west) to [out=180,in=180] (q2.west);
     
         \end{tikzpicture}
     \end{center}
@@ -112,26 +113,27 @@ In this section, the logic required to build the SPARQL Anything Query will be i
 The nodes in \textit{Figure 7.3} represent necessary actions and one of the edges is explicitly stated so that the process is clear. Below, an explanation for each node is provided: 
 
 \begin{enumerate}
-  \item \textbf{'Add ontology' node} refers to the addition of the ontology to the query.
-  \item \textbf{'Query dataset' node} uses SPARQL Anything to search for and find relevant data within the dataset.
-  \item \textbf{'Clean \& Refine data' node} Refines data to be put into the knowledge graph or to be used as external links. Involves two pathways to account for the data with no external links.
-  \item \textbf{'Get external links' node} uses the clean and refined data above to find other links, but only if requested.
-  \item \textbf{'String manipulation with external links' node} configures links in a readable or useful format (URI) to be put into the knowledge graph.
-  \item \textbf{'Add to knowledge graph' node} adds either clean and refined data from node 3 as well as external links to the knowledge graph. Once a specific file from the dataset has been queried, it loops again on a different file until all files have been queried.
-  \item \textbf{'Add any other external links' node} adds any other links that do not require data from the dataset.
-  \item \textbf{'Output knowledge graph' node} produces the result.
+  \item \textbf{`Add ontology' node} \\ Adds ontology to the \textit{CONSTRUCT} clause of the query.
+  \item \textbf{`Query dataset' node} \\ Uses SPARQL Anything to specify the file containing data of interest.
+  \item \textbf{`Clean \& create data path' node} \\ Uses string manipulation in order to create a valid path to desired data in the dataset. 
+  \item \textbf{`Retrieve data from dataset' node} \\ Uses created path above to retrieve correct data.
+  \item \textbf{`Add to knowledge graph' node} \\ Adds retrieved data to the knowledge graph. Then, it either loops again with a different file, continues using the retrieved data by adding custom external links or adds other external links. The latter option pertains to the last SPARQL Anything call in the query. 
+  \item \textbf{`Create \& clean external link' node} \\ Creates an external link using retrieved data within the same SPARQL Anything call.
+  \item \textbf{`Add to knowledge graph' node} \\ Adds the custom external link to the knowledge graph. Then, it either repeats the process again with another SPARQL call or adds other external links. The latter pertains to the last SPARQL Anything call in the query. 
+  \item \textbf{`Add any other external links' node} \\ Adds any other links that do not require data from the dataset such as Wikidata and MusicBrainz.
+  \item \textbf{`Output knowledge graph' node} \\ Produces the resulting knowledge graph.
 \end{enumerate}
 
 \section{Query Skeleton Structure}
-\hspace{0.5cm} In this section, the flow diagram, illustrated in the previous section, will be used to structure the query.
+\hspace{0.5cm} In this section, the flow diagram, illustrated in \textit{section 7.3}, will be used to structure the query.
 
 \lstset
 {
     breaklines=true,
     breakatwhitespace=true,
-    basicstyle=\ttfamily,
+    basicstyle=\linespread{1.25}\ttfamily,
 }
-\begin{lstlisting}
+\begin{lstlisting} 
 PREFIX ... # Add relevant links
 
 CONSTRUCT {
@@ -141,26 +143,28 @@ WHERE
     { 
         SERVICE <x-sparql-anything:file:./___.json>  # Query dataset
         { 
-            ... # Clean and refine data
-            ... # Get external links (if any)
-            ... # String manipulation with external links (if applicable)
-            ... # Add to knowledge graph
+            ... # Clean and create data path
+            ... # Retrieve data from dataset
+            ... # Add to Knowledge Graph
+            ... # Clean and create external link (if applicable)
+            ... # Add to Knowledge Graph
         } 
         SERVICE <x-sparql-anything:file:./___`.json>  # Query dataset
         { 
-            ... # Clean and refine data
-            ... # Get external links (if any)
-            ... # String manipulation with external links (if applicable)
-            ... # Add to knowledge graph
+            ... # Clean and create data path
+            ... # Retrieve data from dataset
+            ... # Add to Knowledge Graph
+            ... # Clean and create external link (if applicable)
+            ... # Add to Knowledge Graph
         } 
         .
         .
         .
         ... # Add any other external links 
-        # Output knowledge graph
+        # Output Knowledge Graph
     }
-
+}
 \end{lstlisting}
 
-This basic query structure follows all steps in the flow graph above and aids query creation to generate a knowledge graph. This can be observed in the comments next to each line, which correspond to a step in the flow diagram created. It also outlines the basic structure that will be used to create the query. The multiple SERVICE calls refer to the multiple JSON files in the dataset being queried. 
+This basic query structure follows all steps in \textit{Figure 7.3} and aids query creation to generate a knowledge graph. This can be observed in the comments next to each line, which correspond to a step in the flow diagram created. It also outlines the basic structure that will be used to create the query. The multiple SERVICE calls specify the  JSON file in the dataset being queried. 
 
