@@ -3,38 +3,38 @@
 \usetikzlibrary {patterns}
 
 \chapter{Background}
-First, the background of this project is discussed and suitable explanations provide context for the entire project. The broad scope of the project is presented before going into project-specific details in the \textit{context} chapter.
+First, background of this project is discussed and suitable explanations provide context for the entire project. The broad scope of the project is presented before going into project-specific details in the \textit{Context} chapter.
 
 \section{The Semantic Web}
-\hspace*{0.5cm} The Semantic Web is an extension of the World Wide Web (WWW) that allows information on it to be machine-readable. \cite{semanticweb} The concept of the Semantic Web was founded by Tim Berners-Lee (founder of the WWW) with the idea that machines can easily interpret the information available on the WWW. Tim Berners-Lee initially thought of this idea in 1999 stating ``I have a dream for the Web [in which computers] become capable of analyzing all the data on the Web – the content, links, and transactions between people and computers. A 'Semantic Web'" \cite{berners-TBLBook}. Ultimately, the semantic web aims to empower the knowledge embedded online so that it can be parsed by machines. \cite{semanticweb} 
+\hspace*{0.5cm} The Semantic Web is an extension of the World Wide Web (WWW) that allows information on it to be machine-readable \cite{semanticweb}. The concept was founded by Tim Berners-Lee (founder of the WWW) with the idea that machines can easily interpret information available on the WWW. Tim Berners-Lee initially thought of this idea in 1999 stating ``I have a dream for the Web [in which computers] become capable of analysing all the data on the Web – the content, links, and transactions between people and computers. A `Semantic Web'" \cite{berners-TBLBook}. Ultimately, the semantic web aims to empower the knowledge embedded online so that it can be parsed by machines \cite{semanticweb}. 
 
-An example of these developments can be seen in a data storage project that contains data interpretable by both humans and machines- Wikidata. Wikidata is a large open knowledge base that is part of the Wikimedia family (including Wikipedia) and is connected to other datasets as well. \cite{wikidata} Data is stored in WikiData using various web data storage methods such as JSON, XML and RDF (Resource Description Framework). The latter is described in more detail in the next section.  
+An example of these developments can be seen in a data storage project that contains structures interpretable by both humans and machines- Wikidata. Wikidata is a large open knowledge base that is part of the Wikimedia family (including Wikipedia) and is connected to other datasets as well \cite{wikidata}. Data is stored in WikiData using various web data storage methods such as JSON, XML and RDF (Resource Description Framework). The latter is described in more detail in the next section.  
 
-Another example within the project scope is MusicBrainz. MusicBrainz also provides information that is stored using RDF. \cite{musicbrainz} In this case, MusicBrainz's focus is around music so it may be more relevant and provide more specific data for the project. 
+Another example within the project scope is MusicBrainz. MusicBrainz also provides information that is stored using RDF \cite{musicbrainz}. In this case, MusicBrainz's focus is around music so it may be more relevant and provide more specific data for the project. 
 
 \subsection{Resource Description Framework}
-\hspace*{0.5cm} Resource Description Framework (RDF) is a method in which data can be stored, similar to how data can be stored in JSON or XML formats. However, the structure of RDF is very different. The general idea of RDF revolves around the concept of linked and connected data so RDF stores data in triples with relationships between data. This allows data stored in this format to be both machine and human-readable, making the reuse and extension of data semantics possible \cite{rdf}. Each sentence store follows this structure: 
+\hspace*{0.5cm} Resource Description Framework (RDF) is a method in which data can be stored, similar to how data can be stored in JSON or XML formats. However, the structure of RDF is very different. The general idea of RDF revolves around the concept of linked and connected data so RDF stores data in triples with relationships between data. Data stored in this format is both machine and human-readable, making the reuse and extension of data semantics possible \cite{rdf}. Each triple follows this structure: 
 
 \vspace{-0.1cm}
 \begin{center}
-\begin{beginquote}
+\begin{displayquote}
    \textit{subject predicate object}
-\end{beginquote} 
+\end{displayquote} 
 \end{center}
 \vspace{-0.2cm}
 
 \textbf{Subject:} \\
-The subject is the entity that the statement is about or refers to, which is typically a resource. A resource can be a Uniform Resource Identifier (URI- a string that identifies a name or a resource on the Internet), a physical thing or an abstract concept. 
+The subject is the entity that the triple is about or refers to, which is typically a resource. A resource can be a Uniform Resource Identifier (URI- a string that identifies a name or resource on the Internet), a physical thing or an abstract concept. 
 
 \textbf{Predicate:} \\
-The predicate describes the relationship between the subject and object (i.e. how they are related). 
+The predicate expresses the relationship between the subject and object (i.e. how they are related). 
 
 \textbf{Object:} \\
-The object is an entity that the statement describes in relation to the subject. This can also be blank. 
+The object is an entity that the triple describes in relation to the subject. This can also be blank. 
 
-In this project, we will look closer at the Turtle (TTL) format for RDF. A TTL file stores data in RDF format (triples) with a subject, object and relationship. This format is specifically relevant when storing multiple related triples (RDF Graph) and allowing them to be readable by both humans and machines. \cite{TTL}
+In this project, we will look closer at the Turtle (TTL) format for RDF. A TTL file represents RDF triples with a subject, object and relationship. This format is specifically relevant when representing multiple related RDF triples (RDF Graph) and allows them to be readable by both humans and machines \cite{TTL}.
 
-An example of an RDF statement (in Turtle- TTL) can be seen below:
+An example of an RDF statement (in TTL) can be seen below:
 
 \vspace{-0.4cm}
 \begin{center}
@@ -81,9 +81,9 @@ This statement indicates that the entity \textit{``http://www.example.com/Alvin"
 \end{center} 
 \vspace{-0.2cm}
 
-This example uses two abbreviations of URIs and has named the alias for these URIs to be 'ex' and 'exVocab' respectively, simplifying the statement. 
+This example uses two abbreviations of URIs and has named the alias for these URIs to be `ex' and `exVocab' respectively, simplifying the triple. 
 
-An English translation of the RDF statement is written below: 
+An English translation of the RDF triple is written below: 
 
 \vspace{-0.1cm}
 \begin{center}
@@ -91,12 +91,12 @@ An English translation of the RDF statement is written below:
 \end{center}
 \vspace{-0.1cm}
 
-As mentioned previously, RDFs can also be visualised in graph format with numerous (links) relationships between subjects and objects, specifying their relationships. RDFs can be used to describe ontologies, which are described in the next section.
+As mentioned previously, RDFs can also be visualised in graph format with numerous relationships between subjects and objects, specifying their relationships. In particular, this project's produced knowledge graph will be in RDF format and be represented in a TTL file. RDFs can be used to describe ontologies, which are described in the next section.
 
 \section{Ontology}
-\hspace{0.5cm} An ontology is a conceptual framework for modelling domain knowledge. \cite{ontology} Ontologies make use of RDF's triples by having two nodes (the subject and predicate) and an edge (the relationship). They act as models in which real data can be input, so these ontologies can be used again in different contexts and shared between users. These generalised models are ideal for Knowledge Graph generation because data from different contexts can be displayed in the same way using the same ontology. 
+\hspace{0.5cm} An ontology is a conceptual framework for modelling domain knowledge \cite{ontology}. Ontologies make use of RDF triples by having two nodes (the subject and predicate) and an edge (the relationship). They act as models in which real data can be input, so these ontologies can be reused in different contexts and shared between users. These generalised models are ideal for knowledge graph generation because data from different contexts can be displayed in the same way using the same ontology. 
 
-The main components of an ontology are similar to the RDF triples we have seen but have different names. They involve:
+The main components of an ontology are similar to the RDF triples in the previous section but have different names. They involve:
 
 \vspace{-0.15cm}
 \begin{itemize}
@@ -113,9 +113,9 @@ A characteristic or property that a class may have, which is described by the re
 \end{itemize}
 \vspace{-0.15cm}
 
-In the context of RDF statements, a connection between two nodes will have the subject and object as the nodes and the predicate will connect them, via an edge, given the relationship specified. \textit{Figure 2.1}, is an example of a graphical visualisation in the context of a football team:
+In relation to RDF statements, a connection between two nodes in an ontology will have subject and object nodes with a connecting edge specified by the predicate. \textit{Figure 2.1}, is an example of a graphical visualisation in the context of a football team:
 
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
     \begin{tikzpicture} [
         circle/.style={draw=brown, ellipse, ultra thick, fill=brown!30},
@@ -137,25 +137,25 @@ In the context of RDF statements, a connection between two nodes will have the s
 \end{figure}
 \vspace{-0.15cm}
 
-\textit{Figure 2.1} depicts a Football Team with a Manager and a Captain. The Manager and Captain (of the football team) also have a relationship because the manager selects a specific captain for the football team. The attribute 'Year' only describes the class 'Football Team' so is denoted as such.
+\textit{Figure 2.1} depicts a Football Team with a Manager and a Captain. The Manager and Captain (of the football team) also have a relationship because the manager selects a specific captain for the football team. The attribute `Year' only describes the `Football Team' class so is denoted as such.
 
 Ontologies are the framework in which knowledge graphs can be constructed and guide the generation of knowledge graphs. 
 
 \subsection{Knowledge Graphs}
-\hspace{0.5cm} A knowledge graph is a graph (i.e. data graph) that depicts real-world knowledge or data. \cite{knowledgegraph} Similar to ontologies, knowledge graphs are often represented as a network of interconnected nodes and edges, but instead, nodes represent real-world entities (such as people or places) and edges represent the real-world relationships between them (such as 'owns' or 'discovered'). 
+\hspace{0.5cm} A knowledge graph is a graph (i.e. data graph) that depicts real-world knowledge or data \cite{knowledgegraph}. Similar to ontologies, knowledge graphs are often represented as a network of interconnected nodes and edges but instead, nodes represent real-world entities (such as people or places) and edges represent the real-world relationships between them (such as `owns' or `discovered'). 
 
 As mentioned, knowledge graphs apply real data from an ontology framework. With a dataset and relevant ontology, we can create specific instances of each ontological relationship. 
 
-Knowledge graphs are used in a variety of real-world applications including search engines, recommendation systems and natural language processors. Common examples of these applications include:
+Knowledge graphs are used in a variety of real-world applications including search engines, recommendation systems and natural language processors. More detail on these examples are below:
 
 \vspace{-0.1cm}
 \begin{itemize}
-    \itemsep0em 
-\item \textbf{Search Engines:} \\Knowledge graphs are used by search engines such as Google to find appropriate results given a search query. Results are interpreted and relevant information is displayed based on the relationships between the URIs and the meaning of the search term. The most relevant information with regard to the search query is displayed to the user. The method in which a knowledge graph aids a specific search query is called a ``semantic search" and provides more accurate and relevant results. This mirrors how humans tend to think by emulating our natural ability to find associations between data.  \cite{searchengine}  
+\itemsep0em 
+\item \textbf{Search Engines:} \\Knowledge graphs are used by search engines such as Google to find appropriate results given a search query. Results are interpreted and relevant information is displayed based on relationships between the URIs and meaning of the search term. The most relevant information with regard to the search query is displayed to the user. The method in which a knowledge graph aids a specific search query is called a ``semantic search" and provides more accurate and relevant results. This mirrors how humans tend to think by emulating our natural ability to find associations between data \cite{searchengine}.  
 
 \item \textbf{Recommendation Systems:} \\Knowledge graphs can be used in such systems because there are often many associations between different entities. Recommendation systems use relationships in the knowledge graph to display the most relevant data to the user. 
 
-\item \textbf{Natural Language Processing:}\\ Knowledge graphs are used in this context to provide relationships between different terms that are related within the text. A system employing Natural Language Processing may want to understand the meaning of a sentence and be able to put it into a search query so that relevant results can be found. 
+\item \textbf{Natural Language Processing:}\\ In this context, knowledge graphs are used to establish connections between distinct terms linked within text. A system employing Natural Language Processing may want to understand the meaning of a sentence and be able to interpret and input it into a search query so that relevant results can be found. 
 \end{itemize}
 
 An example of a knowledge graph can be in \textit{Figure 2.2}, following the ontology in \textit{Figure 2.1} displayed in the ontology section above:
@@ -182,13 +182,12 @@ An example of a knowledge graph can be in \textit{Figure 2.2}, following the ont
 \end{figure}
 \vspace{-0.1cm}
 
-\textit{Figure 2.2} describes the men's football team: Arsenal. Arteta is the manager of Arsenal and Arsenal's captain is Ødegaard. Arteta (the manager) also selects the captain. The year Arsenal was founded is depicted in the graph as 1886.
+\textit{Figure 2.2} describes Arsenal's men's football team. Arteta is the manager of Arsenal and Arsenal's captain is Ødegaard. Arteta (the manager) also selects the captain. The year Arsenal was founded is displayed in the graph as 1886.
 
 The more linked data we add from the dataset, the larger the knowledge graph will grow.
 
 \section{SPARQL}
-
-\hspace{0.5cm} SPARQL enables us to query RDF data formats and retrieve specific data from large RDF files. SPARQL queries often have the same structure as standard SQL queries. Specific data can be filtered by using triples; stating the subject, object and relationship format in the WHERE clause. \cite{sparlbook} An example of a SPARQL Query is shown below:
+\hspace{0.5cm} SPARQL enables us to query RDF data formats and retrieve specific data from large RDF files. SPARQL queries often have the same structure as standard SQL queries. Specific data can be specified and filtered by stating the subject, object and relationship in the query's SELECT and WHERE clause respectively \cite{sparlbook}. An example of a SPARQL Query is shown with an explanation below:
 
 \begin{lstlisting}
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -201,13 +200,13 @@ WHERE
     ?person  foaf:surname  ?surname.
   }
 \end{lstlisting}
-(\textit{Example from}: \cite{foaf})
+\textit{Example from}: \cite{foaf}
 
 \medskip
-Here the shortcut 'foaf' (friend of a friend) is used, which is often used to describe people, their characteristics, relationships and other information about them. \cite{foaf}
+Here, the shortcut `foaf' (friend of a friend) is used, which is often used to describe people, their characteristics, relationships and other information about them \cite{foaf}.
 
-The SELECT part of the query wants to extract the name and surname of that person in the RDF document. 
+The \textbf{SELECT} part of the query extracts all the first and last names of people in the queried TTL file with RDF type \textit{foaf:Person}. The selected people must also have a name and surname specified in the file.
 
-The WHERE part of the query requests ?person to be of RDF type foaf:Person and must have a name and surname. 
+The \textbf{WHERE} clause of the query specifies that the queried variable \textit{?person} belongs to the RDF class \textit{foaf:Person}. The \textit{?person} should also possess both a name and a surname represented by the property \textit{foaf:name} and \textit{foaf:surname} respectively.
 
-If the query were to be executed in an appropriate RDF document, the output would list all the first names and surnames of those people who we have data about. 
+In conclusion, if the query were to be executed in an appropriate RDF document, the result would display the first and last names of all individuals in the TTL file of type \textit{foaf:Person}. Moreover, the individuals outputted will have both a name and surname property.

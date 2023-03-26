@@ -26,7 +26,7 @@ This chapter will detail the implementation phase of the project and how the sol
     -q filepath/filename.sparql
 \end{lstlisting}
 
-\noindent Because the query involves generating a knowledge graph based on what organ the user wants to view, passing a parameter via the query is vital. This can be done as follows:
+\noindent Because the query involves generating a knowledge graph based on what organ the user wants to view, passing a parameter via the command is vital. This can be done as follows:
 
 \lstset
 {
@@ -38,7 +38,7 @@ This chapter will detail the implementation phase of the project and how the sol
     --values variable=variablevalue
 \end{lstlisting}
 
-\noindent The assigned variable can be used in the SPARQL query by specifying the variable name and concatenating a question mark and underscore at the front. So passing the parameter 'variable', following the previous example, can be accessed through:
+\noindent The assigned variable can be used in the SPARQL query by specifying the variable name and concatenating a question mark and underscore at the front. So passing the parameter `variable', following the previous example, can be accessed through:
 
 \lstset
 {
@@ -99,17 +99,15 @@ This chapter will detail the implementation phase of the project and how the sol
 \end{lstlisting}
 
 \section{Ontology Reconstruction}
-\hspace*{0.5cm} As mentioned in the design, scope of the provided ontology was too broad for the envisioned knowledge graph. Therefore, refinement of the provided ontology and exploration with external links was necessary to produce a relevant ontology. As mentioned in the \textit{Context} chapter, the ontology will serve as the framework for the knowledge graph and will be placed in the CONSTRUCT segment of the query. Knowledge of ontology engineering was not required as this was merely a reorganisation of the provided ontology. In the following subsections, the process of creating the ontology using the dataset and external data will be detailed.
+\hspace*{0.5cm} As mentioned in the \textit{Design} chapter, scope of the provided ontology was too broad for the envisioned knowledge graph. Therefore, refinement of the provided ontology and exploration with external links was necessary to produce a relevant ontology. As mentioned in the \textit{Context} chapter, the ontology serves as the framework for the knowledge graph and will be placed in the CONSTRUCT segment of the query. Knowledge of ontology engineering was not required as this was merely a reorganisation and refinement of the provided ontology. In the following subsections, the process of creating the ontology using the dataset and external data will be detailed.
 
 \subsection{Dataset Ontology}
-\hspace*{0.5cm} Using \textit{Figure 7.2}, identification and grouping of relevant data was done and can now be expanded upon. 
-
-The provided ontology to identify data relevant to the organ node was used as well to ensure the correct relationships were stated.
+\hspace*{0.5cm} Identification of the main points of expansion was accomplished in \textit{Figure 7.2}. In this subsection, the provided ontology and \textit{Context} chapter will be used to identify data relevant to these groups in \textit{Figure 7.2}.
 
 \subsubsection{Organ}
 \hspace*{0.5cm} This node posed as the main node in which all data would branch from. It represents the requested organ and relevant data will be branched from it. 
 
-Upon selection of relevant information from the dataset's JSON files, they were appended to the organ node. The provided ontology was also used to correctly identify relationships to the organ node. Relevant data and relationships to the organ are listed below:
+Upon selection of relevant information from the dataset's JSON files, they were appended to the organ node. The provided ontology was also used to correctly identify relationships to the organ node. Relevant nodes and relationships to the organ are listed below:
 
 \vspace{-0.15cm}
 \begin{itemize}
@@ -145,12 +143,12 @@ Upon selection of relevant information from the dataset's JSON files, they were 
     \item moreInformation - oont:moreInformation 
 \end{itemize}
 
-This data is directly relevant to the organ as illustrated in the provided organ ontology. Data such as originalLocation, dateOfbirth and state were added as they were part of the dataset and provided extra relevant detail. Because technicals, disposition and change were identified as nodes for further expansion, they were also connected to the main organ node. 
+These nodes are directly relevant to the organ as illustrated in the provided organ ontology. Nodes such as originalLocation, dateOfbirth and state were added as they were part of the dataset and provided extra relevant detail. Because technicals, disposition and change were identified as nodes for further expansion in \textit{Figure 7.2}, they were also connected to the main organ node. 
 
 Relationships used to describe the relation between the organ and its objects were provided and usually had intuitive names based on the object. 
 
 \subsubsection{Technicals}
-\hspace*{0.5cm} This branch of technical data regarding an organ was mainly derived from one JSON file and a segment of the provided ontology that referred to its 'parthood'. All relationships branching from this 'technicals' node were provided. Relevant data and their relationships identified are below:
+\hspace*{0.5cm} This branch of technical nodes regarding an organ was mainly derived from one JSON file and a segment of the provided ontology that referred to its `parthood'. All relationships branching from this `technicals' node were provided. Relevant nodes and their relationships identified are below:
 
 \vspace{-0.1cm}
 \begin{itemize}
@@ -173,7 +171,7 @@ Relationships used to describe the relation between the organ and its objects we
 \textit{range1} and \textit{range2} corresponded to ranges of the keyboard and pedal respectively so their relationship noted it as such. 
 
 \subsubsection{Disposition}
-\hspace*{0.5cm} This branch of data referred to current qualities of the selected organ. The provided ontology covered this segment but contained nodes that did not appear in the dataset so needed to be refined. Relationships were also provided. The readjustment of the ontology would include:
+\hspace*{0.5cm} This branch of nodes referred to current qualities of the selected organ. The provided ontology covered this segment but consisted of nodes that did not appear in the dataset so needed to be refined. Relationships were also provided. The readjusted ontology would include:
 
 \vspace{-0.1cm}
 \begin{itemize}
@@ -186,7 +184,7 @@ Relationships used to describe the relation between the organ and its objects we
 \end{itemize}
 
 \subsubsection{Change}
-\hspace*{0.5cm} This branch stated changes made to the organ during its lifetime. The provided ontology did not mention changes of a given organ so it was added to represent it in the knowledge graph. Relationships used were provided. The new sections added to the ontology were:
+\hspace*{0.5cm} This branch stated changes made to the organ during its lifetime. The provided ontology did not mention changes of a given organ so it was added for more data representation. Relationships used were provided. The new sections added to the ontology were:
 
 \vspace{-0.15cm}
 \begin{itemize}
@@ -200,10 +198,10 @@ Relationships used to describe the relation between the organ and its objects we
 \vspace{-0.25cm}
 
 \subsection{External Ontology}
-\hspace*{0.5cm} The method in which external data was added to the knowledge graph involved following the flow in \textit{Figure 7.3}.
+\hspace*{0.5cm} The method in which external data was added to the knowledge graph involved following the flow in \textit{Figure 7.3}. 
 
 \subsubsection{External Data Sources}
-\hspace*{0.5cm} As mentioned in the \textit{Specification} chapter in \textit{Table 6.1}, Wikidata and MusicBrainz can be used to expand the existing knowledge graph. Following \textit{Figure 7.2}, a node branching out of the main organ node was made to represent Wikidata's organ page \cite{organwikidata} from which the same structure was employed. The relationships used were the same as those on Wikidata. Data branching off the organWikidata node with their corresponding relationship were:
+\hspace*{0.5cm} As mentioned in the \textit{Specification} chapter in \textit{Table 6.1}, Wikidata and MusicBrainz can be used to expand the existing knowledge graph. Following \textit{Figure 7.2}, a node branching out of the main organ node was made to represent Wikidata's organ page \cite{organwikidata}. The relationships used were the same as those on Wikidata. Data branching off this OrganWikidata node and their corresponding relationship are:
 
 \vspace{-0.15cm}
 \begin{itemize}
@@ -274,17 +272,17 @@ External data from MusicBrainz's organ page \cite{organmusicbrainz} was not as v
 \end{itemize}
 
 \subsubsection{Custom Links}
-\hspace*{0.5cm} These links used data from the dataset to form custom links via string manipulation serving as points of expansion. Identifying data from the dataset that was able to be expanded upon was challenging as data was very specific to the organ and external links found online were too broad. However, data that was more general such as locations could be expanded upon. Some points of expansion are:
+\hspace*{0.5cm} These custom links served as points of expansion for the knowledge graph as they used data from the dataset and string manipulation. Identifying data from the dataset that was able to be expanded upon was challenging as data was very specific to the organ and external links found online were too broad. However, data that was more general such as locations could be expanded upon. Some points of expansion are:
 
 \vspace{-0.15cm}
 \begin{itemize}
     \itemsep0em 
     \vspace{-0.05cm}
-    \item buildinginfo
+    \item buildingInfo
     \vspace{-0.05cm}
-    \item stateinfo
+    \item stateInfo
     \vspace{-0.05cm}
-    \item maintainerinfo
+    \item maintainerInfo
     \vspace{-0.05cm}
 \end{itemize}
 \vspace{-0.1cm}
@@ -292,13 +290,13 @@ External data from MusicBrainz's organ page \cite{organmusicbrainz} was not as v
 \noindent The relationship for all additional nodes was ``oont:extraInformation".
 
 \subsubsection{Generic Links}
-\hspace*{0.5cm} These links were not organ-specific but provided more detail and general information regarding some aspects of the knowledge graph. Data in the dataset being so specific restricts the amount of external generic links that can be added, nevertheless, there are some points of expansion such as:
+\hspace*{0.5cm} These links were not organ-specific but provided more detail and general information regarding some aspects of the knowledge graph. Data in the dataset being so specific restricted the amount of external generic links that could be added, nevertheless, there were some points of expansion such as:
 
 \vspace{-0.15cm}
 \begin{itemize}
     \itemsep0em 
     \vspace{-0.05cm}
-    \item pitchinfo
+    \item pitchInfo
     \vspace{-0.05cm}
     \item windPressureInfo
     \vspace{-0.05cm}
@@ -318,7 +316,7 @@ The newly improved ontology is displayed in the CONSTRUCT section of the final q
 \hspace*{0.5cm} The process of creating the knowledge graph generation query for the ontology will be detailed below:
 
 \subsection{Dataset Knowledge Graph Query}
-\hspace*{0.5cm} This subsection will describe the process of creating a query that is responsible for extracting data from the dataset, as planned in \textit{Figure 7.3} and \textit{Design 7.4} section. All code in this subsection will be part of the query's WHERE clause. 
+\hspace*{0.5cm} This subsection will describe the process of creating a query that is responsible for extracting data from the dataset, as planned in \textit{Figure 7.3}. All code in this subsection will be part of the query's WHERE clause. 
 
 The snippet below follows \textit{Figure 7.3} and provides the template for most SPARQL Anything SERVICE calls that extract data from a JSON file. JSON Path is also used to navigate through JSON files as shown in the SPARQL Anything documentation \cite{sparqlanythinggithub}. Specific details regarding JSON path were found on its relevant GitHub \cite{jsonpath} to assist in path generation. 
 
@@ -341,7 +339,7 @@ The snippet below follows \textit{Figure 7.3} and provides the template for most
     } 
 \end{lstlisting}
 
-The query's sequence of events will be listed chronologically below:
+The query's sequence of events will be chronologically listed and explained below:
 
 \begin{enumerate}
     \item SERVICE call queries the \textit{history\_base.json} file in the \textit{output} folder using SPARQL Anything. 
@@ -350,7 +348,7 @@ The query's sequence of events will be listed chronologically below:
     \item Data is found and assigned to the variable \textit{?originalLocation}, which is added to the knowledge graph.
 \end{enumerate}
 
-This SPARQL Anything call is followed by many others to complete the knowledge graph. Although not explicitly stated in the design, the passed in organ \textit{?\_organ} is bound to the ontology variable \textit{?organ} in the first SPARQL Anything call as seen below:
+This SPARQL Anything call is followed by many others to complete the knowledge graph. Although not explicitly stated in the \textit{Design} chapter, the passed in organ \textit{?\_organ} is bound to the ontology variable \textit{?organ} in the first SPARQL Anything call as seen below:
 
 \lstset
 {
@@ -362,7 +360,7 @@ This SPARQL Anything call is followed by many others to complete the knowledge g
     BIND (?_organ AS ?organ) .
 \end{lstlisting}
 
-While viewing the produced knowledge graphs during implementation, \textit{?dispositions} was frequently found to be an empty string. To reduce confusion, a condition was stated within that specific SPARQL Anything call. \textit{?disposition1} acted as a temporary variable while IF() was used to identify whether it was an empty string. If so, it was assigned a new string in order to improve understandability since it is one of the main nodes. 
+While viewing the produced knowledge graphs during implementation, \textit{?dispositions} was frequently found to be an empty string. To reduce confusion, a condition was stated within that specific SPARQL Anything call. \textit{?disposition1} acted as a temporary variable while IF() was used to identify whether it was an empty string. If so, it was assigned a new string in order to improve understandability since it was one of the main nodes depicted in \textit{Figure 7.2}. 
 
 \lstset
 {
@@ -386,10 +384,10 @@ While viewing the produced knowledge graphs during implementation, \textit{?disp
 \end{lstlisting}
 
 \subsection{External Knowledge Graph Query}
-\hspace*{0.5cm} This subsection will describe the process in which external data was added to the knowledge graph and how it was implemented in the query. 
+\hspace*{0.5cm} This subsection will describe the process in which external data was added to the knowledge graph and how it was implemented. 
 
 \subsubsection{Custom Data}
-\hspace*{0.5cm} For links that required data from the dataset, the query skeleton structure and \textit{Figure 7.3} were followed, providing the framework to create the query. Custom links were created from Wikipedia as it was one of the few websites that covered the scope of what could be added. It also gave adequate extra information for the data and sufficiently extended breadth of the resulting knowledge graph. However, there is still a possibility that a Wikipedia page on a particular topic has not been created yet. To match the context of the dataset, the link created was from the Dutch version of Wikipedia. As mentioned in the ontology creation \textit{Section 8.3}, custom links were difficult to identify using the dataset as data was very specific to a particular organ. Nonetheless, an example of a custom link addition can be seen below:
+\hspace*{0.5cm} For links that required data from the dataset, the query skeleton structure and \textit{Figure 7.3} were followed, providing the framework to continue query creation. Custom links were created from Wikipedia as it was one of the few websites that covered the scope of what could be added. It also gave adequate extra information for the data and sufficiently extended breadth of the resulting knowledge graph. However, there is still a possibility that a Wikipedia page on a particular topic has not been created yet. To match the context of the dataset, the link created was from the Dutch version of Wikipedia. As mentioned in the ontology creation \textit{Section 8.3}, custom links were difficult to identify as data was very specific to a particular organ. Nonetheless, an example of a custom link addition can be seen below:
 
 \lstset
 {
@@ -425,7 +423,9 @@ Using string manipulation and other SPARQL functions, the custom link is created
 This is an example of where SPARQL Anything's Facade-X approach is useful because features of SPARQL within a SPARQL Anything query can be used without having to learn something completely new. 
 
 \subsubsection{General Data}
-\hspace*{0.5cm} For links that were independent of the dataset, they were added after the SPARQL Anything calls to stay consistent with \textit{Figure 7.3}. Links identified independently were added within the corresponding SERVICE call from which they branched out from. These specific links were found for data that had a broad scope, so websites regarding those subjects could be found. For example:
+\hspace*{0.5cm} Links specifically from Wikidata and MusicBrainz were added at the end of the WHERE clause so as to be consistent with \textit{Figure 7.3}.
+
+On the other hand, the externally identified links were added to the knowledge graph after within the SPARQL Anything calls to maintain consistency with \textit{Figure 7.3}. These specific links were added within the corresponding SERVICE call from which they branched out and were found for data that had a broad scope. 
 
 \lstset
 {
@@ -450,7 +450,7 @@ SERVICE <x-sparql-anything:file:./output/tech.json>
 
 This snippet follows the same structure as most SPARQL Anything calls, but the last line binds the URI to \textit{?pitchInfo}. This website, in particular, found more information describing the pitch of an organ. 
 
-External data regarding MusicBrainz and Wikidata were added by following the format on the website and bound to a variable in the ontology. Most data on the website used links from Wikidata so the PREFIX \textit{wd} for Wikidata was used, but some data contained explicit links. Specific SERVICE calls for Wikidata or MusicBrainz were not necessary as all the data added to the knowledge graph came from the same organ Wikidata website \cite{organwikidata}. Physical extraction directly from the websites into the knowledge graph was a more suitable method of expansion than using more SERVICE calls. An example of two relationships stated on Wikidata being added to the knowledge graph:
+External data regarding MusicBrainz and Wikidata were added by following the format on the website and bound to a variable in the ontology. Most data on the website used links from Wikidata so the PREFIX \textit{wd} for Wikidata was used, but some data contained explicit links. Specific SERVICE calls querying Wikidata or MusicBrainz were not necessary as all the data added to the knowledge graph came from the same organ Wikidata website \cite{organwikidata} or MusicBrainz organ site \cite{organmusicbrainz}. The websites, themselves, provided translations of the page to a selection of different languages so can be understood by a variety of different users. Physical extraction directly from the websites into the knowledge graph was a more suitable method of expansion than using more SERVICE calls. Below, is an example of two relationships extracted from Wikidata and incorporated into the knowledge graph:
 
 \lstset
 {
@@ -471,7 +471,7 @@ External data regarding MusicBrainz and Wikidata were added by following the for
     \item WHERE:
     \begin{enumerate}
         \vspace{-0.25cm}
-        \item SERVICE: call to SPARQL Anything
+        \item SERVICE: calls to SPARQL Anything
         \item External Data
     \end{enumerate}
 \end{enumerate}
@@ -492,10 +492,10 @@ Full query can be seen in the \textit{Appendix} section, specifically \textit{Li
 \hspace{0.5cm} Long-term maintenance of the query needs to be discussed to assess its longevity. Consideration of query maintenance is important for identifying any possible future software changes and for potential continuation of this work. Below are examples of some dependencies that may affect maintenance of software:  
 
 \begin{itemize}
-    \item \textbf{Dependence on SPARQL 1.1 query language:} \\ This implementation depends on SPARQL 1.1 syntax as the query uses built-in methods such as \textit{BIND} and \textit{URI}. Discontinuation or significant changes to the relevant SPARQL 1.1 features may render the query unusable or inhibit execution.
-    \item \textbf{Dependence on SPARQL Anything:} \\ The implementation also depends on SPARQL Anything and its maintenance. Cessation or deprecation of this tool may affect the usability of the query. 
+    \item \textbf{Dependence on SPARQL 1.1 query language:} \\ This implementation depends on SPARQL 1.1 syntax as the query uses built-in methods such as \textit{BIND} and \textit{URI}. Deprecation or significant changes to the relevant SPARQL 1.1 features may render the query unusable or inhibit execution.
+    \item \textbf{Dependence on SPARQL Anything:} \\ The implementation also depends on SPARQL Anything and its maintenance. Cessation or discontinuation of this tool may affect the usability of the query. Repurposing or significant changes to the tool may also impact usability. 
     \item \textbf{Dataset maintenance:} \\ Dataset needs to be updated and maintained in a real-world context so the query does not produce an obsolete knowledge graph. 
-    \item \textbf{JSON format redundancy:} \\ If technological advancements were to make the JSON format outdated, repurposing the query would be challenging since the dataset is in JSON format. The query, itself, is also tailored to JSON formats.
+    \item \textbf{JSON format redundancy:} \\ If technological advancements were to make the JSON format outdated, repurposing the query would be challenging since the dataset is in JSON format. The query, itself, is also tailored to JSON formats by using JSON path as a means of navigating through the file.
     \item \textbf{JSON Path redundancy:} \\ Alternate means of navigating through JSON files will be required if JSON Path were to become redundant as the query relies on navigation through the dataset's JSON files.
     \item \textbf{Command Line redundancy:} \\ If use of the command line were to become redundant, execution of the query would not be possible and a knowledge graph could not be automatically generated. 
 \end{itemize}
