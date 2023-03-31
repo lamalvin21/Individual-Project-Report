@@ -14,7 +14,7 @@ This design chapter provides a high-level overview of the software implementatio
 \vspace{-0.7cm}
 
 \section{Ontology Structure}
-\hspace{0.5cm} In this section, a plan for the ontology's general structure will be outlined based on: the dataset, provided ontology and any external websites. 
+\hspace{0.5cm} In this section, a plan for the ontology's general structure will be outlined based on: the dataset, provided ontology and any external websites. Relevant relationships that will be used in the real ontology will also be noted. 
 
 \begin{figure}[H]
     \begin{center}
@@ -24,15 +24,15 @@ This design chapter provides a high-level overview of the software implementatio
             node distance=2.5cm ]
             
         \node[circle] (q0) {Organ};
-        \node[circle, right of=q0] (q1)  {Technical};
-        \node[circle, left of=q0] (q2)  {Changes};
+        \node[circle, right of=q0, xshift=2.5cm] (q1)  {Technical} ;
+        \node[circle, left of=q0, xshift=-2.5cm] (q2)  {Changes};
         \node[circle, above of=q0] (q3)  {Disposition};
         \node[circle, below of=q0] (q4)  {OrganWikidata};
     
-        \draw[] (q0.east) -- (q1.west);
-        \draw[] (q0.west) -- (q2.east);
-        \draw[] (q0.north) -- (q3.south);
-        \draw[] (q0.south) -- (q4.north);
+        \draw[] (q0.east) -- (q1.west) node [midway, fill=white] {xyz:technicals};
+        \draw[] (q0.west) -- (q2.east) node [midway, fill=white] {xyz:changes};
+        \draw[] (q0.north) -- (q3.south) node [midway, fill=white] {xyz:disposition};
+        \draw[] (q0.south) -- (q4.north) node [midway, fill=white] {oont:extraInformation };
             
         \end{tikzpicture}
     \end{center}
