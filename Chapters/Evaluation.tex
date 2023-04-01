@@ -204,11 +204,13 @@ In the produced knowledge graphs, violations of timeliness can occur due to the 
 \end{displayquote}
 \vspace{-0.1cm}
 
-With regard to dataset coverage, most of the data is represented in the knowledge graph. Reasoning for the omission of some data is related to how it can be represented in the knowledge graph without causing confusion. For example, the specific ranges of a given organ for each keyboard or pedal are omitted due to the possible confusion it may cause when representing the keyboard and pedal ranges (\textit{?range1} and \textit{?range2}). Also, representing all that data concisely would be challenging and it may be seen as unnecessary. However, this is only relevant to some data. 
+Reasoning for the omission of some data is related to how it can be represented in the knowledge graph without causing confusion. For example, the specific ranges of a given organ for each keyboard or pedal are omitted due to the possible confusion it may cause when representing the keyboard and pedal ranges (\textit{?range1} and \textit{?range2}). Also, representing all that data concisely would be challenging and it may be seen as unnecessary. However, this is only relevant to some data. 
 
-Contextual information is added in the form of descriptions and custom links in all assessed knowledge graphs. The relationship \textit{oont:extraInformation}, for instance, provides context and extra detail for a specific node. 
+Contextual information is added in the form of descriptions and custom links in all assessed knowledge graphs. The relationship \textit{oont:extraInformation}, for instance, provides context and extra detail for a specific node. Different resources can be seen in the five knowledge graphs such as Wikidata links, data from the dataset and various other website links. 
 
-Different resources can be seen in the five knowledge graphs such as Wikidata links, data from the dataset and various other website links. 
+To adequately measure dataset coverage and completeness, one of the tested knowledge graphs was selected, namely for organ: \textit{Part14\_000Brouwershaven}. Using the JSON files in the dataset, its coverage was calculated. Out of 31 pieces of data available for a given organ throughout the dataset, 28 were covered by the resulting knowledge graph. This demonstrates the completeness of the existing knowledge graph but also shows room for possible improvement if the ontology were to be expanded upon. 
+
+In terms of completeness of Wikidata and MusicBrainz, all relevant details on both pages were appended to the knowledge graph. Details on Wikidata such as identifiers (i.e. Bibliothèque nationale de France ID, GND ID, National Library of Israel J9U ID etc.) were of little significance so were omitted from the knowledge graph to reduce confusion.
 
 \subsubsection{Representativeness}
 \hspace{0.5cm} Representativeness ensures the knowledge graph does not involve any bias and does not exclude anything relevant \cite{knowledgegraphevaulationbook}.
@@ -219,7 +221,7 @@ Different resources can be seen in the five knowledge graphs such as Wikidata li
 \begin{displayquote}
     \textit{- Under-represent organ data from other languages.}
 \end{displayquote}  
-\vspace{-0.6cm}
+\vspace{-0.675cm}
 \begin{displayquote}
      \textit{- Under-represent people (e.g. organist, owner) from a particular gender, race etc. }  
 \end{displayquote}
