@@ -123,7 +123,7 @@ The nodes in \textit{Figure 7.3} represent necessary actions and one of the edge
 \end{enumerate}
 
 \section{Query Skeleton Structure}
-\hspace{0.5cm} In this section, the flow diagram, illustrated in \textit{section 7.3}, will be used to structure the query.  
+\hspace{0.5cm} In this section, the flow diagram, illustrated in \textit{section 7.3}, will be used to structure the query. The basic query structure follows all steps in \textit{Figure 7.3} and aids query creation to generate a knowledge graph. This can be observed in the comments next to each line, which correspond to a step in the flow diagram created. It also outlines the basic structure that will be used to create the query.
 
 \lstset
 {
@@ -164,5 +164,17 @@ WHERE
 }
 \end{lstlisting}
 
-This basic query structure follows all steps in \textit{Figure 7.3} and aids query creation to generate a knowledge graph. This can be observed in the comments next to each line, which correspond to a step in the flow diagram created. It also outlines the basic structure that will be used to create the query. The multiple SERVICE calls specify the JSON file in the dataset being queried. 
+With regard to \textit{Figure 7.3}, the query skeleton structure abides by the plan set out. Below, a small description mapping each node in \textit{Figure 7.3} will be provided.
 
+\begin{itemize}
+    \item \textbf{Add relevant links} \\ Will add any PREFIXES necessary during implementation. 
+    \item \textbf{Add organ ontology} \\  Refers to node 1, where the ontology is adjusted if necessary and placed into the query's CONSTRUCT clause. 
+    \item \textbf{Query Dataset} \\ Refers to node 2 by selecting the file in the dataset where desired data resides by overriding SPARQL's SERVICE operator.
+    \item \textbf{Clean \& create data path} \\ Refers to node 3 and uses SPARQL 1.1 functions such as CONCAT and BIND to create the appropriate JSON path. 
+    \item \textbf{Retrieve data from dataset} \\ Refers to node 4 whereby data is located using fx:properties and the recently created JSON path. 
+    \item \textbf{Add to knowledge graph} \\ Refers to node 5 and adds located data into the knowledge graph using RDF functioning. Possible directions for continuation have been detailed in \textit{Section 7.3}.
+    \item \textit{Optional}: \textbf{Clean \& create external link} \\ Refers to node 6 and uses SPARQL 1.1 functions such as CONCAT, IRI, REPLACE and BIND to create the external link.
+    \item  \textit{Optional}: \textbf{Add to knowledge graph} \\ Refers to node 7 where located data is added into the knowledge graph by assigning it to the corresponding variable in the ontology. Possible directions for continuation have been detailed in \textit{Section 7.3}.
+    \item \textbf{Add any other external links} \\ Refers to node 8 which ceases SPARQL Anything calls and adds any relevant external links using SPARQL's BIND function. Explicitly stating the links and adding them to the knowledge graph may be a viable method. 
+    \item \textbf{Output Knowledge Graph} \\ Refers to node 9 where the query executes and produces the final knowledge graph. 
+\end{itemize}
