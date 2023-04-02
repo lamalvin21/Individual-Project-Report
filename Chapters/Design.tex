@@ -23,11 +23,11 @@ This design chapter provides a high-level overview of the software implementatio
             align=center,
             node distance=2.5cm ]
             
-        \node[circle] (q0) {Organ};
-        \node[circle, right of=q0, xshift=2.5cm] (q1)  {Technical} ;
-        \node[circle, left of=q0, xshift=-2.5cm] (q2)  {Changes};
-        \node[circle, above of=q0] (q3)  {Disposition};
-        \node[circle, below of=q0] (q4)  {OrganWikidata};
+        \node[circle] (q0) {organ};
+        \node[circle, right of=q0, xshift=2.5cm] (q1)  {technical} ;
+        \node[circle, left of=q0, xshift=-2.5cm] (q2)  {changes};
+        \node[circle, above of=q0] (q3)  {disposition};
+        \node[circle, below of=q0] (q4)  {organWikidata};
     
         \draw[] (q0.east) -- (q1.west) node [midway, fill=white] {xyz:technicals};
         \draw[] (q0.west) -- (q2.east) node [midway, fill=white] {xyz:changes};
@@ -44,11 +44,11 @@ This design chapter provides a high-level overview of the software implementatio
 \textit{Figure 7.2} illustrates the main components to be expanded on in the ontology based on data in the dataset. More details of the main nodes are detailed below:
 
 \begin{enumerate}
-    \item \textbf{Organ}: The primary organ component that will connect with other many other nodes.
-    \item \textbf{Changes}: This component specifies the organ adjustment details and maintenance changes for an organ.
-    \item \textbf{Disposition}: This component refers to the organ's current components and details relating to them.
-    \item \textbf{Technicals:} This component is responsible for the specific musical details of the organ. 
-    \item \textbf{OrganWikidata}: This provides an expansion of the existing knowledge graph from Wikidata.
+    \item \textbf{organ}: The primary organ component that will connect with other many other nodes.
+    \item \textbf{changes}: This component specifies the organ adjustment details and maintenance changes for an organ.
+    \item \textbf{disposition}: This component refers to the organ's current components and details relating to them.
+    \item \textbf{technicals:} This component is responsible for the specific musical details of the organ. 
+    \item \textbf{organWikidata}: This provides an expansion of the existing knowledge graph from Wikidata.
 \end{enumerate}
 
 The section of the ontology specifically for external Wikidata links can be structured in the same format as displayed on its website. Using \textit{Figure 7.2}, extending the \textit{OrganWikidata} node is most plausible. For instance, the organ page on Wikidata \cite{organwikidata} contains organ-related triples. An extract from \cite{organwikidata} is shown below:
