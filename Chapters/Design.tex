@@ -2,7 +2,7 @@
 This design chapter provides a high-level overview of the software implementation. With the aid of visual tools such as diagrams, a plan for implementation will be outlined. 
 
 \section{UML Sequence Diagram}
-\hspace{0.5cm} A high-level overview from user input to output is important to illustrate so it may be followed in the latter sections of this chapter. Providing a visual representation also makes it easier to understand how all relevant components of the project interact from beginning to end. Most SPARQL Anything calls follow the same format as depicted in \textit{Figure 4} of \cite{asprino2023knowledge} and is strictly followed in \textit{Figure 7.1}. A contextualised UML Sequence diagram is shown in \textit{Figure 7.1}: 
+\hspace{0.5cm} A high-level overview from user input to output is important to illustrate so it may be followed in the latter sections of this chapter. Providing a visual representation also makes it easier to understand how all relevant components of the project interact with each other. Most SPARQL Anything calls follow the same format as depicted in \textit{Figure 4} of \cite{asprino2023knowledge} and is strictly followed in \textit{Figure 7.1}. A contextualised UML Sequence diagram is shown in \textit{Figure 7.1}: 
 
 \begin{figure}[H]
 \begin{center}
@@ -43,15 +43,20 @@ This design chapter provides a high-level overview of the software implementatio
 
 \textit{Figure 7.2} illustrates the main components to be expanded on in the ontology based on data in the dataset. More details of the main nodes are detailed below:
 
-\begin{enumerate}
-    \item \textbf{organ}: The primary organ component that will connect with other many other nodes.
-    \item \textbf{changes}: This component specifies the organ adjustment details and maintenance changes for an organ.
-    \item \textbf{disposition}: This component refers to the organ's current components and details relating to them.
-    \item \textbf{technicals:} This component is responsible for the specific musical details of the organ. 
-    \item \textbf{organWikidata}: This provides an expansion of the existing knowledge graph from Wikidata.
-\end{enumerate}
+\vspace{-0.1cm}
+\begin{itemize}
+    \item \textbf{organ}: \vspace{-0.075cm}\\ The primary organ component that will connect with other many other nodes.
+    \vspace{-0.15cm}
+    \item \textbf{changes}:\vspace{-0.075cm}\\ This component specifies the organ adjustment details and maintenance changes for an organ.
+    \vspace{-0.15cm}
+    \item \textbf{disposition}:\vspace{-0.075cm}\\ This component refers to the organ's current components and details relating to them.
+    \vspace{-0.15cm}
+    \item \textbf{technicals}: \vspace{-0.075cm}\\This component is responsible for the specific musical details of the organ. 
+    \vspace{-0.15cm}
+    \item \textbf{organWikidata}:\vspace{-0.075cm} \\This provides an expansion point from Wikidata for the existing knowledge graph.
+\end{itemize}
 
-The section of the ontology specifically for external Wikidata links can be structured in the same format as displayed on its website. Using \textit{Figure 7.2}, extending the \textit{OrganWikidata} node is most plausible. For instance, the organ page on Wikidata \cite{organwikidata} contains organ-related triples. An extract from \cite{organwikidata} is shown below:
+The section of the ontology specifically for external Wikidata links can be structured in the same format as displayed on its website. Using \textit{Figure 7.2}, extending the \textit{organWikidata} node is most plausible. For instance, the organ page on Wikidata \cite{organwikidata} contains organ-related triples. An extract from \cite{organwikidata} is shown below:
 
 \lstset
 {
@@ -66,7 +71,7 @@ organ studiedBy organology
 ...
 \end{lstlisting}
 
-In this case, `organ' can be replaced with our \textit{OrganWikidata} node and the corresponding relationships and objects will be added to the ontology. All the extra nodes and edges can be added as external links to the knowledge graph using their unique Wikidata URI. 
+In this case, `organ' can be replaced with our \textit{organWikidata} node and the corresponding relationships and objects will be added to the ontology. All the extra nodes and edges can be added as external links to the knowledge graph using their unique Wikidata URI. 
 
 \section{Query Flow Diagram}
 \hspace{0.5cm} A flow diagram is a graphical representation of the sequence of steps or actions that need to be taken to complete a process \cite{flowchart}.
@@ -108,22 +113,22 @@ In this section, the logic required to build the SPARQL Anything Query will be i
 \end{figure}
 \vspace{-0.1cm}
 
-The nodes in \textit{Figure 7.3} represent necessary actions and one of the edges is explicitly stated so that the process is clear. Below, an explanation for each node is provided: 
+The nodes in \textit{Figure 7.3} represent necessary actions and one of the edges is explicitly stated for clarity. Below, an explanation for each node is provided: 
 
 \begin{enumerate}
-  \item \textbf{`Add ontology' node} \\ Adds ontology to the \textit{CONSTRUCT} clause of the query.
+  \item \textbf{`Add ontology' node} \\ Adds ontology to the CONSTRUCT clause of the query.
   \item \textbf{`Query dataset' node} \\ Uses SPARQL Anything to specify the file containing data of interest.
   \item \textbf{`Clean \& create data path' node} \\ Uses string manipulation to create a valid path to desired data in the dataset. 
   \item \textbf{`Retrieve data from dataset' node} \\ Uses created path above to retrieve correct data.
   \item \textbf{`Add to knowledge graph' node} \\ Adds retrieved data to the knowledge graph. Then, it either loops to step 2 using a different JSON file, continues to step 6 by adding custom external links or skips to step 8 to add other independent external links. The latter pertains to the last SPARQL Anything call in the query. 
   \item \textbf{`Create \& clean external link' node} \\ Creates an external link using retrieved data within the same SPARQL Anything call.
-  \item \textbf{`Add to knowledge graph' node} \\ Adds the custom external link to the knowledge graph. Then, it either loops to step 2 using a different JSON file or skips to step 8 to add other independent external links. The latter pertains to the last SPARQL Anything call in the query. 
+  \item \textbf{`Add to knowledge graph' node} \\ Adds the custom external link to the knowledge graph. Then, it either loops to step 2 using a different JSON file or continues to step 8 to add other independent external links. The latter pertains to the last SPARQL Anything call in the query. 
   \item \textbf{`Add any other external links' node} \\ Adds any other links that do not require data from the dataset such as Wikidata and MusicBrainz.
   \item \textbf{`Output knowledge graph' node} \\ Produces the resulting knowledge graph.
 \end{enumerate}
 
 \section{Query Skeleton Structure}
-\hspace{0.5cm} In this section, the flow diagram, illustrated in \textit{section 7.3}, will be used to structure the query. The basic query structure follows all steps in \textit{Figure 7.3} and aids query creation to generate a knowledge graph. This can be observed in the comments next to each line, which correspond to a step in the flow diagram created. It also outlines the basic structure that will be used to create the query.
+\hspace{0.5cm} In this section, the flow diagram illustrated in \textit{section 7.3} will be used to structure the query and aid in generating a knowledge graph. This can be observed in the comments next to each line, which correspond to a step in the flow diagram created. It also outlines the basic structure that will be used to create the query.
 
 \lstset
 {
@@ -176,5 +181,5 @@ With regard to \textit{Figure 7.3}, the query skeleton structure abides by the p
     \item \textit{Optional}: \textbf{Clean \& create external link} \\ Refers to node 6 and uses SPARQL 1.1 functions such as CONCAT, IRI, REPLACE and BIND to create the external link.
     \item  \textit{Optional}: \textbf{Add to knowledge graph} \\ Refers to node 7 where located data is added into the knowledge graph by assigning it to the corresponding variable in the ontology. Possible directions for continuation have been detailed in \textit{Section 7.3}.
     \item \textbf{Add any other external links} \\ Refers to node 8 which ceases SPARQL Anything calls and adds any relevant external links using SPARQL's BIND function. Explicitly stating the links and adding them to the knowledge graph may be a viable method. 
-    \item \textbf{Output Knowledge Graph} \\ Refers to node 9 where the query executes and produces the final knowledge graph. 
+    \item \textbf{Output Knowledge Graph} \\ Refers to node 9 where the final knowledge graph is produced. 
 \end{itemize}
