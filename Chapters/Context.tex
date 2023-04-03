@@ -1,5 +1,5 @@
 \chapter{Context}
-This chapter will contextualise the dataset and project, providing an understanding of all relevant information included in the organ dataset. Also, the chapter provides a brief introduction to the tool being used: SPARQL Anything as well as a justification for using this tool over similar tools. 
+This chapter will contextualise the dataset and project, providing an understanding of all relevant information included in the organ dataset. Also, the chapter provides a brief introduction to the tool being used: SPARQL Anything as well as a justification for using this tool over others. 
 
 \section{Organs}
 \hspace{0.5cm} The dataset provided revolves around the musical instrument: Organs. Mozart once described organs as:
@@ -16,7 +16,7 @@ An organ can come in various different sizes ranging from a small upright piano 
 \hspace{0.5cm} 
 The inventor of the organ is accredited by many sources to an engineer in Alexandria during the third century BC called Ctesibius. In the first century AD, organs used water and hydraulic engineering to generate sound \cite{organhistory}.
 
-During the 14th century, organs evolved from the use of just pedals and saw the development of a keyboard so a larger range of sounds could be made. This was accommodated with the creation of new pipes so having access to more of these unique sounds was beneficial. These organs laid the building blocks for the organs we recognise today \cite{organmedivalhistory}.
+During the 14th century, organs evolved from the use of just pedals and saw the development of a keyboard so a larger range of sounds could be made. This was accommodated by the creation of new pipes so having access to more of these unique sounds was beneficial. These organs laid the building blocks for the organs we recognise today \cite{organmedivalhistory}.
 
 Due to technological advancements, creation of organs became a lot easier allowing them to become more complex. Recent organ builders have had access to a plethora of materials and tools required to create these large structures with complex systems. Being able to study and explore different types of organs with ease, also aided the evolution of such structures \cite{organhistory1}.
 
@@ -40,7 +40,7 @@ Due to technological advancements, creation of organs became a lot easier allowi
 \noindent Relevant components of the organ and organ dataset are described below. 
 
 \noindent \textbf{Pipe Types:}
-The particular type of pipe in an organ can significantly affect the produced sound and tone. Below, are the two main types of pipes used in an organ. 
+\\ \hspace*{0.5cm} The particular type of pipe in an organ can significantly affect the produced sound and tone. Below, are the two main types of pipes used in an organ. 
 \vspace{-0.15cm}
 \begin{itemize}
     \itemsep0em 
@@ -82,7 +82,7 @@ Multiple stops can be drawn at once in the same division and multiple pipes will
 \vspace{-0.1cm}
 \item Choir.
 \vspace{-0.1cm}
-\item Positiv
+\item Positiv.
 \end{itemize}
 \vspace{-0.15cm}
 
@@ -110,14 +110,14 @@ All of these divisions usually accompany whatever is deemed appropriate for the 
 The organ wind system is a subsystem of the organ, which is responsible for delivering air to the organ's different pipes. Wind is generated within the system and then directed through a series of channels to the organ's pipes. Upon delivery of air to each individual pipe, a sound is made based on the key or pedal pressed \cite{organvideo}.
 
 \section{Polifonia Project}
-\hspace{0.5cm} The Polifonia project is a European project funded by the EU Horizon 2020 Programme that will manifest the connections between musical heritage from the 16th century to the present day \cite{polifonia}. The project involves many different types of experts from Musicologists to Computer Scientists attempting to find links between different parts of musical cultural heritage. 
+\hspace{0.5cm} The Polifonia project is a European project funded by the EU Horizon 2020 Programme that will manifest the connections between musical heritage from the 16th century to present day \cite{polifonia}. The project involves many different types of experts from Musicologists to Computer Scientists attempting to find links between different parts of musical cultural heritage. 
 
 The main aim of this project is to combine computational tools and methods to access and manipulate musical cultural heritage on the WWW. Another aim is to use these computational methods in a different context (independent of the Computer Science field) and test whether such techniques can be adequately applied elsewhere. Hence, the involvement of experts from all over Europe to facilitate the project's progression \cite{polifoniaproject}.
 
-The objective of this report is to create a knowledge graph in the context of organs as part of the Polifonia project. The provided dataset, which was derived from an organ encyclopedia, was organised and computationally formatted by a musicologist as part of this project. The provided organ ontology was created by an ontology engineer but is vast and requires adjustment to match the scope of this report. Due to the project being European-based, data stored in the dataset is in Dutch and the knowledge graph created will also produce dutch text or terms. More detail on the provided dataset and ontology are provided in the following subsections.  
+The objective of this report is to create a knowledge graph in the context of organs as part of the Polifonia project. The provided dataset, which was derived from an organ encyclopedia, was organised and computationally formatted by a musicologist as part of this project. The provided organ ontology \cite{organontology} was created by an ontology engineer but is vast and requires adjustment to match the scope of this report. Due to the project being European-based, data stored in the dataset is in Dutch and the knowledge graph created will also produce Dutch text or terms. More detail on the provided dataset and ontology are provided in the following subsections.  
 
 \subsection{Organ Dataset}
-\hspace{0.5cm} The organ dataset provided describes various details regarding a given organ. The dataset itself is split into many different files and groups specific details about an organ into one JSON file. Each JSON file contains information about many different organs, which can be uniquely identified by their id. The structure of the JSON files follows the same format: an organ and the corresponding details concerning that organ. An example of two files ``base.json" and ``history\_base.json" can be seen below. 
+\hspace{0.5cm} The organ dataset provided describes various details regarding a given organ. The dataset, itself, is split into many different files and groups specific details about an organ into one JSON file. Each JSON file contains information about many different organs, which can be uniquely identified by their id. The structure of the JSON files follows the same format: an organ and the corresponding details concerning that organ. An example of two files ``base.json" and ``history\_base.json" can be seen below. 
 
 \lstset
 {
@@ -171,25 +171,25 @@ The objective of this report is to create a knowledge graph in the context of or
     }
 \end{lstlisting}
 
-The data is split into multiple different files containing the unique organ identifier with its relevant grouped data. The dataset contains data in Dutch because the Polifonia Project is a European project.
+The data is split into multiple different files containing the unique organ identifier with its relevant grouped data. The dataset contains data in Dutch since the Polifonia Project is a European project.
 
 \subsection{Organ Ontology}
 \hspace{0.5cm} The provided organ ontology \cite{organontology} contains all the relevant information relating to an organ, ranging from its location to the parts within it. 
 
-The ontology includes classes for the organ system:
+\noindent The classes included in the ontology for the organ system are:
 
 \vspace{-0.15cm}
 \begin{itemize}
     \itemsep0em 
-\item Organ Console
-\vspace{-0.1cm}
-\item Organ Wind System
-\vspace{-0.1cm}
-\item Organ Case
-\vspace{-0.1cm}
-\item Organ Action
-\vspace{-0.1cm}
-\item Organ Division
+    \item Organ Console
+    \vspace{-0.1cm}
+    \item Organ Wind System
+    \vspace{-0.1cm}
+    \item Organ Case
+    \vspace{-0.1cm}
+    \item Organ Action
+    \vspace{-0.1cm}
+    \item Organ Division
 \end{itemize}
 \vspace{-0.15cm}
 
@@ -204,19 +204,34 @@ The ontology includes classes for the organ system:
 \end{itemize}
 \vspace{-0.15cm}
 
-The ontology is extremely vast and may contain nodes or relationships that do not appear within the dataset. Therefore, refinement and adjustment of the ontology, to fit the needs of the provided dataset, is required. Carefully selecting parts of the ontology to act as the framework of the resulting knowledge graph is vital to ensure all relevant data in the dataset is accurately represented. 
+The ontology is extremely vast and may contain nodes or relationships that do not appear within the dataset. Therefore, refinement and adjustment of the ontology, to fit the needs of the provided dataset, is required. Carefully selecting parts of the ontology to act as the framework for the resulting knowledge graph is vital to ensure all relevant data in the dataset is accurately represented. 
 
 \section{SPARQL Anything}
-\hspace{0.5cm} The tool used for knowledge graph generation is SPARQL Anything \cite{sparqlanythinggithub}. SPARQL Anything acts as an extension of SPARQL  and allows the generation of knowledge graphs from a dataset. SPARQL Anything uses Facade-X, which is similar to the Facade design pattern. The facade design pattern improves the usability of a complex system by providing a simpler and more intuitive interface to it. In this case, SPARQL Anything masks the complex components by allowing the user to continue to use SPARQL 1.1 query language, so familiar functions such as BIND() or CONCAT() can be used allowing for a simpler knowledge graph generation procedure. Therefore, the time required to learn how to use such a tool would be short as there is an abundance of resources available related to learning SPARQL 1.1 query language, in contrast to other tools which may require learning a new language. 
+\hspace{0.5cm} The tool used for knowledge graph generation is SPARQL Anything \cite{sparqlanythinggithub}. SPARQL Anything acts as a mask in front of SPARQL and allows the generation of knowledge graphs from a dataset. SPARQL Anything uses Facade-X, which is, conceptually, similar to the Facade design pattern \cite{sparqlanything}. The facade design pattern improves the usability of a complex system by providing a simpler and more intuitive interface to it. In this case, SPARQL Anything masks its complex components by allowing the user to continue to use SPARQL 1.1 query language, so familiar functions such as BIND() or CONCAT() can be applied, simplifying the knowledge graph generation procedure. Therefore, the time required to learn how to use such a tool would be short as there is an abundance of resources available related to learning SPARQL 1.1 query language, in contrast to other tools which may require learning new syntax or a new language. 
 
-Using SPARQL Anything, the SERVICE operator can be overridden and we can call SPARQL Anything within a normal SPARQL query \cite{sparqlanything}.
-
-The CONSTRUCT operator allows knowledge graphs to be generated, by using the framework of a given ontology \cite{sparqlanythinggithub}.
+SPARQL Anything includes several useful attributes such as the SERVICE operator which allows us to access SPARQL Anything's features within a standard SPARQL query by overriding the SERVICE operator. Additionally, the CONSTRUCT operator can be used to generate knowledge graphs based on a specified ontology \cite{sparqlanythinggithub}.
 
 \section{Other Tools}
-\hspace{0.5cm} This section, will detail alternate methods of knowledge graphs generation describing the approach as well as the positives and negatives of suggested approaches. These existing methods were considered as an approach to implementation but eventually decided against them. 
+\hspace{0.5cm} This section, will detail alternate methods of knowledge graphs generation describing the approach as well as providing a comparison with SPARQL Anything. These existing methods were considered as an approach to implementation but eventually decided against them. 
 
-\subsubsection{Large Language Models}
+\subsection{SPARQL-Generate and RML}
+\hspace{0.5cm} Other solutions similar to SPARQL Anything's approach and implementation include SPARQL-Generate and RML. 
+
+\subsubsection{SPARQL-Generate}
+\hspace{0.5cm} SPARQL-Generate is an extension of SPARQL 1.1 and generates RDF from an RDF formatted dataset or documents in arbitrary formats. Expansion from SPARQL 1.1's syntax allows for the use of a new clause called GENERATE, which allows for the factorisation of RDF generation. \cite{lefranccois2017sparql}
+
+Compared with SPARQL Anything, SPARQL-Generate does have some minor disadvantages. Primarily, SPARQL-Generate does not support Metadata or embedded data formats, so SPARQL Anything is the only tool supporting such formats \cite{sparqlanything} allowing for more flexibility during implementation. Although SPARQL-Generate is an extension of SPARQL 1.1 and has low learning demands due to its extension of SPARQL 1.1, it still requires research of a newly created extension. Key terms such as GENERATE will have to be explored whereas SPARQL Anything, because it uses Facade-X, is solely reliant on SPARQL 1.1 query language knowledge \cite{sparqlanything}. As a result, adaptability is also improved since functions in SPARQL 1.1's language should suffice. In comparison to SPARQL-Generate which also uses an ITERATOR clause allowing for iterator functions allowing for the duplication of a binding \cite{lefranccois2017sparql}, for example. For those looking to continue work on this project, having a typical Semantic Web engineering workflow will be beneficial as we can assume preexisting experience with SPARQL 1.1. However, an understanding of SPARQL-Generate's extensions can not be expected \cite{sparqlanything}. 
+
+In terms of complexity, SPARQL Anything performs better in experiments using the number of distinct items or variables as a measurement of complexity \cite{sparqlanything}. Tests run based on input size have shown similar performance times with both SPARQL-Generate and SPARQL Anything so there are no differences in that regard. Nonetheless, this was important when considering possible expansion of the knowledge graph and when assessing the speed of query execution. 
+
+\subsubsection{RML}
+\hspace{0.5cm} RML is a mapping language based on the W3C's standard for mapping relational databases into RDF: R2RML. Similar to SPARQL Anything and SPARQL-Generate, RML allows for the mapping of multiple heterogeneous sources. \cite{dimou2014rml} 
+
+In contrast to SPARQL Anything, RML does not support Metadata, embedded data or plain text formats \cite{sparqlanything}, therefore constraining its versatility. Steps required to transform data into RDF for RML are tedious as it requires data to be transformed before being uploaded into a SPARQL triple store, whereas SPARQL Anything allows direct resource querying \cite{sparqlanything}.
+
+Due to RML's extension of the R2RML vocabulary, a new mapping language will have to be learnt in order to use this tool \cite{sparqlanything}, making the studying overhead far greater than SPARQL Anything. Workflow is also not streamlined as familiarity with RML and R2RML's vocabulary may be required for RDF translation. Those looking to extend the project may require more time to understand RML than SPARQL Anything due to prior knowledge of SPARQL 1.1 query language. Additional methods, on top of R2RML, such as \textit{rml:iterator} and \textit{rml:referenceFormulation} \cite{dimou2014rml}, facilitate the transformation process to RDF. Nevertheless, SPARQL Anything's exclusive reliance on SPARQL 1.1 allows better adaptability \cite{sparqlanything}.  
+
+\subsection{Large Language Models}
 \hspace{0.5cm} A large language model (LLM) is a type of artificial intelligence (AI) that can carry out a variety of natural language processing tasks \cite{rouse_2023}. These are trained on millions upon millions of input data, ensuring high levels of accuracy and precision, so creation of tools such as artificial chatbots could be as accurate and broad as possible. Knowledge graph generation using LLMs has not yet been fully explored in research. A specific example of an LLM chatbot that may offer a viable solution to knowledge graph generation, due to its extensive knowledge and expertise, is a recent tool ChatGPT. 
 
 ChatGPT is a machine-learning-based tool developed by OpenAI and is an interactive chatbot. Answers provided by ChatGPT are conversational so are easy to understand and is suggested to be the best chatbot to date \cite{chatgpt}. OpenAi released a prototype chatbot on 30th November 2022 and is currently free to use. Uses of ChatGPT include:
@@ -251,15 +266,6 @@ This response represents a small knowledge graph mainly comprised of organ parts
 
 This approach is a very straightforward technique for generating an organ-related knowledge graph and makes use of the strengths of ChatGPT. The knowledge graph, although in prose, is very useful and easy to interpret due to ChatGPT's ability to communicate conversationally. The information provided is based on the chatbot's general understanding of the organ and is consistent with the instrument's details. The nodes and edges stated in the knowledge graph are also consistent with the elements of an organ. 
 
-However, this approach generates a small knowledge graph and has to be interpreted correctly in prose. In terms of the produced knowledge graph's validity, the knowledge graph does not include any real-world data, but more general topics regarding organs so the generated knowledge graph is more similar to an ontology than a knowledge graph. The limitations of ChatGPT include that it is restricted to its input domain \cite{chatgptwebsite}, so real-world data can not be found and passed into this ontology to create an accurate knowledge graph. 
+However, this approach generates a small knowledge graph and has to be interpreted correctly in prose. The validity of the produced knowledge graph is limited as it only includes general topics related to organs, without any real-world data. As a result, the generated graph is more akin to an ontology than a knowledge graph. The limitations of ChatGPT include that it is restricted to its input domain \cite{chatgptwebsite}, so real-world data can not be found and passed into this ontology to create an accurate knowledge graph. 
 
-In conclusion, the knowledge graph produced by ChatGPT is closer to an organ ontology. The limitations surrounding ChatGPT do confine it to providing a generic solution, but if it can evolve to find a way to gather real-world data online using the Semantic Web, for instance, the knowledge graph created would be a viable solution.
-
-\subsubsection{SPARQL-Generate and RML}
-\hspace{0.5cm} Other solutions similar to SPARQL Anything's approach and implementation include SPARQL-Generate and RML. But, reasoning for selecting SPARQL Anything over the other options will be detailed below.
-
-SPARQL-Generate and RML do not support Metadata or Embedded data formats \cite{sparqlanything}. SPARQL Anything does and, therefore, allows more flexibility during implementation and has a broader scope. 
-
-SPARQL-Generate is an extension of SPARQL so requires the studying of the newly created extension. RML requires a mapping to RDF using a new R2RML vocabulary, so, again, requires studying a new language. SPARQL Anything, on the other hand, because it uses Facade-X, is solely reliant on SPARQL 1.1 knowledge \cite{sparqlanything}. This results in less time spent studying something completely new and has easier learnability given the vast amount of resources available around SPARQL 1.1.
-
-In terms of complexity, SPARQL Anything performs better in experiments using the number of distinct items or variables as a measurement of complexity \cite{sparqlanything}. Tests run based on input size have shown similar performance times with all three tools so are no differences in that regard. Nonetheless, this is important when considering possible expansion of the knowledge graph and when assessing the speed of query execution. 
+In conclusion, the knowledge graph produced by ChatGPT is closer to an organ ontology. The limitations surrounding ChatGPT do confine it to providing a generic solution. SPARQL Anything offers a more reliable approach to knowledge graph generation because real-world data can be displayed on the knowledge graph. However, if ChatGPT can evolve to find a way to gather real-world data online using the Semantic Web, for instance, the knowledge graph created would be a viable solution.
