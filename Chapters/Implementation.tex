@@ -14,7 +14,7 @@ This chapter will detail the implementation phase of the project and how the sol
     java -jar sparql-anything-0.8.1.jar 
 \end{lstlisting}
 
-\noindent Then, expand it specifying the filepath and file that contains the query. For example:
+\noindent Then, expand it specifying the file path and file that contains the query. For example:
 
 \lstset
 {
@@ -145,7 +145,7 @@ Upon selection of relevant information from the dataset's JSON files, they were 
     \item moreInformation - oont:moreInformation 
 \end{itemize}
 
-These nodes are directly relevant to the organ as illustrated in the provided organ ontology. Nodes such as \textit{originalLocation}, \textit{dateOfbirth} and \textit{state} were added as they were part of the dataset and provided extra relevant detail. Because \textit{technicals}, \textit{disposition}, \textit{change} and \textit{organWikidata} were identified as nodes for further expansion in \textit{Figure 7.2}, they were also connected to the main \textit{organ} node. Relationships used to describe the relation between the organ and its objects were provided and usually had intuitive names based on the object. 
+These nodes are directly relevant to the organ as illustrated in the provided organ ontology. Nodes such as \textit{originalLocation}, \textit{dateOfbirth} and \textit{state} were added as they were part of the dataset and provided extra relevant detail. Because \textit{technicals}, \textit{disposition}, \textit{change} and \textit{organWikidata} were identified as nodes for further expansion in \textit{Figure 7.2}, they were also connected to the main \textit{organ} node. Relationships used to describe the association between the organ and its objects were provided and usually had intuitive names based on the object. 
 
 \subsubsection{Technicals}
 \hspace*{0.5cm} This branch of technical nodes regarding an organ was mainly derived from one JSON file and a segment of the provided ontology that referred to its `parthood'. All relationships branching from this `technicals' node were provided. Relevant nodes and their identified relationships are below:
@@ -450,7 +450,7 @@ SERVICE <x-sparql-anything:file:./output/tech.json>
 
 This snippet follows the same structure as most SPARQL Anything calls, but the last line binds the associated URI to \textit{?pitchInfo}. This website, in particular, found more information describing the pitch of an organ. 
 
-External data regarding MusicBrainz and Wikidata were added by following the format on the website and bound to a variable in the ontology. Most data on these website used links from Wikidata so the PREFIX \textit{wd} for Wikidata was employed, but some data contained explicit links. Specific SERVICE calls querying Wikidata or MusicBrainz were not necessary as all the data added to the knowledge graph came from the same organ Wikidata website \cite{organwikidata} or MusicBrainz organ site \cite{organmusicbrainz}. The websites, themselves, provided translations of the page to a selection of different languages so can be understood by a variety of different users. Physical extraction, directly from the websites into the knowledge graph, was a more suitable method of expansion than using more SERVICE calls. Below, is an example of two relationships extracted from Wikidata and incorporated into the knowledge graph:
+External data regarding MusicBrainz and Wikidata were added by following the format on the website and bound to a variable in the ontology. Most data on these websites used links from Wikidata so the PREFIX \textit{wd} for Wikidata was employed, but some data contained explicit links. Specific SERVICE calls querying Wikidata or MusicBrainz were not necessary as all the data added to the knowledge graph came from the same organ Wikidata website \cite{organwikidata} or MusicBrainz organ site \cite{organmusicbrainz}. The websites, themselves, provided translations of the page to a selection of different languages so can be understood by a variety of different users. Physical extraction, directly from the websites into the knowledge graph, was a more suitable method of expansion than using more SERVICE calls. Below, is an example of two relationships extracted from Wikidata and incorporated into the knowledge graph:
 
 \lstset
 {
@@ -489,7 +489,7 @@ Full query can be seen in the \textit{Appendix Listing C.1} section.
 \end{enumerate}
 
 \section{Software Maintenance}
-\hspace{0.5cm} Long-term maintenance of the query needs to be discussed to assess its longevity. Consideration of query maintenance is important for identifying any possible future software changes and for potential continuation of this work. Below are examples of some dependencies that may affect maintenance of software:  
+\hspace{0.5cm} Long-term maintenance of the query needs to be discussed to assess its longevity. Consideration of query maintenance is important for identifying any possible future software changes and for potential continuation of this work. Below are examples of some dependencies that may affect the maintenance of software:  
 
 \begin{itemize}
     \item \textbf{Dependence on SPARQL 1.1 query language:} \\ This implementation depends on SPARQL 1.1 syntax as the query uses built-in methods such as \textit{BIND} and \textit{URI}. Deprecation or significant changes to the relevant SPARQL 1.1 features may render the query unusable or inhibit execution.
