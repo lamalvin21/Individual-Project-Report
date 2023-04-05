@@ -3,34 +3,32 @@
 \usetikzlibrary {patterns}
 
 \chapter{Background}
-First, background of this project is discussed and suitable explanations provide context for the entire project. The broad scope of the project is presented before going into project-specific details in the \textit{Context} chapter.
+First, background of this project is outlined and suitable explanations provide context for the entire project. The broad scope of the project is presented before going into project-specific details in the \textit{Context} chapter.
 
 \section{The Semantic Web}
 \hspace*{0.5cm} The Semantic Web is an extension of the World Wide Web (WWW) that allows information on it to be machine-readable \cite{semanticweb}. The concept was founded by Tim Berners-Lee (founder of the WWW) with the idea that machines can easily interpret information available on the WWW. Tim Berners-Lee initially thought of this idea in 1999 stating ``I have a dream for the Web [in which computers] become capable of analysing all the data on the Web – the content, links, and transactions between people and computers. A `Semantic Web'" \cite{berners-TBLBook}. Ultimately, the semantic web aims to empower the knowledge embedded online so that it can be parsed by machines \cite{semanticweb}. 
 
-An example of these developments can be seen in a data storage project that contains structures interpretable by both humans and machines- Wikidata. Wikidata is a large open knowledge base that is part of the Wikimedia family (including Wikipedia) and is connected to other datasets as well \cite{wikidata}. Data is stored in WikiData using various web data storage methods such as JSON, XML and RDF (Resource Description Framework). The latter is described in more detail in the next section.  
+An example of these developments can be seen in a data storage project that contains structures interpretable by both humans and machines- Wikidata. Wikidata is a large open knowledge base that is part of the Wikimedia family (including Wikipedia) and is connected to other datasets as well \cite{wikidata}. Data is stored in WikiData using various web data storage methods such as JavaScript Object Notation (JSON), Extensible Markup Language (XML) and Resource Description Framework (RDF). The latter is described in more detail in the next section.  
 
 Another example within the project scope is MusicBrainz. MusicBrainz also provides information that is stored using RDF \cite{musicbrainz}. In this case, MusicBrainz's focus is around music so it may be more relevant and provide more specific data for the project. 
 
 \subsection{Resource Description Framework}
-\hspace*{0.5cm} Resource Description Framework (RDF) is a method in which data can be stored, similar to how data can be stored in JSON or XML formats. However, the structure of RDF is very different. The general idea of RDF revolves around the concept of linked and connected data so RDF stores data in triples with relationships between data. Data stored in this format is both machine and human-readable, making the reuse and extension of data semantics possible \cite{rdf}. Each triple follows this structure: 
+\hspace*{0.5cm} Resource Description Framework (RDF) is a method in which data can be stored, similar to how data can be stored in JSON or XML formats. However, the structure of RDF is very different. The general idea of RDF revolves around the concept of linked and connected data so it stores data in triples with relationships between data. Data stored in this format is both machine and human-readable, making the reuse and extension of data semantics possible \cite{rdf}. Each triple follows this structure: 
 
 \vspace{-0.1cm}
 \begin{center}
-\begin{displayquote}
    \textit{subject predicate object}
-\end{displayquote} 
 \end{center}
 \vspace{-0.2cm}
 
-\textbf{Subject:} \\
-The subject is the entity that the triple is about or refers to, which is typically a resource. A resource can be a Uniform Resource Identifier (URI- a string that identifies a name or resource on the Internet \cite{sikos_2015}), a physical thing or an abstract concept. 
+\noindent \textbf{Subject:} \\
+\hspace*{0.5cm} The subject is the entity that the triple is about or refers to, which is typically a resource. A resource can be a Uniform Resource Identifier (URI- a string that identifies a name or resource on the Internet \cite{sikos_2015}), a physical thing or an abstract concept. 
 
-\textbf{Predicate:} \\
-The predicate conveys the relationship between subject and object (i.e. how they are related). 
+\noindent \textbf{Predicate:} \\
+\hspace*{0.5cm} The predicate conveys the relationship between subject and object (i.e. how they are related). 
 
-\textbf{Object:} \\
-The object is an entity that the triple describes in relation to the subject. This can also be blank. 
+\noindent \textbf{Object:} \\
+\hspace*{0.5cm} The object is an entity that the triple describes in relation to the subject. This can also be blank. 
 
 In this project, we will look closer at the Turtle (TTL) format for RDF. A TTL file represents RDF triples with a subject, object and relationship. This format is specifically relevant when representing multiple related RDF triples (RDF Graph) and allows them to be readable by both humans and machines \cite{TTL}.
 
@@ -62,7 +60,7 @@ An example of an RDF statement (in TTL) can be seen below:
 \end{itemize}
 \vspace{-0.1cm}
 
-This statement indicates that the entity \textit{``http://www.example.com/Alvin"} studies at the entity \textit{``http://www.example.com/KCL"}, according to the vocabulary defined by \\\textit{``http://www.example.com/vocab"}. However, writing all the various URI links separately is tedious and can look confusing for the human reader so using prefixes as shown below can make it more concise:
+This statement indicates that the entity \textit{``http://www.example.com/Alvin"} studies at the entity \textit{``http://www.example.com/KCL"}, according to the vocabulary defined by \\\textit{``http://www.example.com/vocab"}. However, writing all the various URI links separately is tedious and can look confusing for human readers so using prefixes as shown below can make it more concise:
 
 \vspace{-0.2cm}
 \lstset
@@ -81,7 +79,7 @@ This statement indicates that the entity \textit{``http://www.example.com/Alvin"
 \end{center} 
 \vspace{-0.2cm}
 
-This example uses two abbreviations of URIs and has named the alias for these URIs to be `ex' and `exVocab' respectively, simplifying the triple. 
+This example uses two abbreviations of URIs and has named the aliases for them to be `ex' and `exVocab' respectively, simplifying the triple. 
 
 An English translation of the RDF triple is written below: 
 
@@ -91,10 +89,10 @@ An English translation of the RDF triple is written below:
 \end{center}
 \vspace{-0.1cm}
 
-As mentioned previously, RDFs can also be visualised in graph format with numerous relationships between subjects and objects, specifying their relationships. In particular, this project's produced knowledge graph will be in RDF format and be represented in a TTL file. RDFs can be used to describe ontologies, which are described in the next section.
+As mentioned previously, RDFs can also be visualised in graph format with numerous relationships between subjects and objects with the predicate specifying their relationships. In particular, this project's produced knowledge graph will be in RDF format and represented in a TTL file. RDFs can be used to describe ontologies, which are detailed in the next section.
 
 \section{Ontology}
-\hspace{0.5cm} An ontology is a conceptual framework for modelling domain knowledge \cite{ontology}. Ontologies make use of RDF triples by having two nodes (the subject and predicate) and an edge (the relationship). They act as models in which real data can be input, so these ontologies can be reused in different contexts and shared between users. These generalised models are ideal for knowledge graph generation because data from different contexts can be displayed in the same way using the same ontology. 
+\hspace{0.5cm} An ontology is a conceptual framework for modelling domain knowledge \cite{ontology}. Ontologies make use of RDF triples by having two nodes (the subject and object) and an edge (the predicate). They act as models in which real data can be input, so these ontologies can be reused in different contexts and shared between users. These generalised models are ideal for knowledge graph generation because data from different contexts can be displayed in the same way using the same ontology. 
 
 The main components of an ontology are similar to the RDF triples in the previous section but have different names. They involve:
 
@@ -141,7 +139,7 @@ In relation to RDF statements, a connection between two nodes in an ontology wil
 
 Ontologies are the framework in which knowledge graphs can be constructed and guide the generation of knowledge graphs. 
 
-\subsection{Knowledge Graphs}
+\section{Knowledge Graphs}
 \hspace{0.5cm} A knowledge graph is a graph (i.e. data graph) that depicts real-world knowledge or data \cite{knowledgegraph}. Similar to ontologies, knowledge graphs are often represented as a network of interconnected nodes and edges but instead, nodes represent real-world entities (such as people or places) and edges represent the real-world relationships between them (such as `owns' or `discovered'). 
 
 As mentioned, knowledge graphs apply real data from an ontology framework. With a dataset and relevant ontology, we can create specific instances of each ontological relationship. 
@@ -158,7 +156,7 @@ Knowledge graphs are used in a variety of real-world applications including sear
 \item \textbf{Natural Language Processing:}\\ In this context, knowledge graphs are used to establish connections between distinct terms linked within text. A system employing Natural Language Processing may want to understand the meaning of a sentence and be able to interpret and input it into a search query so that relevant results can be found. 
 \end{itemize}
 
-An example of a knowledge graph can be in \textit{Figure 2.2}, following the ontology in \textit{Figure 2.1} displayed in the ontology section above:
+An example of a knowledge graph can be in \textit{Figure 2.2}, following the ontology in \textit{Figure 2.1}:
 
 \begin{figure}[H]
 \begin{center}
@@ -187,7 +185,7 @@ An example of a knowledge graph can be in \textit{Figure 2.2}, following the ont
 The more linked data we add from the dataset, the larger the knowledge graph will grow.
 
 \section{SPARQL}
-\hspace{0.5cm} SPARQL enables us to query RDF data formats and retrieve specific data from large RDF files. SPARQL queries often have the same structure as standard SQL queries. Specific data can be specified and filtered by stating the subject, object and relationship in the query's SELECT and WHERE clause respectively \cite{sparlbook}. An example of a SPARQL Query is shown with an explanation below:
+\hspace{0.5cm} SPARQL enables us to query RDF data formats and retrieve specific data from large RDF files. SPARQL queries often have the same structure as standard SQL queries. Specific data can be specified and filtered by stating the subject, object and relationship triple in the query's SELECT and WHERE clauses respectively \cite{sparlbook}. An example of a SPARQL Query is shown with an explanation below:
 
 \begin{lstlisting}
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -209,4 +207,4 @@ The \textbf{SELECT} part of the query extracts all the first and last names of p
 
 The \textbf{WHERE} clause of the query specifies that the queried variable \textit{?person} belongs to the RDF class \textit{foaf:Person}. The \textit{?person} should also possess both a name and a surname represented by the property \textit{foaf:name} and \textit{foaf:surname} respectively.
 
-In conclusion, if the query were to be executed in an appropriate RDF document, the result would display the first and last names of all individuals in the TTL file of type \textit{foaf:Person}. Moreover, the individuals outputted will have both a name and surname property.
+In conclusion, if the query were to be executed in an appropriate RDF document, the result would display the first and last names of all individuals in the TTL file of type \textit{foaf:Person}. Moreover, the individuals outputted will both have a name and surname property.
