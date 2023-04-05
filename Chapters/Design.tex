@@ -14,7 +14,7 @@ This design chapter provides a high-level overview of the software implementatio
 \vspace{-0.7cm}
 
 \section{Ontology Structure}
-\hspace{0.5cm} In this section, a plan for the ontology's general structure will be outlined based on: the dataset, provided ontology and any external websites. Relevant relationships that will be used in the real ontology will also be noted. 
+\hspace{0.5cm} In this section, a plan for the ontology's general structure will be outlined based on: the dataset, provided ontology and any external websites. Relevant relationships to be used in the real ontology will also be noted. 
 
 \begin{figure}[H]
     \begin{center}
@@ -41,7 +41,7 @@ This design chapter provides a high-level overview of the software implementatio
 \end{figure}
 \vspace{-0.1cm}
 
-\textit{Figure 7.2} illustrates the main components to be expanded on in the ontology based on data in the dataset. More details of the main nodes are detailed below:
+\textit{Figure 7.2} illustrates the main components to be expanded upon in the ontology based on data in the dataset. More details of the main nodes are detailed below:
 
 \vspace{-0.1cm}
 \begin{itemize}
@@ -177,9 +177,9 @@ With regard to \textit{Figure 7.3}, the query skeleton structure abides by the p
     \item \textbf{Query Dataset} \\ Refers to node 2 by selecting the file in the dataset where desired data resides by overriding SPARQL's SERVICE operator.
     \item \textbf{Clean \& create data path} \\ Refers to node 3 and uses SPARQL 1.1 functions such as CONCAT and BIND to create the appropriate JSON path. 
     \item \textbf{Retrieve data from dataset} \\ Refers to node 4 whereby data is located using fx:properties and the recently created JSON path. 
-    \item \textbf{Add to knowledge graph} \\ Refers to node 5 and adds located data into the knowledge graph using RDF functioning. Possible directions for continuation have been detailed in \textit{Section 7.3}.
+    \item \textbf{Add to knowledge graph} \\ Refers to node 5 and adds located data to the knowledge graph using RDF functioning. Possible directions for continuation have been detailed in \textit{Section 7.3}.
     \item \textit{Optional}: \textbf{Clean \& create external link} \\ Refers to node 6 and uses SPARQL 1.1 functions such as CONCAT, IRI, REPLACE and BIND to create the external link.
-    \item  \textit{Optional}: \textbf{Add to knowledge graph} \\ Refers to node 7 where located data is added into the knowledge graph by assigning it to the corresponding variable in the ontology. Possible directions for continuation have been detailed in \textit{Section 7.3}.
+    \item  \textit{Optional}: \textbf{Add to knowledge graph} \\ Refers to node 7 where located data is added to the knowledge graph by assigning it to the corresponding variable in the ontology. Possible directions for continuation have been detailed in \textit{Section 7.3}.
     \item \textbf{Add any other external links} \\ Refers to node 8 which ceases SPARQL Anything calls and adds any relevant external links using SPARQL's BIND function. Explicitly stating the links and adding them to the knowledge graph may be a viable method. 
     \item \textbf{Output Knowledge Graph} \\ Refers to node 9 where the final knowledge graph is produced. 
 \end{itemize}
