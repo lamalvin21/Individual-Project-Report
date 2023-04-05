@@ -2,12 +2,13 @@
 
 This is the final report for the Knowledge Graph generation from diverse datasets using SPARQL Anything project. 
 
-Authored by: Alvin Lam
 
-Supervised by: Dr Albert Meroño-Peñuela
+**Authored by**: Alvin Lam
 
-Year: 2023
+**Supervised by**: Dr Albert Meroño-Peñuela
 
-Course: BSc Computer Science
+**Year**: 2023
 
-University: King's College London
+**Course**: BSc Computer Science
+
+**University**: King's College London
