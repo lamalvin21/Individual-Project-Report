@@ -450,7 +450,7 @@ SERVICE <x-sparql-anything:file:./output/tech.json>
 
 This snippet follows the same structure as most SPARQL Anything calls, but the last line binds the associated URI to \textit{?pitchInfo}. This website, in particular, found more information describing the pitch of an organ. 
 
-External data regarding MusicBrainz and Wikidata were added by following the format on the website and bound to a variable in the ontology. Most data on these websites used links from Wikidata so the PREFIX \textit{wd} for Wikidata was employed, but some data contained explicit links. Specific SERVICE calls querying Wikidata or MusicBrainz were not necessary as all the data added to the knowledge graph came from the same organ Wikidata website \cite{organwikidata} or MusicBrainz organ site \cite{organmusicbrainz}. The websites, themselves, provided translations of the page to a selection of different languages so can be understood by a variety of different users. Physical extraction, directly from the websites into the knowledge graph, was a more suitable method of expansion than using more SERVICE calls. Below, is an example of two relationships extracted from Wikidata and incorporated into the knowledge graph:
+External data regarding MusicBrainz and Wikidata were added by following the format on the website and bound to a variable in the ontology. Most data on these websites used links from Wikidata so the PREFIX \textit{wd} for Wikidata was employed, but some data contained explicit links. Specific SERVICE calls querying Wikidata or MusicBrainz were not necessary as all the data added to the knowledge graph came from the same organ Wikidata website \cite{organwikidata} or MusicBrainz organ site \cite{organmusicbrainz}. The websites, themselves, provided translations of the page to a selection of different languages so can be understood by a variety of different users. Physical extraction, directly from the websites into the knowledge graph, was a more suitable method of expansion than using more SERVICE calls. Below, is an example of two objects extracted from Wikidata and incorporated into the knowledge graph:
 
 \lstset
 {
@@ -463,20 +463,25 @@ External data regarding MusicBrainz and Wikidata were added by following the for
     BIND(IRI("https://dbpedia.org/ontology/Organ") AS ?dbpedia) .
 \end{lstlisting}
 
+\vspace{-0.2cm}
 \subsection{Final Knowledge Graph Query}
-\hspace*{0.5cm} The final query to generate the knowledge graph involves: 
+The final query to generate the knowledge graph involves: 
 
+\vspace{-0.125cm}
 \begin{enumerate}
     \item CONSTRUCT: Ontology
+    \vspace{-0.2cm}
     \item WHERE:
     \begin{enumerate}
         \vspace{-0.25cm}
         \item SERVICE: calls to SPARQL Anything
+        \vspace{-0.15cm}
         \item External Data
     \end{enumerate}
 \end{enumerate}
+\vspace{-0.175cm}
 
-Full query can be seen in the \textit{Appendix Listing C.1} section.
+\noindent Full query can be seen in the \textit{Appendix Listing C.1} section.
 
 \section{Changes During Implementation}
 \hspace{0.5cm} Several hindrances to progress were encountered during implementation and will be mentioned so those looking to extend this work are aware of these stumbling blocks. These may include changes to the process outlined in the \textit{Design} chapter or noteworthy adjustments made during the implementation phase.
@@ -495,7 +500,7 @@ Full query can be seen in the \textit{Appendix Listing C.1} section.
     \item \textbf{Dependence on SPARQL 1.1 query language:} \\ This implementation depends on SPARQL 1.1 syntax as the query uses built-in methods such as \textit{BIND} and \textit{URI}. Deprecation or significant changes to the relevant SPARQL 1.1 features may render the query unusable or inhibit execution.
     \item \textbf{Dependence on SPARQL Anything:} \\ The implementation also depends on SPARQL Anything and its maintenance. Cessation or discontinuation of this tool may affect the usability of the query. Repurposing or significant changes to the tool may also impact usability. 
     \item \textbf{Dataset maintenance:} \\ Dataset needs to be updated and maintained in a real-world context so the query does not produce an obsolete or incorrect knowledge graph. 
-    \item \textbf{JSON format redundancy:} \\ If technological advancements were to make the JSON format outdated, repurposing the query would be challenging since the dataset is in JSON format. The query, itself, is also tailored to JSON formats by using JSON path as a means of navigating through the file.
+    \item \textbf{JSON format redundancy:} \\ If technological advancements were to make the JSON format outdated, repurposing the query would be challenging since the dataset is in JSON format. The query, itself, is also tailored to JSON by using JSON path as a means of navigating through the file.
     \item \textbf{JSON Path redundancy:} \\ Alternate means of navigating through JSON files will be required if JSON Path were to become redundant as the query relies on navigation through the dataset's JSON files.
     \item \textbf{Command Line redundancy:} \\ If use of the command line were to become redundant, execution of the query would not be possible and a knowledge graph could not be automatically generated. 
 \end{itemize}

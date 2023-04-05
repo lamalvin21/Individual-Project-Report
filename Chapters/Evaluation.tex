@@ -2,7 +2,7 @@
 This chapter details how the knowledge graph is evaluated upon completion and measures implementation success. Both qualitative and quantitative methods were used during this section to provide a comprehensive evaluation.
 
 \section{Requirements-Based Assessment}
-\hspace{0.5cm} Assessing whether requirements listed in the \textit{Requirements} chapter were achieved is important to measure success of implementation. For each requirement, a description stating whether it was achieved will be provided. 
+\hspace{0.5cm} Assessing whether requirements listed in the \textit{Requirements} chapter were achieved is important to measure success of implementation within the scope of the project. For each requirement, a description stating whether it was achieved will be provided. 
 
 \subsection{Software Requirement Assessment}
 \begin{longtable}{|p{2.25cm}|p{5.5cm}|p{5.5cm}|}
@@ -28,7 +28,7 @@ Query correctly extracts the right data from the dataset and adds it to the know
 
 4&
 The knowledge graph must expand on the current dataset using external links. &
-Using the organ Wikidata site \cite{organwikidata} and organ MusicBrainz site \cite{organmusicbrainz}, data was added to the existing knowledge graph. Custom links based on data in the dataset as well as other external links were also added as extensions to the knowledge graph. \\
+Using the organ Wikidata site \cite{organwikidata} and organ MusicBrainz site \cite{organmusicbrainz}, data was added to the existing knowledge graph. Custom links based on data in the dataset as well as other external links were also added as extensions to the knowledge graph. However, DBpedia was omitted as an external source due to its simplicity and overlap with the chosen sites.\\
 \hline
 
 5&
@@ -57,7 +57,7 @@ User can download SPARQL Anything \cite{sparqlanythinggithub} and execute a give
 
 2&
 User must be able to select an organ to view information on. &
-User can view the codes of all available organs in the dataset. This organ code can then be passed in through command line, which generates a custom knowledge graph upon execution. \\
+User can view the codes of all available organs in the dataset using the organids.json file. This organ code can then be passed in through command line, which generates a custom knowledge graph upon execution. \\
 \hline
 
 3&
@@ -98,7 +98,7 @@ The three main areas used to assess knowledge graph quality are:
 For simplicity, five randomly selected knowledge graphs will be used to measure overall quality and will be representative of all organs. Organs to be tested from the dataset are: \textit{Part14\_000Brouwershaven}, \textit{Part14\_000Niezijl}, \textit{Part14\_000Folsgare}, \textit{Part14\_000GravenhageNoorderkerk} and \textit{Part14\_000Groede}. All produced knowledge graphs are in the \textit{Appendix Listing A.1 to A.5}. Generating the knowledge graphs and assessing quality from the output files was the method employed. 
 
 \subsection{Accuracy}
-\hspace{0.5cm} ``Accuracy refers to the extent to which entities and relations- encoded by nodes and edges in the graph- correctly represent real-life phenomena" \cite{knowledgegraphevaulationbook}. In this context, accuracy means the knowledge graph generated (both subjects and relationships) needs to correctly reflect the relationships between organ topics. 
+\hspace{0.5cm} ``Accuracy refers to the extent to which entities and relations- encoded by nodes and edges in the graph- correctly represent real-life phenomena" \cite{knowledgegraphevaulationbook}. In this context, accuracy means the knowledge graph generated (both nodes and edges) needs to correctly reflect the relationships between organ topics. 
 
 \noindent There are three types of accuracy: 
 
@@ -227,7 +227,7 @@ In terms of completeness of Wikidata and MusicBrainz, all relevant details on bo
 \end{displayquote}
 \vspace{-0.1cm}
 
-Violations regarding under-representation stem from the dataset provided. For example, the dataset is written in Dutch so organ data is limited to the Dutch language. With regard to the under-representation of people, anyone involved with the organ is mentioned in all five knowledge graphs such as: \textit{?maintainer} and \textit{?builder} so no violations occur in that regard.
+Violations regarding under-representation stem from the dataset provided. For example, the dataset is written in Dutch so organ data is limited to the Dutch language. With respect to the under-representation of people, anyone involved with the organ is mentioned in all five knowledge graphs such as: \textit{?maintainer} and \textit{?builder} so no violations occur in that regard.
 
 \subsection{Succinctness}
 \hspace{0.5cm} ``Succinctness refers to the inclusion of relevant content that is represented in a concise and intelligible manner" \cite{knowledgegraphevaulationbook}. In this context, it means the knowledge graph created should be easily understandable and to the point. 
@@ -274,7 +274,7 @@ Violations regarding under-representation stem from the dataset provided. For ex
 \caption{Representational Conciseness Violation}
 \end{figure}
 
-Each knowledge graph is created with the purpose of making them concise. Creation of the ontology structure was derived and refined from the provided ontology. \textit{Figure 7.2} in the design was made specifically to represent the data in a concise manner and avoid the inclusion of redundant data. Implementation also kept this in mind when refining the ontology. Upon assessing each of the five organs, the produced knowledge graphs are representationally concise.
+Each knowledge graph is created with the intent of making them concise. Creation of the ontology structure was derived and refined from the provided ontology. \textit{Figure 7.2} in the design was made specifically to represent the data in a concise manner and avoid the inclusion of redundant data. Implementation also kept this in mind when refining the ontology. Upon assessing each of the five organs, the produced knowledge graphs are representationally concise.
 
 \subsubsection{Understandability}
 \hspace{0.5cm} Understandability pertains to the requirement for the knowledge graph produced to be easily understandable and readable \cite{knowledgegraphevaulationbook}.
@@ -300,7 +300,7 @@ Each knowledge graph is created with the purpose of making them concise. Creatio
 
 Data in the dataset is understandable from the perspective of a Dutch reader. Given the relationships, the meaning of data can be easily inferred. However, there are some cases in the produced knowledge graphs where nodes produce an empty string ``" due to vacant data in the dataset. For example, the variable \textit{?partition} in the ontology is often empty and, out of the five tested organs, four of the \textit{partition}'s data is missing. However, important nodes such as \textit{?disposition}, which were integral to the understanding of other data in the knowledge graph, were replaced with other comprehensible strings to reduce confusion. 
 
-From a lay user's perspective, it could also be argued that the displayed Wikidata information can seem confusing at first glance due to only the codes being displayed. However, this can be mitigated by physically clicking the URI link while viewing these external Wikidata links. 
+From a lay user's perspective, the information from Wikidata may appear perplexing at first glance since only codes (i.e. wd:Q1327327, wd:Q752638 etc.) of the unique Wikidata link are displayed. However, this can be mitigated by physically clicking the URI link while viewing these external Wikidata links. 
 
 To accurately measure understandability, a survey was carried out consisting of various competency questions for a given knowledge graph in \textit{Appendix Listing A.6}. Assessing participants' ability to answer these questions gave an accurate representation of how understandable the knowledge graph was. However, this may be hindered by the knowledge graph presented to participants being translated from Dutch to English, which was necessary as most people were predominantly English speakers. The competency questions, themselves, were derived from the provided organ ontology's GitHub page. Not all questions on this page were used to reduce time completion and encourage participation in the survey. Questions used in the survey were:
 
@@ -366,7 +366,7 @@ In this section, scalability of the knowledge graph will be tested. In particula
 \end{itemize}
 \vspace{-0.1cm}
 
-For each one, measurement of scalability will be computed using the time required to execute the query on command line, which is how long it takes to generate the knowledge graph. This will make use of a command on Windows OS called: \textit{Measure-Command} \cite{measurecommand}, which measures the time required for a command to execute. For instance, measuring the time to generate a knowledge graph for organ: \textit{Part01\_001MIDDE} is:
+For each one, measurement of scalability will be computed using the time required to execute the query on command line, which is how long it takes to generate the knowledge graph. This will make use of a command on Windows OS called: \textit{Measure-Command} \cite{measurecommand}, which measures the time required for a command to execute. For instance, the command used to measure time it takes to generate a knowledge graph for organ: \textit{Part01\_001MIDDE} is:
 
 \lstset
 {
@@ -407,7 +407,7 @@ The same sample of five organs will be selected for knowledge graph generation a
 
 \textit{Figure 9.6} shows an initial linear relationship between the dataset's size and time. This shows that the knowledge graph-generating query produced is scalable to a certain extent. It is unknown, however, how well the query will perform for much larger dataset sizes. 
 
-Measurement of much larger input values was done in \cite{sparqlanything} and showed an exponential relationship between execution time and input size. However, the findings in relation to our input size are consistent as the paper does show a linear relationship in the smaller input sizes. Therefore, is not a problem for the scope of our generated knowledge graph. Nevertheless, extremely large input sizes may pose a potential issue scalability-wise in the future.
+Measurement of much larger input values was done in \cite{sparqlanything} and showed an exponential relationship between execution time and input size. However, the findings in relation to our input size are consistent as the paper does show a linear relationship in the smaller input sizes. Therefore, it is not a problem for the scope of our generated knowledge graph. Nevertheless, extremely large input sizes may pose a potential issue scalability-wise in the future.
 
 \subsection{Number of SERVICE Calls}
 \hspace{0.5cm} In this test, number of SERVICE calls within the query are tested to observe their effect on the speed of knowledge graph generation. In the implemented query, removal of SERVICE calls will be done incrementally and plotted against execution time. Measuring the number of SERVICE calls will indicate scalability of the knowledge graph, providing insight into its capacity for expansion.

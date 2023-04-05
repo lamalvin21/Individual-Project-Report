@@ -9,7 +9,7 @@ Nonetheless, using SPARQL Anything as a tool for knowledge graph generation was 
 
 Extensive background and context research were also essential to understanding the project scope and provided resources. This research facilitated the implementation and evaluation phases when generating the knowledge graph. 
 
-The query created to generate the knowledge graph was evaluated using both qualitative and quantitative methods to ensure its quality and measure scalability. Critiquing the solution was vital to provide an unbiased review, so improvements could be made in the future. Evaluation revealed that knowledge graph quality was adequate but improvements, as always, could still be made and quantitative tests showed scalability to a certain extent. 
+The knowledge graph that was produced underwent qualitative and quantitative evaluations to verify its quality and scalability. Critiquing the solution was vital to provide an unbiased review, so improvements could be made in the future. Evaluation revealed that knowledge graph quality was adequate but improvements, as always, could still be made and quantitative tests showed scalability to a certain extent. 
 
 If additional time was permitted during the course of this project, more sections of the provided ontology would be used- possibly with external organ datasets or other valid resources. 
 
@@ -20,7 +20,7 @@ If additional time was permitted during the course of this project, more section
 \begin{itemize}
     \item \textbf{Software reliability on external factors.} \\ Maintenance factors identified in \textit{Implementation 8.6} section may limit the query's ability to execute in the future. Deprecation or significant changes in tools used may render the query ineffective and extension of the project may no longer be feasible. 
     \item \textbf{Bias being introduced from the provided resources.} \\ The provided dataset and ontology may include pre-existing biases as they may only include data that has been specially curated for the Polifonia project. 
-    \item \textbf{Wikipedia pages not existing for all external custom links.} \\ Due to the particularity of some data in the dataset, custom links created may not always produce populated Wikipedia pages. However, relevant recommended Wikipedia pages can be seen if one has not been created yet.  
+    \item \textbf{Invalid Wikipedia pages for some external custom links.} \\ Due to the particularity of some data in the dataset, custom links created may not always produce populated Wikipedia pages. However, relevant recommended Wikipedia pages can be seen if one has not been created yet.  
 \end{itemize}
 
 \subsection{Evaluation Identified Limitations}
@@ -28,7 +28,7 @@ If additional time was permitted during the course of this project, more section
     \item To ensure accuracy of the knowledge graph produced, it will be necessary to maintain and update the dataset on a regular basis.
     \item Dataset is written in Dutch so is limited to external links surrounding Dutch organs. Therefore, the produced knowledge graph mostly contains Dutch data and is limited to Dutch readers. 
     \item The presence of some empty strings in the dataset indicates missing data, which may limit the knowledge graph to a certain extent based on the completeness of the provided dataset.
-    \item  The evaluation, based on file size and number of service calls, is limited in scope and may not entirely reflect relationships between these factors and time for larger datasets. As a result, this may impact scalability of the query used for generating the knowledge graph.
+    \item  The evaluation, based on file size and number of service calls, is limited in scope and may not entirely reflect relationships between these factors and execution time for larger datasets. As a result, this may impact scalability of the query used for generating the knowledge graph.
 \end{itemize}
 
 \section{Future Work \& Extensions}
