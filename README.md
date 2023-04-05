@@ -1,4 +1,9 @@
-# Informatics UG Individual Projects
-## LaTeX template for reports
+# Final Year Individual Project Report
 
-This repository contains a LaTeX class file to be used for creating reports as part of your individual project. In addition to the class file, there is a set of `.tex` files that, together and starting from file `report.tex`, can be used as the starting point when writing your final report.
+This is the final report for the Knowledge Graph generation from diverse datasets using SPARQL Anything project. 
+
+Authored by: Alvin Lam
+Supervised by: Dr Albert Meroño-Peñuela
+Year: 2023
+Course: BSc Computer Science
+University: King's College London
